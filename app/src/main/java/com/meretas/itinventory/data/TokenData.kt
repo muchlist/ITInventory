@@ -1,9 +1,8 @@
 package com.meretas.itinventory.data
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class TokenData(
-    @SerializedName("key")
-    val key: String
+    @Json(name = "key") val key: String
 )

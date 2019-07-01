@@ -1,20 +1,17 @@
 package com.meretas.itinventory.data
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class CurrentUserData(
-    @SerializedName("groups")
-    val groups: List<Group>,
-    @SerializedName("username")
-    val username: String
+    @Json(name = "first_name") val firstName: String,
+    @Json(name = "groups") val groups: List<Group>,
+    @Json(name = "last_name") val lastName: String,
+    @Json(name = "username") val username: String
 ) {
     data class Group(
-        @SerializedName("id")
-        val id: Int,
-        @SerializedName("name")
-        val name: String,
-        @SerializedName("permissions")
-        val permissions: List<Any>
+        @Json(name = "id") val id: Int,
+        @Json(name = "name") val name: String,
+        @Json(name = "permissions") val permissions: List<Any>
     )
 }

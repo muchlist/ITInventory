@@ -1,36 +1,26 @@
 package com.meretas.itinventory.data
 
 
-import com.google.gson.annotations.SerializedName
+import android.os.Parcelable
+import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 data class HistoryListData(
-    @SerializedName("count")
-    val count: Int,
-    @SerializedName("next")
-    val next: String?,
-    @SerializedName("previous")
-    val previous: String?,
-    @SerializedName("results")
-    val results: List<Result>
+    @Json(name = "count") val count: Int,
+    @Json(name = "next") val next: String?,
+    @Json(name = "previous") val previous: String?,
+    @Json(name = "results") val results: List<Result>
 ) {
+    @Parcelize
     data class Result(
-        @SerializedName("author")
-        val author: String,
-        @SerializedName("branch")
-        val branch: String,
-        @SerializedName("computer")
-        val computer: String,
-        @SerializedName("computer_id")
-        val computerId: Int,
-        @SerializedName("created_at")
-        val createdAt: String,
-        @SerializedName("id")
-        val id: Int,
-        @SerializedName("note")
-        val note: String,
-        @SerializedName("status_history")
-        val statusHistory: String,
-        @SerializedName("updated_at")
-        val updatedAt: String
-    )
+        @Json(name = "author") val author: String,
+        @Json(name = "branch") val branch: String,
+        @Json(name = "computer") val computer: String,
+        @Json(name = "computer_id") val computerId: Int,
+        @Json(name = "created_at") val createdAt: String,
+        @Json(name = "id") val id: Int,
+        @Json(name = "note") val note: String,
+        @Json(name = "status_history") val statusHistory: String,
+        @Json(name = "updated_at") val updatedAt: String
+    ): Parcelable
 }

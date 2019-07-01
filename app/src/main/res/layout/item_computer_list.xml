@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:padding="8dp"
+        android:layout_marginBottom="4dp" android:layout_marginTop="1dp"
+        app:cardCornerRadius="0dp" app:cardElevation="1dp" android:id="@+id/cv_item_computer"
+        android:elevation="1dp" android:paddingStart="16dp" android:paddingEnd="16dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_horizontal" android:layout_margin="8dp"
+    >
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" tools:text="Muchlisin Naga Bonar sinaga burak burak"
+                android:layout_weight="1" android:textStyle="bold"
+                android:id="@+id/tv_computerlist_name" android:textSize="14sp" android:textColor="@color/purple_soft"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/tv_computerlist_ip" tools:text="10.10.3.99"
+                android:layout_weight="1" android:layout_marginStart="4dp"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/tv_computerlist_division" tools:text="Keuangan"
+                android:layout_weight="1"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/tv_computerlist_islowspec" tools:text="X"
+                android:textSize="12sp" android:textStyle="italic"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>
