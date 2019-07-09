@@ -12,7 +12,7 @@ import retrofit2.Response
 class DashboardPresenter(private var view: DashboarView?) {
 
     fun getCurrentUserInfo() {
-        Api.retrofitService.getCurrentUser(App.prefs.authToken).enqueue(object : Callback<CurrentUserData> {
+        Api.retrofitService.getCurrentUser(App.prefs.authTokenSave).enqueue(object : Callback<CurrentUserData> {
             override fun onFailure(call: Call<CurrentUserData>, t: Throwable) {
                 // view?.updateConnection(false)
             }
@@ -25,7 +25,7 @@ class DashboardPresenter(private var view: DashboarView?) {
 
                     view?.getUserInfo(name, branch)
                 } else if (response.code() == 401) {
-                    view?.showToast(App.prefs.authToken)
+                    view?.showToast(App.prefs.authTokenSave)
                 } else {
                     // view?.updateConnection(false)
                 }
@@ -38,7 +38,7 @@ class DashboardPresenter(private var view: DashboarView?) {
 
         view?.showProgressBarHistory()
 
-        Api.retrofitService.getHistoryDashboard(App.prefs.authToken).enqueue(object : Callback<HistoryListData> {
+        Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave).enqueue(object : Callback<HistoryListData> {
             override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
                 view?.hideProgressBarHistory()
                 view?.showToast(t.toString())

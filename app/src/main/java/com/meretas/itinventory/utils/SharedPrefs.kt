@@ -7,11 +7,11 @@ class SharedPrefs(context: Context) {
     val PREFS_FILENAME = "prefs"
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
-    val AUTH_TOKEN = "authToken"
+    val AUTH_TOKEN = "authTokenSave"
     val USER_NAME = "userName"
     val USER_BRANCH = "userBranch"
 
-    var authToken: String
+    var authTokenSave: String
         get() = prefs.getString(USER_NAME, "") ?: ""
         set(value) = prefs.edit().putString(USER_NAME, value).apply()
 

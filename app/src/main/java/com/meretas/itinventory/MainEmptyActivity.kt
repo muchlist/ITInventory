@@ -14,7 +14,7 @@ class MainEmptyActivity : AppCompatActivity() {
 
         val activityIntent: Intent
 
-        if (App.prefs.authToken.isNullOrEmpty()) {
+        if (App.prefs.authTokenSave.isNullOrEmpty()) {
             activityIntent = Intent(this, LoginActivity::class.java)
         } else {
             activityIntent = Intent(this, DashboardActivity::class.java)

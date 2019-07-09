@@ -9,13 +9,11 @@ import retrofit2.Response
 
 class DetailComputerPresenter(private var view: DetailComputerView?) {
 
-
-    //History Harus dimodifikasi menggunakan retrofit berbeda
-    fun getHistoryDetail() {
+    fun getHistoryDetail(id: Int) {
 
         view?.showLoadingHistory()
 
-        Api.retrofitService.getHistoryDashboard(App.prefs.authToken).enqueue(object : Callback<HistoryListData> {
+        Api.retrofitService.getHistoryPerComputer(App.prefs.authTokenSave,id).enqueue(object : Callback<HistoryListData> {
             override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
                 view?.hideLoadingHistory()
                 view?.showToastError(t.toString())

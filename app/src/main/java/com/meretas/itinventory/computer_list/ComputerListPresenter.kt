@@ -15,7 +15,7 @@ class ComputerListPresenter(private var view: ComputerListView?){
 
         view?.showLoading()
 
-        Api.retrofitService.getComputerList(App.prefs.authToken,branch,location).enqueue(object : Callback<ComputerListData> {
+        Api.retrofitService.getComputerList(App.prefs.authTokenSave,branch,location).enqueue(object : Callback<ComputerListData> {
             override fun onFailure(call: Call<ComputerListData>, t: Throwable) {
                 view?.hideLoading()
                 view?.showToast(t.toString())
@@ -46,7 +46,7 @@ class ComputerListPresenter(private var view: ComputerListView?){
 
         view?.showLoading()
 
-        Api.retrofitService.getComputerListSearch(App.prefs.authToken,search).enqueue(object : Callback<ComputerListData> {
+        Api.retrofitService.getComputerListSearch(App.prefs.authTokenSave,search).enqueue(object : Callback<ComputerListData> {
             override fun onFailure(call: Call<ComputerListData>, t: Throwable) {
                 view?.hideLoading()
                 view?.showToast(t.toString())

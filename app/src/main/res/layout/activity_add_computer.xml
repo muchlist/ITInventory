@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".add_computer.AddComputerActivity">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/linearLayout_ide"
+                    android:layout_marginTop="64dp">
+
+                <ImageView
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="@dimen/spacing_middle"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:src="@drawable/shape_circle"
+                        android:tint="@color/red_400"/>
+
+                <View
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="0dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Identitas"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        android:fontFamily="@font/quicksand"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="1dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_ide"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/cv_ide">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <EditText
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Nama User"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"
+                            android:id="@+id/et_add_name"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <EditText
+                            android:id="@+id/et_add_hostname"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Nama Host Komputer"
+                            android:minHeight="@dimen/spacing_xxlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <EditText
+                            android:id="@+id/et_add_ip_address"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Alamat IP"
+                            android:minHeight="@dimen/spacing_xxlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <EditText
+                            android:id="@+id/et_add_no_inventory"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Nomer Inventaris"
+                            android:minHeight="@dimen/spacing_xxlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/tv_add_cabang"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Cabang"
+                            android:minHeight="@dimen/spacing_xxlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/et_add_divisi"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Divisi"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/et_add_lokasi"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Lokasi (Khusus BJM)"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!---->
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/linearLayout_ide2"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_ide" android:layout_marginTop="24dp">
+
+                <ImageView
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="@dimen/spacing_middle"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:src="@drawable/shape_circle"
+                        android:tint="@color/red_400"/>
+
+                <View
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="0dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Informasi Perangkat"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        android:fontFamily="@font/quicksand"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="1dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/cv_ide2"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_ide2" android:layout_marginTop="8dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                    <TextView
+                            android:id="@+id/et_add_jenis_pc"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Jenis Perangkat"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+
+                    <EditText
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Merk / Tipe"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"
+                            android:id="@+id/et_add_merk_pc"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <EditText
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Tahun Pengadaan"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"
+                            android:id="@+id/et_add_tahun_pc"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/et_add_seat_manajemen_pc"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Seat Manajemen : Tidak"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!---->
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/linearLayout_ide3"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_ide2" android:layout_marginTop="24dp">
+
+                <ImageView
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="@dimen/spacing_middle"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:src="@drawable/shape_circle"
+                        android:tint="@color/red_400"/>
+
+                <View
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="0dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spesifikasi"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80"
+                        android:fontFamily="@font/quicksand"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="1dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:id="@+id/cv_ide3"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayout_ide3" android:layout_marginTop="8dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                    <TextView
+                            android:id="@+id/tv_add_os"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Sistem Operasi"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/tv_add_processor"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Processor"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/tv_add_ram"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="RAM"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/tv_add_hardisk"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Hardisk"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+
+                    <EditText
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="VGA"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"
+                            android:id="@+id/et_add_vga"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <TextView
+                            android:id="@+id/tv_add_status"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:gravity="center_vertical"
+                            android:focusable="false"
+                            android:hint="Status"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+                    <EditText
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="Note"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            android:fontFamily="@font/quicksand"
+                            android:id="@+id/et_add_note"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_ide3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="SAVE - CONTINUE"
+                    android:id="@+id/bt_add_computer_and_cont"/>
+
+            <Button android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/bt_add_computer_and_cont"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/spacing_xlarge"
+                    android:text="SAVE - FINISH"
+                    android:id="@+id/bt_add_computer_and_finish"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 android:background="@color/progress_frame_color"
+                 android:clickable="true"
+                 android:focusable="true"
+                 android:id="@+id/pb_frame"
+                 android:visibility="gone">
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pb_add_computer"
+                android:layout_gravity="center"/>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

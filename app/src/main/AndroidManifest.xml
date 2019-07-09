@@ -12,6 +12,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".edit_computer.EditComputerActivity">
+        </activity>
+        <activity
+                android:name=".add_computer.AddComputerActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".add_history.HistoryAddActivity">
+        </activity>
         <activity android:name=".computer_detail.DetailComputerActivity">
         </activity>
         <activity

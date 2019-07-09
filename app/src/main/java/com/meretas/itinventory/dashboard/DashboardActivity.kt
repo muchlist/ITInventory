@@ -11,9 +11,8 @@ import com.meretas.itinventory.history.HistoryDetailActivity
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_DETAIL_HISTORY
+import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_dashboard.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -36,7 +35,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         //update info user
         if (App.prefs.userBranchSave.isNotEmpty()){
             toolbar_dashboard.title = App.prefs.userNameSave
-            toolbar_dashboard.subtitle = "Cabang "+ App.prefs.userBranchSave
+            toolbar_dashboard.subtitle = App.prefs.userBranchSave
         }
         presenter.getCurrentUserInfo()
 
@@ -108,5 +107,13 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     override fun onDestroy() {
         presenter.onDestroy()
         super.onDestroy()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (Statis.isHistoryUpdate){
+            presenter.getHistoryDashboard()
+            Statis.isHistoryUpdate = false
+        }
     }
 }

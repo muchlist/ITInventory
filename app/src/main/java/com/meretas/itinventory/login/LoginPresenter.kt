@@ -41,7 +41,7 @@ class LoginPresenter(private var view: LoginView?) {
             override fun onResponse(call: Call<TokenData>, response: Response<TokenData>) {
                 if (response.isSuccessful) {
                     val tokenRespon = response.body()!!
-                    App.prefs.authToken = "Token " +tokenRespon.key
+                    App.prefs.authTokenSave = "Token " +tokenRespon.key
                     view?.gotoDashboardActivity()
                 } else if (response.code() == 400) {
                     view?.showToast("User atau password salah")

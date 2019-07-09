@@ -31,19 +31,83 @@ interface ApiService {
         @Field("password") password: String
     ): Call<TokenData>
 
-    @Headers("Content-type:application/json")
+    //@Headers("Content-type:application/json")
+    @FormUrlEncoded
+    @POST("computers/{id}/history/")
+    fun postHistory(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("note") note: String,
+        @Field("status_history") status_history: String
+    ): Call<HistoryListData.Result>
+
+    @FormUrlEncoded
+    @POST("computers/")
+    fun postComputer(
+        @Header("Authorization") token: String,
+        @Field("client_name") clientName: String,
+        @Field("hostname") hostName: String?,
+        @Field("ip_address") ipAddress: String?,
+        @Field("inventory_number") inventoryNumber: String?,
+        @Field("location") location: String? = "None",
+        @Field("division") division: String,
+        @Field("seat_management") seatManagement: Boolean = false,
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("computer_type") computerType: String? = "Desktop",
+        @Field("processor") processor: Double? = 3.0,
+        @Field("ram") ram: Double? = 4.0,
+        @Field("hardisk") hardisk: Int? = 1000,
+        @Field("vga_card") vgaCard: String?,
+        @Field("operation_system") operationSystem: String? = "1064",
+        @Field("status") status: String? = "Baik",
+        @Field("note") note: String?
+    ): Call<ComputerListData.Result>
+
+    @FormUrlEncoded
+    @POST("computers/{id}/")
+    fun putComputer(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("client_name") clientName: String,
+        @Field("hostname") hostName: String?,
+        @Field("ip_address") ipAddress: String?,
+        @Field("inventory_number") inventoryNumber: String?,
+        @Field("location") location: String? = "None",
+        @Field("division") division: String,
+        @Field("seat_management") seatManagement: Boolean = false,
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("computer_type") computerType: String? = "Desktop",
+        @Field("processor") processor: Double? = 3.0,
+        @Field("ram") ram: Double? = 4.0,
+        @Field("hardisk") hardisk: Int? = 1000,
+        @Field("vga_card") vgaCard: String?,
+        @Field("operation_system") operationSystem: String? = "1064",
+        @Field("status") status: String? = "Baik",
+        @Field("note") note: String?
+    ): Call<ComputerListData.Result>
+
+    //@Headers("Content-type:application/json")
     @GET("user/")
     fun getCurrentUser(
         @Header("Authorization") token: String
     ): Call<CurrentUserData>
 
-    @Headers("Content-type:application/json")
+    //@Headers("Content-type:application/json")
     @GET("historys/")
     fun getHistoryDashboard(
         @Header("Authorization") token: String
     ): Call<HistoryListData>
 
-    @Headers("Content-type:application/json")
+    //@Headers("Content-type:application/json")
+    @GET("computers/{id}/historys/")
+    fun getHistoryPerComputer(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<HistoryListData>
+
+    //@Headers("Content-type:application/json")
     @GET("computers/")
     fun getComputerList(
         @Header("Authorization") token: String,
@@ -52,7 +116,7 @@ interface ApiService {
         @Query("ordering") order: String = "division,client_name"
     ): Call<ComputerListData>
 
-    @Headers("Content-type:application/json")
+    //@Headers("Content-type:application/json")
     @GET("computers/")
     fun getComputerListSearch(
         @Header("Authorization") token: String,

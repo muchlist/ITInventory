@@ -20,5 +20,6 @@
     <color name="purple_xsoft">#A5B3E2</color>
     <color name="grey_40">#999999</color>
     <color name="grey_5">#f2f2f2</color>
+    <color name="progress_frame_color">#C3FFFEFE</color>
 
 </resources>

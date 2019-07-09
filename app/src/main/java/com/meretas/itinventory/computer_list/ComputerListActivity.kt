@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
+import com.meretas.itinventory.add_computer.AddComputerActivity
 import com.meretas.itinventory.computer_detail.DetailComputerActivity
 import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.utils.*
@@ -170,9 +171,19 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
             }
         }
 
+        //tombol add computer
+        bt_computerlist_tambah.setOnClickListener {
+            startActivity<AddComputerActivity>()
+        }
+
         //HIDE KEYBOARD
         et_computerlist_searchbar.setFocusable(false)
         et_computerlist_searchbar.clearFocus()
+
+        //HIDE BUTTON IF MONITOR MODE
+        if (App.prefs.userBranchSave == "Monitor"){
+            bt_computerlist_tambah.isClickable = false
+        }
     }
 
     override fun hideLoading() {
@@ -217,5 +228,23 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
     override fun onDestroy() {
         presenter.onDestroy()
         super.onDestroy()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        //JIKA KOMPUTER UPDATE TRUE < HANYA BISA TRUE JIKA ADA PENAMBAHAN KOMPUTER
+        if (Statis.isComputerUpdate){
+            when (App.prefs.userBranchSave) {
+                "Sampit" -> chip_sampit.performClick()
+                "Bagendang" -> chip_bagendang.performClick()
+                "Kotabaru" -> chip_kotabaru.performClick()
+                "Batulicin" -> chip_batulicin.performClick()
+                "Mekarputih" -> chip_mekarputih.performClick()
+                "Kumai" -> chip_kumai.performClick()
+                "Bumiharjo" -> chip_bumiharjo.performClick()
+                else -> chip_banjarmasin.performClick()
+            }
+            Statis.isComputerUpdate = false
+        }
     }
 }
