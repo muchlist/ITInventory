@@ -73,7 +73,7 @@ class AddComputerActivity : AppCompatActivity() {
         })
 
         //MENYESUAIKAN LAYOUT, CHOICES LOCATION HANYA UNTUK BANJARMASIN
-        tv_add_cabang.setText(App.prefs.userBranchSave)
+        tv_add_cabang.text = App.prefs.userBranchSave
         if (App.prefs.userBranchSave == BANJARMASIN){
             //PASS
         } else {

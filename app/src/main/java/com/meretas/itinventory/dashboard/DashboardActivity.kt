@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -38,6 +39,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     private var historyData: MutableList<HistoryListData.Result> = mutableListOf()
 
     private lateinit var myDialog: Dialog
+    private var doubleClickLogout = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,6 +92,12 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             }
         })
 
+        bt_dashboard_reload.setOnClickListener {
+            bt_dashboard_reload.visibility = View.INVISIBLE
+            presenter.getCurrentUserInfo()
+            presenter.getHistoryDashboard()
+        }
+
         //dialog
         myDialog = Dialog(this)
 
@@ -104,7 +112,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         cv_dashboard_other.startAnimation(scaleToThree)
 
         //HIDE KEYBOARD
-        et_dashboard_searchbar.setFocusable(false)
+        et_dashboard_searchbar.isFocusable = false
         et_dashboard_searchbar.clearFocus()
 
     }
@@ -139,6 +147,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
     override fun showToast(notif: String) {
         toast(notif)
+        //jika is history update true , akan me reload lagi di onresume
+        Statis.isHistoryUpdate = true
         reloadButtonAppear()
     }
 
@@ -149,7 +159,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.overflow_menu, menu)
+        menuInflater.inflate(R.menu.overflow_menu, menu)
         return true
     }
 
@@ -167,11 +177,12 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         val logoutButton: TextView = myDialog.findViewById(R.id.tv_logout)
         val accountOne: CircleImageView = myDialog.findViewById(R.id.iv_akun_satu)
         val accountTwo: CircleImageView = myDialog.findViewById(R.id.iv_akun_dua)
+        val textAccountOne: TextView = myDialog.findViewById(R.id.tv_akun_satu)
         val textAccountTwo: TextView = myDialog.findViewById(R.id.tv_akun_dua)
         val addAccount: ImageView = myDialog.findViewById(R.id.iv_add_akun)
 
         //Jika auth token 2 kosong
-        if (App.prefs.authTokenTwo.isEmpty()){
+        if (App.prefs.authTokenTwo.isEmpty()) {
             textAccountTwo.visibility = View.INVISIBLE
             accountTwo.visibility = View.INVISIBLE
         } else {
@@ -185,7 +196,21 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             myDialog.dismiss()
         }
 
+        textAccountOne.setOnClickListener {
+            App.prefs.userBranchSave = ""
+            App.prefs.authTokenSave = App.prefs.authTokenOne
+            presenter.getCurrentUserInfo()
+            myDialog.dismiss()
+        }
+
         accountTwo.setOnClickListener {
+            App.prefs.userBranchSave = ""
+            App.prefs.authTokenSave = App.prefs.authTokenTwo
+            presenter.getCurrentUserInfo()
+            myDialog.dismiss()
+        }
+
+        textAccountTwo.setOnClickListener {
             App.prefs.userBranchSave = ""
             App.prefs.authTokenSave = App.prefs.authTokenTwo
             presenter.getCurrentUserInfo()
@@ -196,19 +221,27 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             myDialog.dismiss()
             startActivity<LoginActivity>()
             finish()
+
         }
 
         logoutButton.setOnClickListener {
-            val pref = App.prefs
-            pref.authTokenSave = ""
-            pref.authTokenOne = ""
-            pref.authTokenTwo = ""
-            pref.userBranchSave = ""
-            myDialog.dismiss()
-            finish()
+            if (doubleClickLogout) {
+                val pref = App.prefs
+                pref.authTokenSave = ""
+                pref.authTokenOne = ""
+                pref.authTokenTwo = ""
+                pref.userBranchSave = ""
+                myDialog.dismiss()
+                finish()
+            } else {
+                toast("Ketuk sekali lagi untuk logout")
+            }
+            doubleClickLogout = true
+            Handler().postDelayed(Runnable { doubleClickLogout = false }, 2000)
         }
         myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
+
     }
 
     override fun onResume() {

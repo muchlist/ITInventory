@@ -184,7 +184,7 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
         }
 
         //HIDE KEYBOARD
-        et_computerlist_searchbar.setFocusable(false)
+        et_computerlist_searchbar.isFocusable = false
         et_computerlist_searchbar.clearFocus()
 
     }

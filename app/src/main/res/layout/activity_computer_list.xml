@@ -94,7 +94,7 @@
                         android:layout_marginStart="24dp"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Bjm" android:checkable="true"/>
+                        android:text="@string/bjm" android:checkable="true"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Spt" android:textColorLink="@android:color/white"/>
+                        android:text="@string/spt" android:textColorLink="@android:color/white"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Bgd"/>
+                        android:text="@string/bgd"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Ktb"/>
+                        android:text="@string/ktb"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Btl"/>
+                        android:text="@string/btl"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Mkp"/>
+                        android:text="@string/mkp"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Km"/>
+                        android:text="@string/km"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/bg_chip_state_list"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Bhj" android:layout_marginEnd="24dp"/>
+                        android:text="@string/bhj" android:layout_marginEnd="24dp"/>
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -200,7 +200,7 @@
                         android:layout_marginStart="54dp"
                         app:chipBackgroundColor="@color/grey_line_very"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Regional"/>
+                        android:text="@string/regional"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/grey_line_very"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="TPKB"/>
+                        android:text="@string/tpkb"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/grey_line_very"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="Trisakti"/>
+                        android:text="@string/trisakti"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -233,7 +233,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/grey_line_very"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="PulangPisau"/>
+                        android:text="@string/pulangpisau"/>
 
                 <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
@@ -244,7 +244,7 @@
                         android:focusable="true"
                         app:chipBackgroundColor="@color/grey_line_very"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
-                        android:text="None" android:layout_marginEnd="24dp"/>
+                        android:text="@string/none" android:layout_marginEnd="24dp"/>
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -260,11 +260,11 @@
             android:layout_marginEnd="8dp"
             android:theme="@style/Button.Blue.Borderless"
             android:layout_gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent" android:text="Tambah Komputer"
+            app:layout_constraintBottom_toBottomOf="parent" android:text="@string/tambah_komputer"
             android:fontFamily="@font/roboto"/>
 
     <TextView
-            android:text="UNIT : --"
+            android:text="@string/jumlah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_computerlist_unit"

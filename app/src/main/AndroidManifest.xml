@@ -12,16 +12,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".edit_computer.EditComputerActivity">
+        <activity android:name=".edit_computer.EditComputerActivity"
+                  android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".add_computer.AddComputerActivity"
                 android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".add_history.HistoryAddActivity">
+        <activity android:name=".add_history.HistoryAddActivity"
+                  android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".computer_detail.DetailComputerActivity">
-        </activity>
+        <activity android:name=".computer_detail.DetailComputerActivity"
+                  android:screenOrientation="portrait"/>
         <activity
                 android:name=".computer_list.ComputerListActivity"
                 android:screenOrientation="portrait"

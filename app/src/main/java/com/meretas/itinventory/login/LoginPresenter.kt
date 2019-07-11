@@ -11,10 +11,11 @@ import retrofit2.Response
 class LoginPresenter(private var view: LoginView?) {
 
     fun getToken(username: String, password: String) {
-
+        view?.showLoading()
         Api.retrofitService.getTokenLogin(username, password).enqueue(object : Callback<TokenData> {
             override fun onFailure(call: Call<TokenData>, t: Throwable) {
                 view?.showToast("Gagal login")
+                view?.hideLoading()
             }
 
             override fun onResponse(call: Call<TokenData>, response: Response<TokenData>) {
@@ -32,8 +33,10 @@ class LoginPresenter(private var view: LoginView?) {
                     view?.gotoDashboardActivity()
                 } else if (response.code() == 400) {
                     view?.showToast("User atau password salah")
+                    view?.hideLoading()
                 } else {
                     view?.showToast("Gagal login")
+                    view?.hideLoading()
                 }
             }
         })

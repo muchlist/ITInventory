@@ -25,7 +25,8 @@
                     android:layout_marginTop="32dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="32dp"/>
+                    android:layout_marginStart="32dp"
+                    android:contentDescription="@string/dot"/>
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -121,7 +122,7 @@
                     android:layout_marginEnd="32dp" android:textSize="24sp" android:textStyle="bold"
                     android:fontFamily="@font/quicksand_bold" android:textColor="@color/grey_80"/>
             <TextView
-                    android:text="Seat Management :"
+                    android:text="@string/seat_management_"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView10" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -149,7 +150,7 @@
                     android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="Prosessor .................................."
+                    android:text="@string/prosessor_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView13" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -167,7 +168,7 @@
                     tools:text="Setara i5" android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="RAM .................................."
+                    android:text="@string/ram_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView15" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -184,7 +185,7 @@
                     tools:text="4 GB" android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginStart="8dp"/>
             <TextView
-                    android:text="Harddisk .................................."
+                    android:text="@string/harddisk_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView17" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -201,7 +202,7 @@
                     tools:text="1000 GB" android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginStart="8dp"/>
             <TextView
-                    android:text="VGA .................................."
+                    android:text="@string/vga_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView19" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -218,7 +219,7 @@
                     tools:text="None" android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginStart="8dp"/>
             <TextView
-                    android:text="OS .................................."
+                    android:text="@string/os_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView21" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -236,7 +237,7 @@
                     app:layout_constraintEnd_toEndOf="parent" android:textSize="18sp"
                     android:textStyle="bold" android:layout_marginStart="16dp"/>
             <TextView
-                    android:text="Status .................................."
+                    android:text="@string/status_dot"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView" app:layout_constraintStart_toStartOf="@+id/tv_detail_full_pc"
@@ -255,7 +256,7 @@
                     android:textStyle="bold" android:background="@color/button_color_red"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
-                    android:text="Cabang .................................."
+                    android:text="@string/cabang_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView2" app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -264,7 +265,7 @@
                     android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="Divisi .................................."
+                    android:text="@string/divisi_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -273,7 +274,7 @@
                     android:textSize="18sp" android:maxLines="1" android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="Lokasi .................................."
+                    android:text="@string/lokasi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView4" app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -282,7 +283,7 @@
                     android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="Host .................................."
+                    android:text="@string/host"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView5" app:layout_constraintStart_toStartOf="@+id/tv_detail_client_name"
@@ -292,7 +293,7 @@
                     android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="IP .................................."
+                    android:text="@string/ip"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView6" app:layout_constraintStart_toStartOf="@+id/tv_detail_client_name"
@@ -301,7 +302,7 @@
                     android:textSize="18sp" android:maxLines="1" android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="No Invent .................................."
+                    android:text="@string/no_invent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView7"
@@ -310,7 +311,7 @@
                     android:textSize="18sp" android:maxLines="1" android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="HISTORY &#8628;"
+                    android:text="@string/history_8628"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/tv_detail_note"
@@ -324,7 +325,9 @@
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rv_detail_history" android:paddingStart="32dp" android:clipToPadding="false">
+                android:id="@+id/rv_detail_history"
+                android:paddingStart="32dp"
+                android:clipToPadding="false">
 
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -344,7 +347,7 @@
 
             <Button android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tambah History"
+                    android:text="@string/tambah_history"
                     android:fontFamily="@font/roboto"
                     android:id="@+id/bt_detail_add_history"/>
 
@@ -354,7 +357,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|end"
                 android:layout_marginBottom="32dp"
-                android:text="Edit Komputer"
+                android:text="@string/edit_komputer"
                 android:backgroundTint="@color/button_color_red" android:fontFamily="@font/roboto"
                 android:id="@+id/bt_detail_edit_computer" android:layout_marginEnd="32dp"/>
 

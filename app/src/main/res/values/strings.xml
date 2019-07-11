@@ -27,6 +27,62 @@
     <string name="status">Status</string>
     <string name="note">Note</string>
     <string name="save">SAVE</string>
+    <string name="profile">profile</string>
+    <string name="membersihkan_kipas_prosesor_karena_sering_restart">Membersihkan kipas prosesor karena sering restart
+    </string>
+    <string name="diperbaiki">Diperbaiki</string>
+    <string name="_19_06_2019">19 - 06 -2019</string>
+    <string name="pilih_akun">Pilih Akun</string>
+    <string name="logout">Logout</string>
+    <string name="primary">Primary</string>
+    <string name="secondary">Secondary</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">LOGIN</string>
+    <string name="pastikan_status_server_tidak_sleep_sebelum_melakukan_login">* Pastikan status server tidak sleep
+        sebelum melakukan login.
+    </string>
+    <string name="sleep">SLEEP</string>
+    <string name="catatan">Catatan :</string>
+    <string name="status_">Status :</string>
+    <string name="menambahkan_history">Menambahkan History</string>
+    <string name="name">Name</string>
+    <string name="status__">Status</string>
+    <string name="note_">Note</string>
+    <string name="simpan">SIMPAN</string>
+    <string name="edit_komputer">Edit Komputer</string>
+    <string name="tambah_history">Tambah History</string>
+    <string name="history_8628">HISTORY ↴</string>
+    <string name="no_invent">No Invent ..................................</string>
+    <string name="ip">IP ..................................</string>
+    <string name="host">Host ..................................</string>
+    <string name="lokasi">Lokasi ..................................</string>
+    <string name="divisi_">Divisi ..................................</string>
+    <string name="cabang_">Cabang ..................................</string>
+    <string name="status_dot">Status ..................................</string>
+    <string name="os_">OS ..................................</string>
+    <string name="vga_">VGA ..................................</string>
+    <string name="harddisk_">Harddisk ..................................</string>
+    <string name="ram_">RAM ..................................</string>
+    <string name="prosessor_">Prosessor ..................................</string>
+    <string name="seat_management_">Seat Management :</string>
+    <string name="history">--HISTORY--</string>
+    <string name="reload">RELOAD</string>
+    <string name="bjm">Bjm</string>
+    <string name="spt">Spt</string>
+    <string name="bgd">Bgd</string>
+    <string name="ktb">Ktb</string>
+    <string name="btl">Btl</string>
+    <string name="mkp">Mkp</string>
+    <string name="km">Km</string>
+    <string name="bhj">Bhj</string>
+    <string name="regional">Regional</string>
+    <string name="tpkb">TPKB</string>
+    <string name="trisakti">Trisakti</string>
+    <string name="pulangpisau">PulangPisau</string>
+    <string name="none">None</string>
+    <string name="tambah_komputer">Tambah Komputer</string>
+    <string name="jumlah">Jumlah : &#8212;</string>
 
 
 </resources>

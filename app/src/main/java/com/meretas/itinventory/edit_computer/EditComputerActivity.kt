@@ -48,26 +48,26 @@ class EditComputerActivity : AppCompatActivity() {
             et_edit_hostname.setText(hostname)
             et_edit_ip_address.setText(ipAddress)
             et_edit_no_inventory.setText(inventoryNumber)
-            tv_edit_cabang.setText(branch)
-            et_edit_divisi.setText(division)
+            tv_edit_cabang.text = branch
+            et_edit_divisi.text = division
             divisi = division
-            et_edit_lokasi.setText(location)
+            et_edit_lokasi.text = location
             lokasi = location
-            et_edit_jenis_pc.setText(computerType)
+            et_edit_jenis_pc.text = computerType
             jenisPerangkat = computerType
             et_edit_merk_pc.setText(merkModel)
             et_edit_tahun_pc.setText(year)
-            et_edit_seat_manajemen_pc.setText(seatManagement.toString())
+            et_edit_seat_manajemen_pc.text = seatManagement.toString()
             seatManajement = seatManagement
-            tv_edit_os.setText(translasi.osTranslation(operationSystem))
-            tv_edit_processor.setText(translasi.processorTranslation(processor))
+            tv_edit_os.text = translasi.osTranslation(operationSystem)
+            tv_edit_processor.text = translasi.processorTranslation(processor)
             processorPC = processor
-            tv_edit_ram.setText(translasi.ramTranslation(ram))
+            tv_edit_ram.text = translasi.ramTranslation(ram)
             ramPC = ram
-            tv_edit_hardisk.setText(translasi.hardiskTranslation(hardisk))
+            tv_edit_hardisk.text = translasi.hardiskTranslation(hardisk)
             hardiskPC = hardisk
             et_edit_vga.setText(vgaCard)
-            tv_edit_status.setText(status)
+            tv_edit_status.text = status
             statusPC = status
             et_edit_note.setText(note)
 

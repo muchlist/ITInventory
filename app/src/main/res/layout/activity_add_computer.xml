@@ -494,6 +494,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
+                            android:inputType="text"
                             android:id="@+id/et_add_vga"/>
 
                     <View

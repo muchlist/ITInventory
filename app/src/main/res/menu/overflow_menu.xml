@@ -2,5 +2,5 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/profile"
           android:icon="@drawable/ic_baseline_fingerprint_24px" app:showAsAction="ifRoom"
-          android:title="profile"/>
+          android:title="@string/profile"/>
 </menu>

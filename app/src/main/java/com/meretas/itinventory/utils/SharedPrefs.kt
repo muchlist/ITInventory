@@ -4,45 +4,44 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SharedPrefs(context: Context) {
-    private val PREFSFILENAME = "prefs"
-    private val AUTHTOKEN = "authTokenSave"
-    private val AUTHTOKEN1 = "authTokenSave_one"
-    private val AUTHTOKEN2 = "authTokenSave_two"
+    private val _prefsFileName = "prefs"
+    private val _authToken = "authTokenSave"
+    private val _authTokenOne = "authTokenSave_one"
+    private val _authTokenTwo = "authTokenSave_two"
 
+    private val _userName = "userName"
+    private val _userBranch = "userBranch"
+    private val _isReadOnly = "userReadOnly"
+    private val _isCompleteLlogin = "userCompleteLogin"
 
-    private val USERNAME = "userName"
-    private val USERBRANCH = "userBranch"
-    private val ISREADONLY = "userReadOnly"
-    private val ISCOMPLETELOGIN = "userCompleteLogin"
-
-    val prefs: SharedPreferences = context.getSharedPreferences(PREFSFILENAME, 0)
+    val prefs: SharedPreferences = context.getSharedPreferences(_prefsFileName, 0)
 
     var authTokenSave: String
-        get() = prefs.getString(AUTHTOKEN, "") ?: ""
-        set(value) = prefs.edit().putString(AUTHTOKEN, value).apply()
+        get() = prefs.getString(_authToken, "") ?: ""
+        set(value) = prefs.edit().putString(_authToken, value).apply()
 
     var authTokenOne: String
-        get() = prefs.getString(AUTHTOKEN1, "") ?: ""
-        set(value) = prefs.edit().putString(AUTHTOKEN1, value).apply()
+        get() = prefs.getString(_authTokenOne, "") ?: ""
+        set(value) = prefs.edit().putString(_authTokenOne, value).apply()
 
     var authTokenTwo: String
-        get() = prefs.getString(AUTHTOKEN2, "") ?: ""
-        set(value) = prefs.edit().putString(AUTHTOKEN2, value).apply()
+        get() = prefs.getString(_authTokenTwo, "") ?: ""
+        set(value) = prefs.edit().putString(_authTokenTwo, value).apply()
 
     var userNameSave: String
-        get() = prefs.getString(USERNAME, "") ?: ""
-        set(value) = prefs.edit().putString(USERNAME, value).apply()
+        get() = prefs.getString(_userName, "") ?: ""
+        set(value) = prefs.edit().putString(_userName, value).apply()
 
     var userBranchSave: String
-        get() = prefs.getString(USERBRANCH, "") ?: ""
-        set(value) = prefs.edit().putString(USERBRANCH, value).apply()
+        get() = prefs.getString(_userBranch, "") ?: ""
+        set(value) = prefs.edit().putString(_userBranch, value).apply()
 
     var isReadOnly: Boolean
-        get() = prefs.getBoolean(ISREADONLY,false)
-        set(value) = prefs.edit().putBoolean(ISREADONLY, value).apply()
+        get() = prefs.getBoolean(_isReadOnly,false)
+        set(value) = prefs.edit().putBoolean(_isReadOnly, value).apply()
 
     var isCompleteLogin: Boolean
-        get() = prefs.getBoolean(ISCOMPLETELOGIN,false)
-        set(value) = prefs.edit().putBoolean(ISCOMPLETELOGIN, value).apply()
+        get() = prefs.getBoolean(_isCompleteLlogin,false)
+        set(value) = prefs.edit().putBoolean(_isCompleteLlogin, value).apply()
 
 }
