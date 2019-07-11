@@ -64,4 +64,7 @@ dependencies {
 
     //anko common
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+    //circle image view
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

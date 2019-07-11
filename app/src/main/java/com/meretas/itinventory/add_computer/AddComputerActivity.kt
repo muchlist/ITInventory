@@ -32,7 +32,7 @@ class AddComputerActivity : AppCompatActivity() {
     private var hardisk: Int = 1000
     private var statusPC: String? = "Baik"
 
-    lateinit var translasi: Translasi
+    private lateinit var translasi: Translasi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +94,7 @@ class AddComputerActivity : AppCompatActivity() {
         tv_add_status.setOnClickListener { choiceStatus() }
     }
 
-    fun choiceDivisi() {
+    private fun choiceDivisi() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Umum",
@@ -123,7 +123,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceLokasi() {
+    private fun choiceLokasi() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Bjm_Reg",
@@ -148,7 +148,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceJenisPC() {
+    private fun choiceJenisPC() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Desktop",
@@ -172,7 +172,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceSeatManajement() {
+    private fun choiceSeatManajement() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Ya",
@@ -194,7 +194,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceSistemOperasi() {
+    private fun choiceSistemOperasi() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Windows 10",
@@ -222,7 +222,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceProcessor() {
+    private fun choiceProcessor() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Kurang dari i3",
@@ -246,7 +246,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceRam() {
+    private fun choiceRam() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "2 GB",
@@ -272,7 +272,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choicehardisk() {
+    private fun choicehardisk() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "256 GB",
@@ -298,7 +298,7 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceStatus() {
+    private fun choiceStatus() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Baik",
@@ -322,8 +322,8 @@ class AddComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun sendDataComputer(isContinue: Boolean) {
-        if (!et_add_name.text.toString().isEmpty() && !divisi.isNullOrEmpty()) {
+    private fun sendDataComputer(isContinue: Boolean) {
+        if (et_add_name.text.toString().isNotEmpty() && divisi.isNotEmpty()) {
             computer = ComputerPostData(
                 lokasi,
                 divisi,
@@ -345,7 +345,6 @@ class AddComputerActivity : AppCompatActivity() {
             )
 
             viewModel.postComputer(computer, isContinue)
-
         } else {
             toast("Nama User dan Divisi Tidak Boleh Kosong!")
         }

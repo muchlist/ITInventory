@@ -10,6 +10,37 @@ import retrofit2.Response
 
 class LoginPresenter(private var view: LoginView?) {
 
+    fun getToken(username: String, password: String) {
+
+        Api.retrofitService.getTokenLogin(username, password).enqueue(object : Callback<TokenData> {
+            override fun onFailure(call: Call<TokenData>, t: Throwable) {
+                view?.showToast("Gagal login")
+            }
+
+            override fun onResponse(call: Call<TokenData>, response: Response<TokenData>) {
+                if (response.isSuccessful) {
+                    val tokenRespon = response.body()!!
+                    val pref = App.prefs
+                    //Jika auth token satu sudah ada maka isi auth token 2
+                    if (pref.authTokenOne.isEmpty()) {
+                        pref.authTokenSave = "Token " + tokenRespon.key
+                        pref.authTokenOne = "Token " + tokenRespon.key
+                    } else {
+                        pref.authTokenSave = "Token " + tokenRespon.key
+                        pref.authTokenTwo = "Token " + tokenRespon.key
+                    }
+                    view?.gotoDashboardActivity()
+                } else if (response.code() == 400) {
+                    view?.showToast("User atau password salah")
+                } else {
+                    view?.showToast("Gagal login")
+                }
+            }
+        })
+
+
+    }
+
     fun getStatusConnection() {
 
         Api.retrofitService.getCurrentUser("").enqueue(object : Callback<CurrentUserData> {
@@ -28,29 +59,6 @@ class LoginPresenter(private var view: LoginView?) {
                 }
             }
         })
-
-    }
-
-    fun getToken(username: String, password: String){
-
-        Api.retrofitService.getTokenLogin(username,password).enqueue(object : Callback<TokenData> {
-            override fun onFailure(call: Call<TokenData>, t: Throwable) {
-                view?.showToast("Gagal login")
-            }
-
-            override fun onResponse(call: Call<TokenData>, response: Response<TokenData>) {
-                if (response.isSuccessful) {
-                    val tokenRespon = response.body()!!
-                    App.prefs.authTokenSave = "Token " +tokenRespon.key
-                    view?.gotoDashboardActivity()
-                } else if (response.code() == 400) {
-                    view?.showToast("User atau password salah")
-                } else {
-                    view?.showToast("Gagal login")
-                }
-            }
-        })
-
 
     }
 

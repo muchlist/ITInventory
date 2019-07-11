@@ -176,7 +176,7 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
         //tombol add computer
         bt_computerlist_tambah.setOnClickListener {
             //HIDE BUTTON IF MONITOR MODE
-            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly) {
+            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
                 longToast("Read Only User tidak dapat menambahkan komputer")
             } else {
                 startActivity<AddComputerActivity>()

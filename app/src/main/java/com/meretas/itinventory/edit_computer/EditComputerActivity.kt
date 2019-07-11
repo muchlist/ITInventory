@@ -29,10 +29,10 @@ class EditComputerActivity : AppCompatActivity() {
     private var hardiskPC: Int = 1000
     private var statusPC: String? = "Baik"
 
-    lateinit var dataIntent: ComputerListData.Result
-    lateinit var computerData: ComputerPostData
+    private lateinit var dataIntent: ComputerListData.Result
+    private lateinit var computerData: ComputerPostData
     private lateinit var viewModel: EditComputerViewModel
-    lateinit var translasi: Translasi
+    private lateinit var translasi: Translasi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,7 +124,7 @@ class EditComputerActivity : AppCompatActivity() {
 
     }
 
-    fun choiceDivisi() {
+    private fun choiceDivisi() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Umum",
@@ -153,7 +153,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceLokasi() {
+    private fun choiceLokasi() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Bjm_Reg",
@@ -178,7 +178,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceJenisPC() {
+    private fun choiceJenisPC() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Desktop",
@@ -202,7 +202,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceSeatManajement() {
+    private fun choiceSeatManajement() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Ya",
@@ -224,7 +224,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceSistemOperasi() {
+    private fun choiceSistemOperasi() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Windows 10",
@@ -252,7 +252,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceProcessor() {
+    private fun choiceProcessor() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Kurang dari i3",
@@ -276,7 +276,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceRam() {
+    private fun choiceRam() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "2 GB",
@@ -302,7 +302,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choicehardisk() {
+    private fun choicehardisk() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "256 GB",
@@ -328,7 +328,7 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun choiceStatus() {
+    private fun choiceStatus() {
         lateinit var dialog: AlertDialog
         val array = arrayOf(
             "Baik",
@@ -352,8 +352,8 @@ class EditComputerActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    fun sendDataComputer() {
-        if (!et_edit_name.text.toString().isEmpty() && !divisi.isEmpty()) {
+    private fun sendDataComputer() {
+        if (et_edit_name.text.toString().isNotEmpty() && divisi.isNotEmpty()) {
             computerData = ComputerPostData(
                 lokasi,
                 divisi,

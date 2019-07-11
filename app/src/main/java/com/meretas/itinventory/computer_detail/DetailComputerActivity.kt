@@ -24,8 +24,8 @@ import org.jetbrains.anko.toast
 class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
 
     //global mvalue
-    var mId: Int = 0
-    lateinit var translate : Translasi
+    private var mId: Int = 0
+    private lateinit var translate : Translasi
 
     //presenter
     private lateinit var presenter: DetailComputerPresenter

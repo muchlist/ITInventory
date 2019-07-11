@@ -1,8 +1,15 @@
 package com.meretas.itinventory.dashboard
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,10 +17,12 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.computer_list.ComputerListActivity
 import com.meretas.itinventory.data.HistoryListData
 import com.meretas.itinventory.history.HistoryDetailActivity
+import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_DETAIL_HISTORY
 import com.meretas.itinventory.utils.Statis
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -28,11 +37,16 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     private lateinit var historyAdapter: HistoryAdapter
     private var historyData: MutableList<HistoryListData.Result> = mutableListOf()
 
+    private lateinit var myDialog: Dialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
         presenter = DashboardPresenter(this)
+
+        //toolbar
+        setSupportActionBar(toolbar_dashboard)
 
         //update info user
         if (App.prefs.userBranchSave.isNotEmpty()) {
@@ -53,14 +67,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         //mengisi History Recyclerview
         presenter.getHistoryDashboard()
 
-        //mGvKategori.layoutAnimation = controller
-
-
         //onclick listener menu
         cv_dashboard_inventory.setOnClickListener {
             startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
         }
-
         cv_dashboard_consumable.setOnClickListener {
             showToast("Menu Consumable Item Belum Tersedia")
         }
@@ -68,6 +78,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             showToast("Menu Other Item Belum Tersedia")
         }
 
+        //SEARCHBAR LISTENER
         et_dashboard_searchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to query)
@@ -79,14 +90,15 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             }
         })
 
-        //Load Button
+        //dialog
+        myDialog = Dialog(this)
+
+
         //Declare Animation
-        val bottomToTop = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top)
         val scaleToOne = AnimationUtils.loadAnimation(this, R.anim.scale_to_one)
         val scaleToTwo = AnimationUtils.loadAnimation(this, R.anim.scale_to_two)
         val scaleToThree = AnimationUtils.loadAnimation(this, R.anim.scale_to_three)
         //SetAnimation
-        bt_dashboard_reload.startAnimation(bottomToTop)
         cv_dashboard_inventory.startAnimation(scaleToOne)
         cv_dashboard_consumable.startAnimation(scaleToTwo)
         cv_dashboard_other.startAnimation(scaleToThree)
@@ -112,8 +124,9 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
         //Declare Animation
         val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
-        //SetAnimation
         rv_history_dashboard.startAnimation(topToBottom)
+
+        reloadButtonAppear()
     }
 
     override fun hideProgressBarHistory() {
@@ -126,11 +139,76 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
     override fun showToast(notif: String) {
         toast(notif)
+        reloadButtonAppear()
     }
 
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
+    private fun reloadButtonAppear() {
+        val bottomToTop = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top)
+        bt_dashboard_reload.visibility = View.VISIBLE
+        bt_dashboard_reload.startAnimation(bottomToTop)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        getMenuInflater().inflate(R.menu.overflow_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.profile -> {
+                showDialog()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showDialog() {
+        myDialog.setContentView(R.layout.dialog_account)
+        val logoutButton: TextView = myDialog.findViewById(R.id.tv_logout)
+        val accountOne: CircleImageView = myDialog.findViewById(R.id.iv_akun_satu)
+        val accountTwo: CircleImageView = myDialog.findViewById(R.id.iv_akun_dua)
+        val textAccountTwo: TextView = myDialog.findViewById(R.id.tv_akun_dua)
+        val addAccount: ImageView = myDialog.findViewById(R.id.iv_add_akun)
+
+        //Jika auth token 2 kosong
+        if (App.prefs.authTokenTwo.isEmpty()){
+            textAccountTwo.visibility = View.INVISIBLE
+            accountTwo.visibility = View.INVISIBLE
+        } else {
+            addAccount.visibility = View.INVISIBLE
+        }
+
+        accountOne.setOnClickListener {
+            App.prefs.userBranchSave = ""
+            App.prefs.authTokenSave = App.prefs.authTokenOne
+            presenter.getCurrentUserInfo()
+            myDialog.dismiss()
+        }
+
+        accountTwo.setOnClickListener {
+            App.prefs.userBranchSave = ""
+            App.prefs.authTokenSave = App.prefs.authTokenTwo
+            presenter.getCurrentUserInfo()
+            myDialog.dismiss()
+        }
+
+        addAccount.setOnClickListener {
+            myDialog.dismiss()
+            startActivity<LoginActivity>()
+            finish()
+        }
+
+        logoutButton.setOnClickListener {
+            val pref = App.prefs
+            pref.authTokenSave = ""
+            pref.authTokenOne = ""
+            pref.authTokenTwo = ""
+            pref.userBranchSave = ""
+            myDialog.dismiss()
+            finish()
+        }
+        myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        myDialog.show()
     }
 
     override fun onResume() {
@@ -139,5 +217,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             presenter.getHistoryDashboard()
             Statis.isHistoryUpdate = false
         }
+    }
+
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
     }
 }

@@ -4,37 +4,45 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SharedPrefs(context: Context) {
-    val PREFS_FILENAME = "prefs"
-    val AUTH_TOKEN = "authTokenSave"
-    val USER_NAME = "userName"
-    val USER_BRANCH = "userBranch"
-    val IS_READ_ONLY = "userReadOnly"
-    val IS_COMPLETE_LOGIN = "userCompleteLogin"
+    private val PREFSFILENAME = "prefs"
+    private val AUTHTOKEN = "authTokenSave"
+    private val AUTHTOKEN1 = "authTokenSave_one"
+    private val AUTHTOKEN2 = "authTokenSave_two"
 
-    val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
+
+    private val USERNAME = "userName"
+    private val USERBRANCH = "userBranch"
+    private val ISREADONLY = "userReadOnly"
+    private val ISCOMPLETELOGIN = "userCompleteLogin"
+
+    val prefs: SharedPreferences = context.getSharedPreferences(PREFSFILENAME, 0)
 
     var authTokenSave: String
-        get() = prefs.getString(USER_NAME, "") ?: ""
-        set(value) = prefs.edit().putString(USER_NAME, value).apply()
+        get() = prefs.getString(AUTHTOKEN, "") ?: ""
+        set(value) = prefs.edit().putString(AUTHTOKEN, value).apply()
+
+    var authTokenOne: String
+        get() = prefs.getString(AUTHTOKEN1, "") ?: ""
+        set(value) = prefs.edit().putString(AUTHTOKEN1, value).apply()
+
+    var authTokenTwo: String
+        get() = prefs.getString(AUTHTOKEN2, "") ?: ""
+        set(value) = prefs.edit().putString(AUTHTOKEN2, value).apply()
 
     var userNameSave: String
-        get() = prefs.getString(USER_BRANCH, "") ?: ""
-        set(value) = prefs.edit().putString(USER_BRANCH, value).apply()
+        get() = prefs.getString(USERNAME, "") ?: ""
+        set(value) = prefs.edit().putString(USERNAME, value).apply()
 
     var userBranchSave: String
-        get() = prefs.getString(AUTH_TOKEN, "") ?: ""
-        set(value) = prefs.edit().putString(AUTH_TOKEN, value).apply()
+        get() = prefs.getString(USERBRANCH, "") ?: ""
+        set(value) = prefs.edit().putString(USERBRANCH, value).apply()
 
     var isReadOnly: Boolean
-        get() = prefs.getBoolean(IS_READ_ONLY,false)
-        set(value) = prefs.edit().putBoolean(IS_READ_ONLY, value).apply()
+        get() = prefs.getBoolean(ISREADONLY,false)
+        set(value) = prefs.edit().putBoolean(ISREADONLY, value).apply()
 
     var isCompleteLogin: Boolean
-        get() = prefs.getBoolean(IS_COMPLETE_LOGIN,false)
-        set(value) = prefs.edit().putBoolean(IS_COMPLETE_LOGIN, value).apply()
+        get() = prefs.getBoolean(ISCOMPLETELOGIN,false)
+        set(value) = prefs.edit().putBoolean(ISCOMPLETELOGIN, value).apply()
 
-    //    val IS_LOGGED_IN = "isLoggedIn"
-    //    var isLoggedIn: Boolean
-    //        get() = prefs.getBoolean(IS_LOGGED_IN, false)
-    //        set(value) = prefs.edit().putBoolean(IS_LOGGED_IN, value).apply()
 }
