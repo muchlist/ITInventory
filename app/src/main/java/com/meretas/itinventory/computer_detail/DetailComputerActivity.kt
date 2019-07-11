@@ -134,7 +134,7 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         historyAdapterB.notifyDataSetChanged()
 
         //Declare Animation
-        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.top_to_bottom)
+        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
         //SetAnimation
         rv_detail_history.startAnimation(topToBottom)
     }

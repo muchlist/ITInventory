@@ -4,9 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".add_computer.AddComputerActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
             android:layout_height="match_parent"
@@ -38,7 +36,8 @@
                         android:layout_height="@dimen/spacing_middle"
                         android:layout_margin="@dimen/spacing_medium"
                         android:src="@drawable/shape_circle"
-                        android:tint="@color/red_400" android:contentDescription="@string/dot"/>
+                        android:tint="@color/red_400"
+                        android:contentDescription="@string/dot"/>
 
                 <View
                         android:layout_width="@dimen/spacing_middle"
@@ -85,7 +84,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_name" android:importantForAutofill="no"
+                            android:id="@+id/et_add_name"
                             android:inputType="textPersonName|text"/>
 
                     <View
@@ -105,7 +104,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:inputType="text" android:importantForAutofill="no"/>
+                            android:inputType="text"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -124,7 +123,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand" android:inputType="number|text"
-                            android:importantForAutofill="no"/>
+                    />
 
                     <View
                             android:layout_width="match_parent"
@@ -143,7 +142,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:inputType="text" android:importantForAutofill="no"/>
+                            android:inputType="text"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -299,7 +298,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_merk_pc" android:inputType="text" android:importantForAutofill="no"/>
+                            android:id="@+id/et_add_merk_pc" android:inputType="text"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -317,8 +316,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_tahun_pc" android:inputType="datetime"
-                            android:importantForAutofill="no"/>
+                            android:id="@+id/et_add_tahun_pc" android:inputType="datetime"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -496,7 +494,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_vga" android:inputType="" android:importantForAutofill="no"/>
+                            android:id="@+id/et_add_vga"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -535,8 +533,7 @@
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
                             android:id="@+id/et_add_note"
-                            android:inputType="text"
-                            android:importantForAutofill="no"/>
+                            android:inputType="text"/>
 
                     <View
                             android:layout_width="match_parent"

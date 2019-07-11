@@ -111,7 +111,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         historyAdapter.notifyDataSetChanged()
 
         //Declare Animation
-        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.top_to_bottom)
+        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
         //SetAnimation
         rv_history_dashboard.startAnimation(topToBottom)
     }
