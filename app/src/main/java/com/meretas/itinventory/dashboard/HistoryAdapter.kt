@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.HistoryListData
-import kotlinx.android.synthetic.main.activity_history_detail.view.*
 import kotlinx.android.synthetic.main.item_history_dashboard.view.*
 
 class HistoryAdapter(

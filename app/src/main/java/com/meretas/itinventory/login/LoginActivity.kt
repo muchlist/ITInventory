@@ -2,13 +2,9 @@ package com.meretas.itinventory.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.meretas.itinventory.R
 import com.meretas.itinventory.dashboard.DashboardActivity
-import com.meretas.itinventory.services.ApiService
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_dashboard.view.*
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -29,7 +25,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         btn_login_login.setOnClickListener {
             val username = edt_username_login.editText?.text.toString()
             val password = edt_password_login.editText?.text.toString()
-            if(username.isNullOrEmpty() || password.isNullOrEmpty()){
+            if(username.isEmpty() || password.isEmpty()){
                 toast("Username atau Password tidak boleh kosong")
             }else{
                 presenter.getToken(username,password)

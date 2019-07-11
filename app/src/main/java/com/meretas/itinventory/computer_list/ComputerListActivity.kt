@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.add_computer.AddComputerActivity
 import com.meretas.itinventory.computer_detail.DetailComputerActivity
@@ -12,6 +13,7 @@ import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.activity_computer_list.*
 import kotlinx.coroutines.*
+import org.jetbrains.anko.longToast
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -173,17 +175,18 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
 
         //tombol add computer
         bt_computerlist_tambah.setOnClickListener {
-            startActivity<AddComputerActivity>()
+            //HIDE BUTTON IF MONITOR MODE
+            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly) {
+                longToast("Read Only User tidak dapat menambahkan komputer")
+            } else {
+                startActivity<AddComputerActivity>()
+            }
         }
 
         //HIDE KEYBOARD
         et_computerlist_searchbar.setFocusable(false)
         et_computerlist_searchbar.clearFocus()
 
-        //HIDE BUTTON IF MONITOR MODE
-        if (App.prefs.userBranchSave == "Monitor"){
-            bt_computerlist_tambah.isClickable = false
-        }
     }
 
     override fun hideLoading() {
@@ -201,6 +204,7 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
     override fun showComputers(data: List<ComputerListData.Result>) {
         computersData.clear()
         computersData.addAll(data)
+        runLayoutAnimation(rv_computerlist)
         computersAdapter.notifyDataSetChanged()
     }
 
@@ -230,10 +234,23 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
         super.onDestroy()
     }
 
+//    private fun recyclerAnimation(){
+//        //animasi
+//        val resId = R.anim.layout_animation_fall_down
+//        val animation: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(this, resId)
+//        rv_computerlist.layoutAnimation = animation
+//        //animasiEnd
+//    }
+
+    private fun runLayoutAnimation(recyclerView: RecyclerView) {
+        recyclerView.scheduleLayoutAnimation()
+        recyclerView.invalidate()
+    }
+
     override fun onResume() {
         super.onResume()
         //JIKA KOMPUTER UPDATE TRUE < HANYA BISA TRUE JIKA ADA PENAMBAHAN KOMPUTER
-        if (Statis.isComputerUpdate){
+        if (Statis.isComputerUpdate) {
             when (App.prefs.userBranchSave) {
                 "Sampit" -> chip_sampit.performClick()
                 "Bagendang" -> chip_bagendang.performClick()

@@ -99,7 +99,8 @@
                     android:hint="Note"
                     android:minHeight="@dimen/spacing_xxlarge"
                     android:paddingLeft="@dimen/spacing_large"
-                    android:paddingRight="@dimen/spacing_large" android:fontFamily="@font/quicksand"/>
+                    android:paddingRight="@dimen/spacing_large" android:fontFamily="@font/quicksand"
+                    android:inputType="" android:importantForAutofill="no"/>
 
             <View
                     android:layout_width="match_parent"

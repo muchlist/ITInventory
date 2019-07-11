@@ -14,20 +14,23 @@ class DashboardPresenter(private var view: DashboarView?) {
     fun getCurrentUserInfo() {
         Api.retrofitService.getCurrentUser(App.prefs.authTokenSave).enqueue(object : Callback<CurrentUserData> {
             override fun onFailure(call: Call<CurrentUserData>, t: Throwable) {
-                // view?.updateConnection(false)
+
             }
 
             override fun onResponse(call: Call<CurrentUserData>, response: Response<CurrentUserData>) {
                 if (response.isSuccessful) {
                     val userResponse = response.body()!!
                     val name = userResponse.firstName + " " + userResponse.lastName
-                    val branch = userResponse.groups[0].name
+                    val branch = userResponse.profile?.userBranch ?: "Profil Null"
+                    val isReadOnly = userResponse.profile?.isReadOnly ?: true
 
-                    view?.getUserInfo(name, branch)
+                    view?.getUserInfo(name, branch, isReadOnly)
+                    App.prefs.isCompleteLogin = true
                 } else if (response.code() == 401) {
-                    view?.showToast(App.prefs.authTokenSave)
+                    App.prefs.authTokenSave = ""
+                    view?.showToast(response.code().toString())
                 } else {
-                    // view?.updateConnection(false)
+                    view?.showToast(response.code().toString())
                 }
             }
         })
@@ -41,8 +44,7 @@ class DashboardPresenter(private var view: DashboarView?) {
         Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave).enqueue(object : Callback<HistoryListData> {
             override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
                 view?.hideProgressBarHistory()
-                view?.showToast(t.toString())
-                //GAGAL LOAD
+                view?.showToast("Tidak dapat terhubung ke server")
             }
 
             override fun onResponse(call: Call<HistoryListData>, response: Response<HistoryListData>) {
@@ -55,13 +57,12 @@ class DashboardPresenter(private var view: DashboarView?) {
 
                 } else if (response.code() == 401) {
                     view?.hideProgressBarHistory()
+                    App.prefs.authTokenSave = ""
                     view?.showToast(response.code().toString())
-                    //APABILA TOKEN SALAH LEMPAR KE LOGIN
 
                 } else {
                     view?.hideProgressBarHistory()
                     view?.showToast(response.code().toString())
-                    //GAGAL LOAD
                 }
             }
         })

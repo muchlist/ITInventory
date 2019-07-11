@@ -65,7 +65,7 @@ interface ApiService {
     ): Call<ComputerListData.Result>
 
     @FormUrlEncoded
-    @POST("computers/{id}/")
+    @PUT("computers/{id}/")
     fun putComputer(
         @Header("Authorization") token: String,
         @Path("id") id: Int,

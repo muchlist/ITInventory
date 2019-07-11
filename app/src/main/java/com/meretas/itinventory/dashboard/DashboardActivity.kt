@@ -2,9 +2,11 @@ package com.meretas.itinventory.dashboard
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.meretas.itinventory.R
 import com.meretas.itinventory.computer_list.ComputerListActivity
 import com.meretas.itinventory.data.HistoryListData
 import com.meretas.itinventory.history.HistoryDetailActivity
@@ -28,16 +30,17 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.meretas.itinventory.R.layout.activity_dashboard)
+        setContentView(R.layout.activity_dashboard)
 
         presenter = DashboardPresenter(this)
 
         //update info user
-        if (App.prefs.userBranchSave.isNotEmpty()){
+        if (App.prefs.userBranchSave.isNotEmpty()) {
             toolbar_dashboard.title = App.prefs.userNameSave
             toolbar_dashboard.subtitle = App.prefs.userBranchSave
         }
         presenter.getCurrentUserInfo()
+
 
         //Historr Recyclerview
         rv_history_dashboard.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -46,8 +49,11 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         }
         rv_history_dashboard.adapter = historyAdapter
 
+
         //mengisi History Recyclerview
         presenter.getHistoryDashboard()
+
+        //mGvKategori.layoutAnimation = controller
 
 
         //onclick listener menu
@@ -55,7 +61,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
         }
 
-        cv_dashboard_consumable.setOnClickListener{
+        cv_dashboard_consumable.setOnClickListener {
             showToast("Menu Consumable Item Belum Tersedia")
         }
         cv_dashboard_other.setOnClickListener {
@@ -73,23 +79,41 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             }
         })
 
+        //Load Button
+        //Declare Animation
+        val bottomToTop = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top)
+        val scaleToOne = AnimationUtils.loadAnimation(this, R.anim.scale_to_one)
+        val scaleToTwo = AnimationUtils.loadAnimation(this, R.anim.scale_to_two)
+        val scaleToThree = AnimationUtils.loadAnimation(this, R.anim.scale_to_three)
+        //SetAnimation
+        bt_dashboard_reload.startAnimation(bottomToTop)
+        cv_dashboard_inventory.startAnimation(scaleToOne)
+        cv_dashboard_consumable.startAnimation(scaleToTwo)
+        cv_dashboard_other.startAnimation(scaleToThree)
+
         //HIDE KEYBOARD
         et_dashboard_searchbar.setFocusable(false)
         et_dashboard_searchbar.clearFocus()
 
     }
 
-    override fun getUserInfo(name: String, branch: String) {
+    override fun getUserInfo(name: String, branch: String, isReadOnly: Boolean) {
         toolbar_dashboard.title = name
-        toolbar_dashboard.subtitle = "Cabang " + branch
+        toolbar_dashboard.subtitle = branch
         App.prefs.userNameSave = name
         App.prefs.userBranchSave = branch
+        App.prefs.isReadOnly = isReadOnly
     }
 
     override fun showHistory(data: List<HistoryListData.Result>) {
         historyData.clear()
         historyData.addAll(data)
         historyAdapter.notifyDataSetChanged()
+
+        //Declare Animation
+        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.top_to_bottom)
+        //SetAnimation
+        rv_history_dashboard.startAnimation(topToBottom)
     }
 
     override fun hideProgressBarHistory() {
@@ -111,7 +135,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
     override fun onResume() {
         super.onResume()
-        if (Statis.isHistoryUpdate){
+        if (Statis.isHistoryUpdate) {
             presenter.getHistoryDashboard()
             Statis.isHistoryUpdate = false
         }

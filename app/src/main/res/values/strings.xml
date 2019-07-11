@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">IT Inventory</string>
+
+    <string name="error">Server Sleep</string>
+    <string name="dot">Dot Point</string>
+    <string name="identitas">Identitas</string>
+    <string name="nama_user">Nama User</string>
+    <string name="informasi_perangkat">Informasi Perangkat</string>
+    <string name="spesifikasi">Spesifikasi</string>
+    <string name="save_finish">SAVE FINISH</string>
+    <string name="save_continue">SAVE CONTINUE</string>
+    <string name="nama_host_komputer">Nama Host Komputer</string>
+    <string name="alamat_ip">Alamat IP</string>
+    <string name="nomer_inventaris">Nomer Inventaris</string>
+    <string name="cabang">Cabang</string>
+    <string name="divisi">Divisi</string>
+    <string name="lokasi_khusus_bjm">Lokasi (Khusus BJM)</string>
+    <string name="jenis_perangkat">Jenis Perangkat</string>
+    <string name="merk_tipe">Merk / Tipe</string>
+    <string name="tahun_pengadaan">Tahun Pengadaan</string>
+    <string name="seat_manajemen_tidak">Seat Manajemen : Tidak</string>
+    <string name="sistem_operasi">Sistem Operasi</string>
+    <string name="processor">Processor</string>
+    <string name="ram">RAM</string>
+    <string name="hardisk">Hardisk</string>
+    <string name="vga">VGA</string>
+    <string name="status">Status</string>
+    <string name="note">Note</string>
+    <string name="save">SAVE</string>
+
+
 </resources>

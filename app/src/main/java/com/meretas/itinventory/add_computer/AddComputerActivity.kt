@@ -32,17 +32,6 @@ class AddComputerActivity : AppCompatActivity() {
     private var hardisk: Int = 1000
     private var statusPC: String? = "Baik"
 
-    //No Choices
-    private var namaUser: String? = null
-    private var hostKomputer: String? = null
-    private var alamatIp: String? = null
-    private var nomerInventaris: String? = null
-    private var cabang: String? = null
-    private var merkPerangkat: String? = null
-    private var tahun: String? = null
-    private var vga: String? = null
-    private var note: String? = null
-
     lateinit var translasi: Translasi
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -334,7 +323,7 @@ class AddComputerActivity : AppCompatActivity() {
     }
 
     fun sendDataComputer(isContinue: Boolean) {
-        if (!et_add_name.text.toString().isNullOrEmpty() && !divisi.isNullOrEmpty()) {
+        if (!et_add_name.text.toString().isEmpty() && !divisi.isNullOrEmpty()) {
             computer = ComputerPostData(
                 lokasi,
                 divisi,

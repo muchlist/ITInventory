@@ -16,8 +16,7 @@ class DetailComputerPresenter(private var view: DetailComputerView?) {
         Api.retrofitService.getHistoryPerComputer(App.prefs.authTokenSave,id).enqueue(object : Callback<HistoryListData> {
             override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
                 view?.hideLoadingHistory()
-                view?.showToastError(t.toString())
-                //GAGAL LOAD
+                view?.showToastError("Server Sleep")
             }
 
             override fun onResponse(call: Call<HistoryListData>, response: Response<HistoryListData>) {
@@ -31,12 +30,9 @@ class DetailComputerPresenter(private var view: DetailComputerView?) {
                 } else if (response.code() == 401) {
                     view?.hideLoadingHistory()
                     view?.showToastError(response.code().toString())
-                    //APABILA TOKEN SALAH LEMPAR KE LOGIN
-
                 } else {
                     view?.hideLoadingHistory()
                     view?.showToastError(response.code().toString())
-                    //GAGAL LOAD
                 }
             }
         })

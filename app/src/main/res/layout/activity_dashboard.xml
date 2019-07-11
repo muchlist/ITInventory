@@ -70,7 +70,7 @@
                     android:background="@android:color/transparent"
                     android:clickable="true"
                     android:tint="@color/grey_60"
-                    app:srcCompat="@drawable/ic_menu"/>
+                    app:srcCompat="@drawable/ic_menu" android:focusable="true"/>
 
         </LinearLayout>
 
@@ -78,8 +78,8 @@
     </androidx.cardview.widget.CardView>
 
 
-    <androidx.core.widget.NestedScrollView android:id="@+id/nested_scroll_view"
-                                           android:layout_width="match_parent"
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
                                            android:layout_height="match_parent"
                                            android:layout_marginTop="-36dp"
                                            android:scrollbars="none"
@@ -98,7 +98,7 @@
                                   android:paddingBottom="@dimen/spacing_xmedium">
                 <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:layout_marginStart="@dimen/spacing_medium"
                         android:layout_marginEnd="@dimen/spacing_medium"
                         android:layout_marginTop="@dimen/spacing_medium">
@@ -116,7 +116,7 @@
                             <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" app:srcCompat="@drawable/inventory_edit"
-                                    android:id="@+id/imageView2" android:scaleType="centerCrop"/>
+                                    android:scaleType="centerCrop"/>
                         </com.google.android.material.card.MaterialCardView>
                     </LinearLayout>
 
@@ -132,7 +132,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     app:srcCompat="@drawable/consumable_edit"
-                                    android:id="@+id/imageView" android:scaleType="centerCrop"/>
+                                    android:scaleType="centerCrop"/>
                         </com.google.android.material.card.MaterialCardView>
                     </LinearLayout>
 
@@ -147,7 +147,7 @@
                             <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" app:srcCompat="@drawable/other_edit"
-                                    android:id="@+id/imageView3" android:scaleType="centerCrop"/>
+                                    android:scaleType="centerCrop"/>
                         </com.google.android.material.card.MaterialCardView>
                     </LinearLayout>
 
@@ -175,7 +175,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/spacing_medium"
                     android:layout_marginTop="0dp"
-                    android:id="@+id/rv_history_dashboard" android:paddingStart="32dp" android:clipToPadding="false"/>
+                    android:id="@+id/rv_history_dashboard" android:paddingStart="32dp" android:clipToPadding="false"
+            />
 
             <Button
                     android:layout_width="wrap_content"
@@ -185,7 +186,8 @@
                     android:theme="@style/Button.Blue.Borderless"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/spacing_medium"
-                    android:layout_marginBottom="@dimen/spacing_xmedium" android:fontFamily="@font/roboto"/>
+                    android:layout_marginBottom="@dimen/spacing_xmedium" android:fontFamily="@font/roboto"
+                    android:id="@+id/bt_dashboard_reload"/>
 
         </LinearLayout>
 

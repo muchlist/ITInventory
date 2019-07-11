@@ -38,7 +38,7 @@
                         android:layout_height="@dimen/spacing_middle"
                         android:layout_margin="@dimen/spacing_medium"
                         android:src="@drawable/shape_circle"
-                        android:tint="@color/red_400"/>
+                        android:tint="@color/red_400" android:contentDescription="@string/dot"/>
 
                 <View
                         android:layout_width="@dimen/spacing_middle"
@@ -47,7 +47,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Identitas"
+                        android:text="@string/identitas"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                         android:textColor="@color/grey_80"
                         android:fontFamily="@font/quicksand"/>
@@ -80,12 +80,13 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Nama User"
+                            android:hint="@string/nama_user"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_name"/>
+                            android:id="@+id/et_add_name" android:importantForAutofill="no"
+                            android:inputType="textPersonName|text"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -99,11 +100,12 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Nama Host Komputer"
+                            android:hint="@string/nama_host_komputer"
                             android:minHeight="@dimen/spacing_xxlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
-                            android:fontFamily="@font/quicksand"/>
+                            android:fontFamily="@font/quicksand"
+                            android:inputType="text" android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -117,11 +119,12 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Alamat IP"
+                            android:hint="@string/alamat_ip"
                             android:minHeight="@dimen/spacing_xxlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
-                            android:fontFamily="@font/quicksand"/>
+                            android:fontFamily="@font/quicksand" android:inputType="number|text"
+                            android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -135,11 +138,12 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Nomer Inventaris"
+                            android:hint="@string/nomer_inventaris"
                             android:minHeight="@dimen/spacing_xxlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
-                            android:fontFamily="@font/quicksand"/>
+                            android:fontFamily="@font/quicksand"
+                            android:inputType="text" android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -153,7 +157,7 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Cabang"
+                            android:hint="@string/cabang"
                             android:minHeight="@dimen/spacing_xxlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -173,7 +177,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Divisi"
+                            android:hint="@string/divisi"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -193,7 +197,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Lokasi (Khusus BJM)"
+                            android:hint="@string/lokasi_khusus_bjm"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -227,7 +231,7 @@
                         android:layout_height="@dimen/spacing_middle"
                         android:layout_margin="@dimen/spacing_medium"
                         android:src="@drawable/shape_circle"
-                        android:tint="@color/red_400"/>
+                        android:tint="@color/red_400" android:contentDescription="@string/dot"/>
 
                 <View
                         android:layout_width="@dimen/spacing_middle"
@@ -236,7 +240,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Informasi Perangkat"
+                        android:text="@string/informasi_perangkat"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                         android:textColor="@color/grey_80"
                         android:fontFamily="@font/quicksand"/>
@@ -272,7 +276,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Jenis Perangkat"
+                            android:hint="@string/jenis_perangkat"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -290,12 +294,12 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Merk / Tipe"
+                            android:hint="@string/merk_tipe"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_merk_pc"/>
+                            android:id="@+id/et_add_merk_pc" android:inputType="text" android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -308,12 +312,13 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Tahun Pengadaan"
+                            android:hint="@string/tahun_pengadaan"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_tahun_pc"/>
+                            android:id="@+id/et_add_tahun_pc" android:inputType="datetime"
+                            android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -329,7 +334,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Seat Manajemen : Tidak"
+                            android:hint="@string/seat_manajemen_tidak"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -363,7 +368,7 @@
                         android:layout_height="@dimen/spacing_middle"
                         android:layout_margin="@dimen/spacing_medium"
                         android:src="@drawable/shape_circle"
-                        android:tint="@color/red_400"/>
+                        android:tint="@color/red_400" android:contentDescription="@string/dot"/>
 
                 <View
                         android:layout_width="@dimen/spacing_middle"
@@ -372,7 +377,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Spesifikasi"
+                        android:text="@string/spesifikasi"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                         android:textColor="@color/grey_80"
                         android:fontFamily="@font/quicksand"/>
@@ -408,7 +413,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Sistem Operasi"
+                            android:hint="@string/sistem_operasi"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -428,7 +433,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Processor"
+                            android:hint="@string/processor"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -448,7 +453,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="RAM"
+                            android:hint="@string/ram"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -468,7 +473,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Hardisk"
+                            android:hint="@string/hardisk"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -486,12 +491,12 @@
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="VGA"
+                            android:hint="@string/vga"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_vga"/>
+                            android:id="@+id/et_add_vga" android:inputType="" android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -507,7 +512,7 @@
                             android:drawableEnd="@drawable/ic_arrow_drop_grey"
                             android:gravity="center_vertical"
                             android:focusable="false"
-                            android:hint="Status"
+                            android:hint="@string/status"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
@@ -524,12 +529,14 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:gravity="center_vertical"
-                            android:hint="Note"
+                            android:hint="@string/note"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_add_note"/>
+                            android:id="@+id/et_add_note"
+                            android:inputType="text"
+                            android:importantForAutofill="no"/>
 
                     <View
                             android:layout_width="match_parent"
@@ -546,7 +553,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cv_ide3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="SAVE - CONTINUE"
+                    android:text="@string/save_continue"
                     android:id="@+id/bt_add_computer_and_cont"/>
 
             <Button android:layout_width="wrap_content"
@@ -556,8 +563,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="@dimen/spacing_xlarge"
-                    android:text="SAVE - FINISH"
-                    android:id="@+id/bt_add_computer_and_finish"/>
+                    android:text="@string/save_finish"
+                    android:id="@+id/bt_add_computer_and_finish"
+                    android:backgroundTint="@color/button_color_red"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -577,7 +585,6 @@
         <ProgressBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/pb_add_computer"
                 android:layout_gravity="center"/>
     </FrameLayout>
 

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".computer_detail.DetailComputerActivity"
-        android:id="@+id/relativeLayout" android:background="@android:color/white">
+        android:background="@android:color/white">
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                     android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView6"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:textStyle="bold"
-                    android:background="@color/shape_history_cabang_color" android:textColor="@android:color/white"
+                    android:background="@color/button_color_red" android:textColor="@android:color/white"
                     android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:layout_width="0dp"
@@ -89,7 +89,7 @@
                     app:layout_constraintTop_toTopOf="@+id/textView2"
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    android:textStyle="bold" android:background="@color/shape_history_cabang_color"
+                    android:textStyle="bold" android:background="@color/button_color_red"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:layout_width="0dp"
@@ -136,7 +136,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView10"
                     app:layout_constraintStart_toEndOf="@+id/textView10" android:layout_marginStart="16dp"
                     tools:text="true" android:fontFamily="@font/quicksand" android:textSize="18sp"
-                    android:textStyle="bold" android:background="@color/shape_history_cabang_color"
+                    android:textStyle="bold" android:background="@color/button_color_red"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -252,7 +252,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView"
                     tools:text="Baik" android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginStart="8dp"
-                    android:textStyle="bold" android:background="@color/shape_history_cabang_color"
+                    android:textStyle="bold" android:background="@color/button_color_red"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:text="Cabang .................................."
@@ -313,7 +313,6 @@
                     android:text="HISTORY &#8628;"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView8"
                     app:layout_constraintTop_toBottomOf="@+id/tv_detail_note"
                     android:layout_marginTop="24dp"
                     android:textSize="24sp" android:textStyle="bold" android:fontFamily="@font/quicksand_bold"
@@ -356,7 +355,7 @@
                 android:layout_gravity="center_horizontal|end"
                 android:layout_marginBottom="32dp"
                 android:text="Edit Komputer"
-                android:backgroundTint="@color/shape_history_cabang_color" android:fontFamily="@font/roboto"
+                android:backgroundTint="@color/button_color_red" android:fontFamily="@font/roboto"
                 android:id="@+id/bt_detail_edit_computer" android:layout_marginEnd="32dp"/>
 
     </LinearLayout>

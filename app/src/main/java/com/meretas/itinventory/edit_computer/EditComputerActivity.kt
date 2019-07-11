@@ -1,17 +1,20 @@
 package com.meretas.itinventory.edit_computer
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.meretas.itinventory.R
-import com.meretas.itinventory.add_computer.AddComputerViewModel
 import com.meretas.itinventory.data.ComputerListData
-import com.meretas.itinventory.utils.DATA_INTENT_COMPUTER_LIST_DETAIL
-import com.meretas.itinventory.utils.INTENT_DETAIL_EDIT_COMPUTER
-import com.meretas.itinventory.utils.Translasi
-import kotlinx.android.synthetic.main.activity_add_computer.*
+import com.meretas.itinventory.data.ComputerPostData
+import com.meretas.itinventory.utils.*
+import kotlinx.android.synthetic.main.activity_edit_computer.*
+import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
+
 
 class EditComputerActivity : AppCompatActivity() {
 
@@ -21,23 +24,102 @@ class EditComputerActivity : AppCompatActivity() {
     private var jenisPerangkat: String? = "Desktop"
     private var seatManajement: Boolean = false
     private var sistemOperasi: String? = "1064"
-    private var processor: Double = 3.0
-    private var ram: Double = 4.0
-    private var hardisk: Int = 1000
+    private var processorPC: Double = 3.0
+    private var ramPC: Double = 4.0
+    private var hardiskPC: Int = 1000
     private var statusPC: String? = "Baik"
 
+    lateinit var dataIntent: ComputerListData.Result
+    lateinit var computerData: ComputerPostData
     private lateinit var viewModel: EditComputerViewModel
     lateinit var translasi: Translasi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_computer)
+        setContentView(com.meretas.itinventory.R.layout.activity_edit_computer)
 
-        val intent = intent.getParcelableExtra<ComputerListData.Result>(INTENT_DETAIL_EDIT_COMPUTER)
+        dataIntent = intent.getParcelableExtra(INTENT_DETAIL_EDIT_COMPUTER)
         viewModel = ViewModelProviders.of(this).get(EditComputerViewModel::class.java)
         translasi = Translasi()
 
+        //MENEMPELKAN VALUE DARI INTENT
+        with(dataIntent) {
+            et_edit_name.setText(clientName)
+            et_edit_hostname.setText(hostname)
+            et_edit_ip_address.setText(ipAddress)
+            et_edit_no_inventory.setText(inventoryNumber)
+            tv_edit_cabang.setText(branch)
+            et_edit_divisi.setText(division)
+            divisi = division
+            et_edit_lokasi.setText(location)
+            lokasi = location
+            et_edit_jenis_pc.setText(computerType)
+            jenisPerangkat = computerType
+            et_edit_merk_pc.setText(merkModel)
+            et_edit_tahun_pc.setText(year)
+            et_edit_seat_manajemen_pc.setText(seatManagement.toString())
+            seatManajement = seatManagement
+            tv_edit_os.setText(translasi.osTranslation(operationSystem))
+            tv_edit_processor.setText(translasi.processorTranslation(processor))
+            processorPC = processor
+            tv_edit_ram.setText(translasi.ramTranslation(ram))
+            ramPC = ram
+            tv_edit_hardisk.setText(translasi.hardiskTranslation(hardisk))
+            hardiskPC = hardisk
+            et_edit_vga.setText(vgaCard)
+            tv_edit_status.setText(status)
+            statusPC = status
+            et_edit_note.setText(note)
 
+        }
+
+        //MENYESUAIKAN LAYOUT, CHOICES LOCATION HANYA UNTUK BANJARMASIN
+        if (App.prefs.userBranchSave == BANJARMASIN){
+            //PASS
+        } else {
+            et_edit_lokasi.visibility = View.GONE
+        }
+
+        //CLICK LISTENER CHOICESS
+        et_edit_divisi.setOnClickListener { choiceDivisi() }
+        et_edit_jenis_pc.setOnClickListener { choiceJenisPC() }
+        et_edit_lokasi.setOnClickListener { choiceLokasi() }
+        et_edit_seat_manajemen_pc.setOnClickListener { choiceSeatManajement() }
+        tv_edit_os.setOnClickListener { choiceSistemOperasi() }
+        tv_edit_processor.setOnClickListener { choiceProcessor() }
+        tv_edit_ram.setOnClickListener { choiceRam() }
+        tv_edit_hardisk.setOnClickListener { choicehardisk() }
+        tv_edit_status.setOnClickListener { choiceStatus() }
+
+        //BUTTON EDIT SAVE
+        bt_edit_computer_and_cont.setOnClickListener {
+            sendDataComputer()
+        }
+
+        viewModel.isSuccess.observe(this, Observer {
+            if (it) {
+                longToast("${computerData.namaUser} berhasil dirubah!")
+                Statis.isComputerUpdate = true
+                val data = Intent()
+                data.putExtra(INTENT_EDIT_COMPUTER_RESULT ,computerData)
+                setResult(Activity.RESULT_OK, data)
+                finish()
+            }
+        })
+
+        viewModel.isError.observe(this, Observer {
+            if (!it.isNullOrEmpty()) {
+                longToast(it)
+            }
+        })
+
+        viewModel.isLoading.observe(this, Observer {
+            if (it) {
+                pb_frame_edit.visibility = View.VISIBLE
+            } else {
+                pb_frame_edit.visibility = View.GONE
+            }
+        })
 
 
     }
@@ -60,7 +142,7 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                et_add_divisi.text = status
+                et_edit_divisi.text = status
                 divisi = status
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -85,7 +167,7 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                et_add_lokasi.text = status
+                et_edit_lokasi.text = status
                 lokasi = status
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -109,7 +191,7 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                et_add_jenis_pc.text = status
+                et_edit_jenis_pc.text = status
                 jenisPerangkat = status
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -131,7 +213,7 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                et_add_seat_manajemen_pc.text = status
+                et_edit_seat_manajemen_pc.text = status
                 seatManajement = status == "Ya"
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -159,7 +241,7 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                tv_add_os.text = status
+                tv_edit_os.text = status
                 sistemOperasi = translasi.osTranslationReverse(status)
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -183,8 +265,8 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                tv_add_processor.text = status
-                processor = translasi.processorTranslationReverse(status)
+                tv_edit_processor.text = status
+                processorPC = translasi.processorTranslationReverse(status)
             } catch (e: IllegalArgumentException) {
                 toast("error")
             }
@@ -209,8 +291,8 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                tv_add_ram.text = status
-                ram = translasi.ramTranslationReverse(status)
+                tv_edit_ram.text = status
+                ramPC = translasi.ramTranslationReverse(status)
             } catch (e: IllegalArgumentException) {
                 toast("error")
             }
@@ -234,8 +316,8 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                tv_add_hardisk.text = status
-                hardisk = translasi.hardiskTranslationReverse(status)
+                tv_edit_hardisk.text = status
+                hardiskPC = translasi.hardiskTranslationReverse(status)
 
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -259,7 +341,7 @@ class EditComputerActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                tv_add_status.text = status
+                tv_edit_status.text = status
                 statusPC = status
             } catch (e: IllegalArgumentException) {
                 toast("error")
@@ -268,5 +350,34 @@ class EditComputerActivity : AppCompatActivity() {
         }
         dialog = builder.create()
         dialog.show()
+    }
+
+    fun sendDataComputer() {
+        if (!et_edit_name.text.toString().isEmpty() && !divisi.isEmpty()) {
+            computerData = ComputerPostData(
+                lokasi,
+                divisi,
+                jenisPerangkat,
+                seatManajement,
+                sistemOperasi,
+                processorPC,
+                ramPC,
+                hardiskPC,
+                statusPC,
+                et_edit_name.text.toString(),
+                et_edit_hostname.text.toString(),
+                et_edit_ip_address.text.toString(),
+                et_edit_no_inventory.text.toString(),
+                et_edit_merk_pc.text.toString(),
+                et_edit_tahun_pc.text.toString(),
+                et_edit_vga.text.toString(),
+                et_edit_note.text.toString()
+            )
+
+            viewModel.putComputer(computerData, dataIntent.id)
+
+        } else {
+            toast("Nama User dan Divisi Tidak Boleh Kosong!")
+        }
     }
 }

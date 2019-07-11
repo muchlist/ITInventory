@@ -17,7 +17,7 @@ class HistoryAddPresenter(private var view: HistoryAddView?) {
         Api.retrofitService.postHistory(App.prefs.authTokenSave, id, note, status)
             .enqueue(object : Callback<HistoryListData.Result> {
                 override fun onFailure(call: Call<HistoryListData.Result>, t: Throwable) {
-                    // view?.updateConnection(false)
+                    view?.showError(t.toString())
                     view?.hideLoading()
                 }
 
@@ -31,7 +31,7 @@ class HistoryAddPresenter(private var view: HistoryAddView?) {
                         view?.showResult()
                         view?.hideLoading()
                     } else if (response.code() == 401) {
-                        //  view?.showToast(App.prefs.authTokenSave)
+                        view?.showError(response.code().toString())
                         view?.hideLoading()
                     } else {
                         view?.showError(response.code().toString())

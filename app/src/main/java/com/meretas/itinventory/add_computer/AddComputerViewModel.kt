@@ -3,6 +3,7 @@ package com.meretas.itinventory.add_computer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.meretas.itinventory.R
 import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.data.ComputerPostData
 import com.meretas.itinventory.services.Api
@@ -77,7 +78,7 @@ class AddComputerViewModel : ViewModel() {
             override fun onFailure(call: Call<ComputerListData.Result>, t: Throwable) {
                 _isSuccess.value = false
                 _isLoading.value = false
-                _isError.value = t.toString()
+                _isError.value = R.string.error.toString()
             }
         })
     }

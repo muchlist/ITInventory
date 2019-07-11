@@ -18,7 +18,7 @@ class ComputerListPresenter(private var view: ComputerListView?){
         Api.retrofitService.getComputerList(App.prefs.authTokenSave,branch,location).enqueue(object : Callback<ComputerListData> {
             override fun onFailure(call: Call<ComputerListData>, t: Throwable) {
                 view?.hideLoading()
-                view?.showToast(t.toString())
+                view?.showToast("Tidak dapat terhubung ke server")
             }
 
             override fun onResponse(call: Call<ComputerListData>, response: Response<ComputerListData>) {
@@ -33,6 +33,7 @@ class ComputerListPresenter(private var view: ComputerListView?){
 
                 } else if (response.code() == 401) {
                     view?.hideLoading()
+                    App.prefs.authTokenSave = ""
                     view?.showToast(response.code().toString())
                 } else {
                     view?.hideLoading()
