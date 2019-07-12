@@ -106,8 +106,9 @@
                     android:hint="@string/note"
                     android:minHeight="@dimen/spacing_xxlarge"
                     android:paddingLeft="@dimen/spacing_large"
-                    android:paddingRight="@dimen/spacing_large" android:fontFamily="@font/quicksand"
-                    android:inputType="text"/>
+                    android:paddingRight="@dimen/spacing_large"
+                    android:fontFamily="@font/quicksand"
+                    android:inputType="textMultiLine|text"/>
 
             <View
                     android:layout_width="match_parent"

@@ -543,7 +543,7 @@
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
                             android:id="@+id/et_add_note"
-                            android:inputType="text"/>
+                            android:inputType="textMultiLine|text"/>
 
                     <View
                             android:layout_width="match_parent"

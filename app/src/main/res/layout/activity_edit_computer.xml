@@ -541,7 +541,7 @@
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             android:fontFamily="@font/quicksand"
-                            android:id="@+id/et_edit_note" android:inputType="text"/>
+                            android:id="@+id/et_edit_note" android:inputType="textMultiLine|text"/>
 
                     <View
                             android:layout_width="match_parent"
