@@ -28,9 +28,9 @@ class DashboardPresenter(private var view: DashboarView?) {
                     App.prefs.isCompleteLogin = true
                 } else if (response.code() == 401) {
                     App.prefs.authTokenSave = ""
-                    view?.showToast(response.code().toString())
+                    view?.showToastAndReload(response.code().toString())
                 } else {
-                    view?.showToast(response.code().toString())
+                    view?.showToastAndReload(response.code().toString())
                 }
             }
         })
@@ -44,7 +44,7 @@ class DashboardPresenter(private var view: DashboarView?) {
         Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave).enqueue(object : Callback<HistoryListData> {
             override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
                 view?.hideProgressBarHistory()
-                view?.showToast("Tidak dapat terhubung ke server")
+                view?.showToastAndReload("Tidak dapat terhubung ke server")
             }
 
             override fun onResponse(call: Call<HistoryListData>, response: Response<HistoryListData>) {
@@ -58,11 +58,11 @@ class DashboardPresenter(private var view: DashboarView?) {
                 } else if (response.code() == 401) {
                     view?.hideProgressBarHistory()
                     App.prefs.authTokenSave = ""
-                    view?.showToast(response.code().toString())
+                    view?.showToastAndReload(response.code().toString())
 
                 } else {
                     view?.hideProgressBarHistory()
-                    view?.showToast(response.code().toString())
+                    view?.showToastAndReload(response.code().toString())
                 }
             }
         })

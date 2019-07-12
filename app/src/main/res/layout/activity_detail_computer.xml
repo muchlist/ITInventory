@@ -311,7 +311,7 @@
                     android:textSize="18sp" android:maxLines="1" android:ellipsize="end"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
             <TextView
-                    android:text="@string/history_8628"
+                    android:text="@string/history__"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/tv_detail_note"

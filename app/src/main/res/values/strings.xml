@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IT Inventory</string>
+    <string name="app_name">ITventory</string>
 
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>
@@ -39,20 +39,17 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="login">LOGIN</string>
-    <string name="pastikan_status_server_tidak_sleep_sebelum_melakukan_login">* Pastikan status server tidak sleep
+    <string name="pastikan_status_server_tidak_sleep_sebelum_melakukan_login">* Pastikan status server OK
         sebelum melakukan login.
     </string>
     <string name="sleep">SLEEP</string>
     <string name="catatan">Catatan :</string>
     <string name="status_">Status :</string>
-    <string name="menambahkan_history">Menambahkan History</string>
     <string name="name">Name</string>
-    <string name="status__">Status</string>
-    <string name="note_">Note</string>
     <string name="simpan">SIMPAN</string>
     <string name="edit_komputer">Edit Komputer</string>
     <string name="tambah_history">Tambah History</string>
-    <string name="history_8628">HISTORY ↴</string>
+    <string name="history__">HISTORY</string>
     <string name="no_invent">No Invent ..................................</string>
     <string name="ip">IP ..................................</string>
     <string name="host">Host ..................................</string>
@@ -83,6 +80,13 @@
     <string name="none">None</string>
     <string name="tambah_komputer">Tambah Komputer</string>
     <string name="jumlah">Jumlah : &#8212;</string>
+    <string name="about">About</string>
+    <string name="detail">Detail</string>
+    <string name="itventory_ver_0_1">ITventory Ver 1.0.1</string>
+    <string name="developed_by_muchlis">Developed by IT Sampit</string>
+    <string name="supported_by_it_reg_kalimantan">Supported by IT Reg Kalimantan</string>
+    <string name="ventory_login">ventory Login</string>
+    <string name="itventory_logo">itventory logo</string>
 
 
 </resources>

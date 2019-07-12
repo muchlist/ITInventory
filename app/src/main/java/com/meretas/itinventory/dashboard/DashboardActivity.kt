@@ -74,10 +74,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
         }
         cv_dashboard_consumable.setOnClickListener {
-            showToast("Menu Consumable Item Belum Tersedia")
+            toast("Menu Consumable Item Belum Tersedia")
         }
         cv_dashboard_other.setOnClickListener {
-            showToast("Menu Other Item Belum Tersedia")
+            toast("Menu Other Item Belum Tersedia")
         }
 
         //SEARCHBAR LISTENER
@@ -145,7 +145,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         pb_history_dashboard.visibility = View.VISIBLE
     }
 
-    override fun showToast(notif: String) {
+    override fun showToastAndReload(notif: String) {
         toast(notif)
         //jika is history update true , akan me reload lagi di onresume
         Statis.isHistoryUpdate = true
@@ -166,13 +166,22 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.profile -> {
-                showDialog()
+                showAccountDialog()
+            }
+            R.id.about -> {
+                showAboutDialog()
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showDialog() {
+    private fun showAboutDialog() {
+        myDialog.setContentView(R.layout.dialog_about)
+        myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        myDialog.show()
+    }
+
+    private fun showAccountDialog() {
         myDialog.setContentView(R.layout.dialog_account)
         val logoutButton: TextView = myDialog.findViewById(R.id.tv_logout)
         val accountOne: CircleImageView = myDialog.findViewById(R.id.iv_akun_satu)
@@ -237,7 +246,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
                 toast("Ketuk sekali lagi untuk logout")
             }
             doubleClickLogout = true
-            Handler().postDelayed(Runnable { doubleClickLogout = false }, 2000)
+            Handler().postDelayed({ doubleClickLogout = false }, 2000)
         }
         myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()

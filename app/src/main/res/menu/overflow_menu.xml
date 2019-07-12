@@ -3,4 +3,7 @@
     <item android:id="@+id/profile"
           android:icon="@drawable/ic_baseline_fingerprint_24px" app:showAsAction="ifRoom"
           android:title="@string/profile"/>
+    <item android:id="@+id/about"
+          android:icon="@drawable/ic_baseline_info_24px" app:showAsAction="ifRoom"
+          android:title="@string/about"/>
 </menu>

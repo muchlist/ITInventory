@@ -12,7 +12,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/constrain">
+        >
 
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
@@ -26,14 +26,14 @@
                                                           android:layout_height="60dp"
                                                           app:layout_constraintStart_toStartOf="parent"
                                                           android:layout_marginStart="32dp"
-                                                          android:src="@drawable/other_edit"
                                                           android:scaleType="centerCrop"
                                                           app:civ_border_color="@color/grey_40"
                                                           app:civ_border_width="2dp"
                                                           android:layout_marginTop="24dp"
                                                           app:layout_constraintTop_toBottomOf="@+id/textView8"
                                                           android:id="@+id/iv_akun_satu" android:clickable="true"
-                                                          android:focusable="true"/>
+                                                          android:focusable="true"
+                                                          android:src="@drawable/mac_and_cross"/>
 
             <TextView
                     android:text="@string/primary"
@@ -50,14 +50,13 @@
                                                           android:layout_height="60dp"
                                                           app:layout_constraintStart_toStartOf="parent"
                                                           android:layout_marginStart="32dp"
-                                                          android:src="@drawable/other_edit"
                                                           android:scaleType="centerCrop"
                                                           app:civ_border_color="@color/grey_40"
                                                           app:civ_border_width="2dp"
                                                           android:layout_marginTop="16dp"
                                                           app:layout_constraintTop_toBottomOf="@+id/iv_akun_satu"
                                                           android:id="@+id/iv_akun_dua" android:clickable="true"
-                                                          android:focusable="true"/>
+                                                          android:focusable="true" android:src="@drawable/lookatme"/>
 
             <TextView
                     android:text="@string/secondary"
