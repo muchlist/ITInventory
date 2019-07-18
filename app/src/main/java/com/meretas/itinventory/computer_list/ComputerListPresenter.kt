@@ -22,22 +22,26 @@ class ComputerListPresenter(private var view: ComputerListView?){
             }
 
             override fun onResponse(call: Call<ComputerListData>, response: Response<ComputerListData>) {
-                if (response.isSuccessful) {
-                    val historyResponse = response.body()!!
-                    val historyList = historyResponse.results
-                    val unitCount = historyResponse.count.toString()
+                when {
+                    response.isSuccessful -> {
+                        val historyResponse = response.body()!!
+                        val historyList = historyResponse.results
+                        val unitCount = historyResponse.count.toString()
 
-                    view?.hideLoading()
-                    view?.showComputers(historyList)
-                    view?.updateUnit(unitCount)
+                        view?.hideLoading()
+                        view?.showComputers(historyList)
+                        view?.updateUnit(unitCount)
 
-                } else if (response.code() == 401) {
-                    view?.hideLoading()
-                    App.prefs.authTokenSave = ""
-                    view?.showToast(response.code().toString())
-                } else {
-                    view?.hideLoading()
-                    view?.showToast(response.code().toString())
+                    }
+                    response.code() == 401 -> {
+                        view?.hideLoading()
+                        App.prefs.authTokenSave = ""
+                        view?.showToast(response.code().toString())
+                    }
+                    else -> {
+                        view?.hideLoading()
+                        view?.showToast(response.code().toString())
+                    }
                 }
             }
         })
@@ -54,21 +58,25 @@ class ComputerListPresenter(private var view: ComputerListView?){
             }
 
             override fun onResponse(call: Call<ComputerListData>, response: Response<ComputerListData>) {
-                if (response.isSuccessful) {
-                    val historyResponse = response.body()!!
-                    val historyList = historyResponse.results
-                    val unitCount = historyResponse.count.toString()
+                when {
+                    response.isSuccessful -> {
+                        val historyResponse = response.body()!!
+                        val historyList = historyResponse.results
+                        val unitCount = historyResponse.count.toString()
 
-                    view?.hideLoading()
-                    view?.showComputers(historyList)
-                    view?.updateUnit(unitCount)
+                        view?.hideLoading()
+                        view?.showComputers(historyList)
+                        view?.updateUnit(unitCount)
 
-                } else if (response.code() == 401) {
-                    view?.hideLoading()
-                    view?.showToast(response.code().toString())
-                } else {
-                    view?.hideLoading()
-                    view?.showToast(response.code().toString())
+                    }
+                    response.code() == 401 -> {
+                        view?.hideLoading()
+                        view?.showToast(response.code().toString())
+                    }
+                    else -> {
+                        view?.hideLoading()
+                        view?.showToast(response.code().toString())
+                    }
                 }
             }
         })

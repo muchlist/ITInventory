@@ -25,7 +25,7 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
 
     //global mvalue
     private var mId: Int = 0
-    private lateinit var translate : Translasi
+    private lateinit var translate: Translasi
 
     //presenter
     private lateinit var presenter: DetailComputerPresenter
@@ -46,16 +46,16 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         val mSeatManajemen: String
         val mLokasi: String
 
-        if (intent.seatManagement) {
-            mSeatManajemen = "Ya"
+        mSeatManajemen = if (intent.seatManagement) {
+            "Ya"
         } else {
-            mSeatManajemen = "Tidak"
+            "Tidak"
         }
 
-        if (intent.location == "None") {
-            mLokasi = "-"
+        mLokasi = if (intent.location == "None") {
+            "-"
         } else {
-            mLokasi = intent.location
+            intent.location
         }
 
         translate = Translasi()
@@ -161,7 +161,7 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
             if (resultCode == Activity.RESULT_OK) {
                 bt_detail_edit_computer.isClickable = false
 
-                val dataResult : ComputerPostData = data!!.getParcelableExtra(INTENT_EDIT_COMPUTER_RESULT)
+                val dataResult: ComputerPostData = data!!.getParcelableExtra(INTENT_EDIT_COMPUTER_RESULT)
                 tv_detail_client_name.text = dataResult.namaUser.toUpperCase()
                 tv_detail_hostname.text = dataResult.hostKomputer
                 tv_detail_ip_address.text = dataResult.alamatIp
@@ -169,9 +169,10 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
                 tv_detail_branch.text = App.prefs.userBranchSave
                 tv_detail_division.text = dataResult.divisi
                 tv_detail_location.text = dataResult.lokasi
-                tv_detail_full_pc.text = (dataResult.jenisPerangkat + " - " + dataResult.merkPerangkat + " - " + dataResult.tahun).toUpperCase()
+                tv_detail_full_pc.text =
+                    (dataResult.jenisPerangkat + " - " + dataResult.merkPerangkat + " - " + dataResult.tahun).toUpperCase()
                 tv_detail_seat_manajemen.text = dataResult.seatManajement.toString()
-                tv_detail_os.text = translate.osTranslation(dataResult.sistemOperasi?: "1064")
+                tv_detail_os.text = translate.osTranslation(dataResult.sistemOperasi ?: "1064")
                 tv_detail_prosessor.text = translate.processorTranslation(dataResult.processor)
                 tv_detail_ram.text = translate.ramTranslation(dataResult.ram)
                 tv_detail_hardisk.text = translate.hardiskTranslation(dataResult.hardisk)

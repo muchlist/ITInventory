@@ -20,19 +20,23 @@ class DetailComputerPresenter(private var view: DetailComputerView?) {
             }
 
             override fun onResponse(call: Call<HistoryListData>, response: Response<HistoryListData>) {
-                if (response.isSuccessful) {
-                    val historyResponse = response.body()!!
-                    val historyList = historyResponse.results
+                when {
+                    response.isSuccessful -> {
+                        val historyResponse = response.body()!!
+                        val historyList = historyResponse.results
 
-                    view?.hideLoadingHistory()
-                    view?.showHistoryList(historyList)
+                        view?.hideLoadingHistory()
+                        view?.showHistoryList(historyList)
 
-                } else if (response.code() == 401) {
-                    view?.hideLoadingHistory()
-                    view?.showToastError(response.code().toString())
-                } else {
-                    view?.hideLoadingHistory()
-                    view?.showToastError(response.code().toString())
+                    }
+                    response.code() == 401 -> {
+                        view?.hideLoadingHistory()
+                        view?.showToastError(response.code().toString())
+                    }
+                    else -> {
+                        view?.hideLoadingHistory()
+                        view?.showToastError(response.code().toString())
+                    }
                 }
             }
         })

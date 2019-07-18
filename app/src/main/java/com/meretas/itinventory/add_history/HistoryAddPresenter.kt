@@ -25,17 +25,21 @@ class HistoryAddPresenter(private var view: HistoryAddView?) {
                     call: Call<HistoryListData.Result>,
                     response: Response<HistoryListData.Result>
                 ) {
-                    if (response.isSuccessful) {
-                        val okResponse = "History berhasil ditambahkan"
-                        view?.showError(okResponse)
-                        view?.showResult()
-                        view?.hideLoading()
-                    } else if (response.code() == 401) {
-                        view?.showError(response.code().toString())
-                        view?.hideLoading()
-                    } else {
-                        view?.showError(response.code().toString())
-                        view?.hideLoading()
+                    when {
+                        response.isSuccessful -> {
+                            val okResponse = "History berhasil ditambahkan"
+                            view?.showError(okResponse)
+                            view?.showResult()
+                            view?.hideLoading()
+                        }
+                        response.code() == 401 -> {
+                            view?.showError(response.code().toString())
+                            view?.hideLoading()
+                        }
+                        else -> {
+                            view?.showError(response.code().toString())
+                            view?.hideLoading()
+                        }
                     }
                 }
             })

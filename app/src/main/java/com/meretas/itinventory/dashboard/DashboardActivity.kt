@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.meretas.itinventory.PrivacyPolicyActivity
 import com.meretas.itinventory.R
 import com.meretas.itinventory.computer_list.ComputerListActivity
 import com.meretas.itinventory.data.HistoryListData
@@ -177,6 +178,20 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
     private fun showAboutDialog() {
         myDialog.setContentView(R.layout.dialog_about)
+        val logoMuchlis: ImageView = myDialog.findViewById(R.id.logo_muchlis)
+        val logoPelindo: ImageView = myDialog.findViewById(R.id.logo_pelindo)
+        val privacyPolicy: TextView = myDialog.findViewById(R.id.bt_privacy_policy)
+
+        logoMuchlis.setOnClickListener {
+            toast("Developed by Muchlis - IT Sampit")
+        }
+        logoPelindo.setOnClickListener{
+            toast("Supported by Pelindo Regional Kalimantan")
+        }
+        privacyPolicy.setOnClickListener {
+            startActivity<PrivacyPolicyActivity>()
+        }
+
         myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
     }

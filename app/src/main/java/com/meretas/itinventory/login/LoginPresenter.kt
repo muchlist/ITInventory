@@ -19,24 +19,28 @@ class LoginPresenter(private var view: LoginView?) {
             }
 
             override fun onResponse(call: Call<TokenData>, response: Response<TokenData>) {
-                if (response.isSuccessful) {
-                    val tokenRespon = response.body()!!
-                    val pref = App.prefs
-                    //Jika auth token satu sudah ada maka isi auth token 2
-                    if (pref.authTokenOne.isEmpty()) {
-                        pref.authTokenSave = "Token " + tokenRespon.key
-                        pref.authTokenOne = "Token " + tokenRespon.key
-                    } else {
-                        pref.authTokenSave = "Token " + tokenRespon.key
-                        pref.authTokenTwo = "Token " + tokenRespon.key
+                when {
+                    response.isSuccessful -> {
+                        val tokenRespon = response.body()!!
+                        val pref = App.prefs
+                        //Jika auth token satu sudah ada maka isi auth token 2
+                        if (pref.authTokenOne.isEmpty()) {
+                            pref.authTokenSave = "Token " + tokenRespon.key
+                            pref.authTokenOne = "Token " + tokenRespon.key
+                        } else {
+                            pref.authTokenSave = "Token " + tokenRespon.key
+                            pref.authTokenTwo = "Token " + tokenRespon.key
+                        }
+                        view?.gotoDashboardActivity()
                     }
-                    view?.gotoDashboardActivity()
-                } else if (response.code() == 400) {
-                    view?.showToast("User atau password salah")
-                    view?.hideLoading()
-                } else {
-                    view?.showToast("Gagal login")
-                    view?.hideLoading()
+                    response.code() == 400 -> {
+                        view?.showToast("User atau password salah")
+                        view?.hideLoading()
+                    }
+                    else -> {
+                        view?.showToast("Gagal login")
+                        view?.hideLoading()
+                    }
                 }
             }
         })
@@ -52,13 +56,13 @@ class LoginPresenter(private var view: LoginView?) {
             }
 
             override fun onResponse(call: Call<CurrentUserData>, response: Response<CurrentUserData>) {
-                if (response.isSuccessful) {
-                    view?.updateConnection(true)
-                } else if (response.code() == 401) {
-                    view?.updateConnection(true)
-                } else {
-                    view?.updateConnection(false)
-                    view?.showToast(response.code().toString())
+                when {
+                    response.isSuccessful -> view?.updateConnection(true)
+                    response.code() == 401 -> view?.updateConnection(true)
+                    else -> {
+                        view?.updateConnection(false)
+                        view?.showToast(response.code().toString())
+                    }
                 }
             }
         })

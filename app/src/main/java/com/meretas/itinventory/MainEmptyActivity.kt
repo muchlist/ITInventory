@@ -12,12 +12,10 @@ class MainEmptyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val activityIntent: Intent
-
-        if (App.prefs.authTokenSave.isEmpty()) {
-            activityIntent = Intent(this, LoginActivity::class.java)
+        val activityIntent: Intent = if (App.prefs.authTokenSave.isEmpty()) {
+            Intent(this, LoginActivity::class.java)
         } else {
-            activityIntent = Intent(this, DashboardActivity::class.java)
+            Intent(this, DashboardActivity::class.java)
         }
 
         startActivity(activityIntent)

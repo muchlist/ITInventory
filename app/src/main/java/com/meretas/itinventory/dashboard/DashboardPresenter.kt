@@ -18,19 +18,21 @@ class DashboardPresenter(private var view: DashboarView?) {
             }
 
             override fun onResponse(call: Call<CurrentUserData>, response: Response<CurrentUserData>) {
-                if (response.isSuccessful) {
-                    val userResponse = response.body()!!
-                    val name = userResponse.firstName + " " + userResponse.lastName
-                    val branch = userResponse.profile?.userBranch ?: "Profil Null"
-                    val isReadOnly = userResponse.profile?.isReadOnly ?: true
+                when {
+                    response.isSuccessful -> {
+                        val userResponse = response.body()!!
+                        val name = userResponse.firstName + " " + userResponse.lastName
+                        val branch = userResponse.profile?.userBranch ?: "Profil Null"
+                        val isReadOnly = userResponse.profile?.isReadOnly ?: true
 
-                    view?.getUserInfo(name, branch, isReadOnly)
-                    App.prefs.isCompleteLogin = true
-                } else if (response.code() == 401) {
-                    App.prefs.authTokenSave = ""
-                    view?.showToastAndReload(response.code().toString())
-                } else {
-                    view?.showToastAndReload(response.code().toString())
+                        view?.getUserInfo(name, branch, isReadOnly)
+                        App.prefs.isCompleteLogin = true
+                    }
+                    response.code() == 401 -> {
+                        App.prefs.authTokenSave = ""
+                        view?.showToastAndReload(response.code().toString())
+                    }
+                    else -> view?.showToastAndReload(response.code().toString())
                 }
             }
         })
@@ -48,21 +50,25 @@ class DashboardPresenter(private var view: DashboarView?) {
             }
 
             override fun onResponse(call: Call<HistoryListData>, response: Response<HistoryListData>) {
-                if (response.isSuccessful) {
-                    val historyResponse = response.body()!!
-                    val historyList = historyResponse.results
+                when {
+                    response.isSuccessful -> {
+                        val historyResponse = response.body()!!
+                        val historyList = historyResponse.results
 
-                    view?.hideProgressBarHistory()
-                    view?.showHistory(historyList)
+                        view?.hideProgressBarHistory()
+                        view?.showHistory(historyList)
 
-                } else if (response.code() == 401) {
-                    view?.hideProgressBarHistory()
-                    App.prefs.authTokenSave = ""
-                    view?.showToastAndReload(response.code().toString())
+                    }
+                    response.code() == 401 -> {
+                        view?.hideProgressBarHistory()
+                        App.prefs.authTokenSave = ""
+                        view?.showToastAndReload(response.code().toString())
 
-                } else {
-                    view?.hideProgressBarHistory()
-                    view?.showToastAndReload(response.code().toString())
+                    }
+                    else -> {
+                        view?.hideProgressBarHistory()
+                        view?.showToastAndReload(response.code().toString())
+                    }
                 }
             }
         })
