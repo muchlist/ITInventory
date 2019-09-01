@@ -15,27 +15,27 @@
         <activity android:name=".PrivacyPolicyActivity">
         </activity>
         <activity
-                android:name=".edit_computer.EditComputerActivity"
+                android:name="com.meretas.itinventory.computer_inv.edit_computer.EditComputerActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".add_computer.AddComputerActivity"
+                android:name="com.meretas.itinventory.computer_inv.add_computer.AddComputerActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".add_history.HistoryAddActivity"
+                android:name="com.meretas.itinventory.computer_inv.add_history.HistoryAddActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".computer_detail.DetailComputerActivity"
+                android:name="com.meretas.itinventory.computer_inv.computer_detail.DetailComputerActivity"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".computer_list.ComputerListActivity"
+                android:name="com.meretas.itinventory.computer_inv.computer_list.ComputerListActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
         <activity
-                android:name=".history.HistoryDetailActivity"
+                android:name="com.meretas.itinventory.computer_inv.history.HistoryDetailActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateAlwaysHidden">
         </activity>

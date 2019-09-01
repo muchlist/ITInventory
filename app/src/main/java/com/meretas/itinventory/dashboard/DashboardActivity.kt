@@ -16,9 +16,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.PrivacyPolicyActivity
 import com.meretas.itinventory.R
-import com.meretas.itinventory.computer_list.ComputerListActivity
+import com.meretas.itinventory.computer_inv.computer_list.ComputerListActivity
 import com.meretas.itinventory.data.HistoryListData
-import com.meretas.itinventory.history.HistoryDetailActivity
+import com.meretas.itinventory.computer_inv.history.HistoryDetailActivity
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
