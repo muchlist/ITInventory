@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.meretas.itinventory">
+        package="com.meretas.itinventory">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
             android:name=".utils.App"
@@ -12,54 +12,49 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".PrivacyPolicyActivity">
-        </activity>
+        <activity android:name=".stock_inv.stock_detail.DetailStockActivity"></activity>
+        <activity android:name=".stock_inv.stock_add.AddStockActivity" />
+        <activity android:name=".stock_inv.stock_list.StocklistActivity" />
+        <activity android:name=".PrivacyPolicyActivity" />
         <activity
-                android:name="com.meretas.itinventory.computer_inv.edit_computer.EditComputerActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:name=".computer_inv.edit_computer.EditComputerActivity"
+                android:screenOrientation="portrait" />
         <activity
-                android:name="com.meretas.itinventory.computer_inv.add_computer.AddComputerActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:name=".computer_inv.add_computer.AddComputerActivity"
+                android:screenOrientation="portrait" />
         <activity
-                android:name="com.meretas.itinventory.computer_inv.add_history.HistoryAddActivity"
-                android:screenOrientation="portrait">
-        </activity>
+                android:name=".computer_inv.add_history.HistoryAddActivity"
+                android:screenOrientation="portrait" />
         <activity
-                android:name="com.meretas.itinventory.computer_inv.computer_detail.DetailComputerActivity"
-                android:screenOrientation="portrait"/>
+                android:name=".computer_inv.computer_detail.DetailComputerActivity"
+                android:screenOrientation="portrait" />
         <activity
-                android:name="com.meretas.itinventory.computer_inv.computer_list.ComputerListActivity"
+                android:name=".computer_inv.computer_list.ComputerListActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+                android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-                android:name="com.meretas.itinventory.computer_inv.history.HistoryDetailActivity"
+                android:name=".computer_inv.history.HistoryDetailActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+                android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
                 android:name=".dashboard.DashboardActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+                android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
                 android:name=".login.LoginActivity"
                 android:screenOrientation="portrait"
-                android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+                android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".MainEmptyActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <meta-data
                 android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts"/>
+                android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

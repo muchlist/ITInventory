@@ -1,7 +1,6 @@
 package com.meretas.itinventory.computer_inv.computer_list
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,8 +42,6 @@ class ComputerListAdapter(
             itemView.tv_computerlist_ip.text = items.ipAddress
             itemView.tv_computerlist_division.text = items.division
             itemView.tv_computerlist_islowspec.text = lowspec
-
-            Log.d("trecycler","${items.id}")
 
             //onClick
             itemView.setOnClickListener { itemClick(items) }

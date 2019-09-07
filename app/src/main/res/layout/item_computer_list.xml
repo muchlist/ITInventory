@@ -5,10 +5,15 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:padding="8dp"
-        android:layout_marginBottom="4dp" android:layout_marginTop="1dp"
-        app:cardCornerRadius="0dp" app:cardElevation="1dp"
-        android:elevation="1dp" android:paddingStart="16dp" android:paddingEnd="16dp">
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="1dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="1dp"
+        android:elevation="1dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

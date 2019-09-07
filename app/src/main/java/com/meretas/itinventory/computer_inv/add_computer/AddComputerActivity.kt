@@ -103,6 +103,7 @@ class AddComputerActivity : AppCompatActivity() {
             "Teknik",
             "Keuangan",
             "TIK",
+            "SMI",
             "GM",
             "Server",
             "Lainnya"
@@ -252,6 +253,7 @@ class AddComputerActivity : AppCompatActivity() {
             "2 GB",
             "4 GB DDR3",
             "4 GB DDR4",
+            "6 GB",
             "8 GB DDR3",
             "8 GB DDR4",
             "16 GB"
@@ -279,6 +281,7 @@ class AddComputerActivity : AppCompatActivity() {
             "512 GB",
             "1 TB",
             "2 TB",
+            "128 GB",
             "Lebih dari 2 TB"
         )
         val builder = AlertDialog.Builder(this)

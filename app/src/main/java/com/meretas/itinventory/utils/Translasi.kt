@@ -1,5 +1,6 @@
 package com.meretas.itinventory.utils
 
+//ADD COMPUTER, EDIT COMPUTER
 class Translasi {
     fun osTranslation(os: String): String {
         return when (os) {
@@ -54,6 +55,7 @@ class Translasi {
             "2 GB" -> 2.0
             "4 GB DDR3" -> 4.0
             "4 GB DDR4" -> 4.1
+            "6 GB" -> 6.0
             "8 GB DDR3" -> 8.0
             "8 GB DDR4" -> 8.1
             "16 GB" -> 16.0
@@ -66,6 +68,7 @@ class Translasi {
             2.0 -> "2 GB"
             4.0 -> "4 GB DDR3"
             4.1 -> "4 GB DDR4"
+            6.0 -> "6 GB"
             8.0 -> "8 GB DDR3"
             8.1 -> "8 GB DDR4"
             16.0 -> "16 GB"
@@ -75,6 +78,7 @@ class Translasi {
 
     fun hardiskTranslationReverse(ram: String): Int {
         return when (ram) {
+            "128 GB" -> 128
             "256 GB" -> 256
             "512 GB" -> 512
             "1 TB" -> 1000
@@ -86,6 +90,7 @@ class Translasi {
 
     fun hardiskTranslation(ram: Int): String {
         return when (ram) {
+            128 -> "128 GB"
             256 -> "256 GB"
             512 -> "512 GB"
             1000 -> "1 TB"

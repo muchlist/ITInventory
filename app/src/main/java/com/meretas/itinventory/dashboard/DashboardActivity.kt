@@ -20,6 +20,7 @@ import com.meretas.itinventory.computer_inv.computer_list.ComputerListActivity
 import com.meretas.itinventory.data.HistoryListData
 import com.meretas.itinventory.computer_inv.history.HistoryDetailActivity
 import com.meretas.itinventory.login.LoginActivity
+import com.meretas.itinventory.stock_inv.stock_list.StocklistActivity
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_DETAIL_HISTORY
@@ -75,7 +76,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
         }
         cv_dashboard_consumable.setOnClickListener {
-            toast("Menu Consumable Item Belum Tersedia")
+            startActivity<StocklistActivity>()
         }
         cv_dashboard_other.setOnClickListener {
             toast("Menu Other Item Belum Tersedia")

@@ -209,7 +209,7 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
     }
 
     override fun showUpdateComputers() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //belum
     }
 
     override fun hideLocationChoices() {

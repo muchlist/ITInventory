@@ -1,9 +1,6 @@
 package com.meretas.itinventory.services
 
-import com.meretas.itinventory.data.ComputerListData
-import com.meretas.itinventory.data.CurrentUserData
-import com.meretas.itinventory.data.HistoryListData
-import com.meretas.itinventory.data.TokenData
+import com.meretas.itinventory.data.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
@@ -123,6 +120,28 @@ interface ApiService {
         @Query("search") search: String?,
         @Query("ordering") order: String = "client_name"
     ): Call<ComputerListData>
+
+    //@Headers("Content-type:application/json")
+    @GET("stocks/")
+    fun getStockList(
+        @Header("Authorization") token: String,
+        @Query("branch") branch: String = "Banjarmasin",
+        @Query("category") category: String,
+        @Query("active") active: Boolean = true,
+        @Query("ordering") order: String = "branch,category"
+    ): Call<StockListData>
+
+    @FormUrlEncoded
+    @POST("stocks/")
+    fun postStock(
+        @Header("Authorization") token: String,
+        @Field("stock_name") stockName: String,
+        @Field("category") category: String,
+        @Field("threshold") threshold: Int? = 0,
+        @Field("unit") unit: String? = "Unit",
+        @Field("active") active: Boolean,
+        @Field("note") note: String?
+    ): Call<StockListData.Result>
 
 }
 
