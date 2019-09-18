@@ -12,7 +12,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".stock_inv.stock_detail.DetailStockActivity"></activity>
+        <activity android:name="com.meretas.itinventory.stock_inv.stock_detail.stock_use_edit.EditStockUseActivity"></activity>
+        <activity android:name="com.meretas.itinventory.stock_inv.stock_detail.stock_use_detail.StockUseDetailActivity" />
+        <activity android:name=".stock_inv.stock_detail.stock_use_add.AddConsumeStockActivity" />
+        <activity android:name=".stock_inv.stock_detail.stock_use_add.AddAdditionStockActivity" />
+        <activity android:name=".stock_inv.stock_detail.DetailStockActivity" />
         <activity android:name=".stock_inv.stock_add.AddStockActivity" />
         <activity android:name=".stock_inv.stock_list.StocklistActivity" />
         <activity android:name=".PrivacyPolicyActivity" />

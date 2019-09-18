@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".stock_inv.stock_detail.stock_use_list_fragment.DetailStockFragment">
+
+
+    <TextView
+            android:id="@+id/tv_detail_stock_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/quicksand_bold"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:textColor="@color/grey_80"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="UPS 1200 VA" />
+
+    <TextView
+            android:id="@+id/tv_detail_stock_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintStart_toEndOf="@+id/textView16"
+            tools:text="Sampit" />
+
+    <TextView
+            android:id="@+id/tv_detail_stock_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_stock_name"
+            tools:text="Periferal Komputer" />
+
+    <TextView
+            android:id="@+id/tv_detail_stock_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_detail_stock_category"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Active" />
+
+    <Button
+            android:id="@+id/bt_detail_stock_nonaktif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/button_color_red"
+            android:fontFamily="@font/roboto"
+            android:text="Nonaktifkan"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_stock_note" />
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+
+
+            <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Total Ditambahkan :"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView29"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+            <TextView
+                    android:id="@+id/textView29"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Total Terpakai :"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView28" />
+
+            <TextView
+                    android:id="@+id/tv_detail_stock_additions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/quicksand"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView28"
+                    app:layout_constraintTop_toTopOf="@+id/textView28"
+                    tools:text="70" />
+
+            <TextView
+                    android:id="@+id/tv_detail_stock_consume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView29"
+                    app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_additions"
+                    tools:text="10" />
+
+            <TextView
+                    android:id="@+id/tv_detail_stock_resultstock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView20"
+                    app:layout_constraintStart_toEndOf="@+id/tv_detail_stock_additions"
+                    app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_consume"
+                    tools:text="300" />
+
+            <TextView
+                    android:id="@+id/tv_detail_stock_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_detail_stock_resultstock"
+                    app:layout_constraintStart_toEndOf="@+id/tv_detail_stock_resultstock"
+                    tools:text="Unit" />
+
+            <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Sisa :"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView29"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+            android:id="@+id/tv_detail_stock_create_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+            app:layout_constraintStart_toEndOf="@+id/textView12"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_branch"
+            tools:text="21-21-2018" />
+
+    <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/quicksand"
+            android:text="Batas :"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_stock_thresold"
+            app:layout_constraintTop_toTopOf="@+id/tv_detail_stock_thresold" />
+
+    <TextView
+            android:id="@+id/tv_detail_stock_thresold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            tools:text="20" />
+
+    <Button
+            android:id="@+id/bt_detail_stock_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Edit"
+            app:layout_constraintEnd_toEndOf="@+id/bt_detail_stock_nonaktif"
+            app:layout_constraintTop_toBottomOf="@+id/bt_detail_stock_nonaktif" />
+
+    <TextView
+            android:id="@+id/tv_detail_stock_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/quicksand"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView24"
+            tools:text="lorem ipsum sir dolor amet" />
+
+    <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:text="Dibuat :"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:text="Cabang :"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_stock_category" />
+
+    <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/quicksand"
+            android:text="Catatan :"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_note"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

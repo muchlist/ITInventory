@@ -3,6 +3,7 @@ package com.meretas.itinventory.services
 import com.meretas.itinventory.data.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -131,6 +132,13 @@ interface ApiService {
         @Query("ordering") order: String = "branch,category"
     ): Call<StockListData>
 
+    //@Headers("Content-type:application/json")
+    @GET("stocks/{id}/")
+    fun getStockDetail(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<StockListData.Result>
+
     @FormUrlEncoded
     @POST("stocks/")
     fun postStock(
@@ -142,6 +150,85 @@ interface ApiService {
         @Field("active") active: Boolean,
         @Field("note") note: String?
     ): Call<StockListData.Result>
+
+    @GET("stocks/{id}/additions/")
+    fun getAdditionList(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<AddAndConsumeData>
+
+    @GET("stocks/{id}/consumes/")
+    fun getConsumeList(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<AddAndConsumeData>
+
+    @FormUrlEncoded
+    @POST("stocks/{id}/consume/")
+    fun postConsume(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("event_number") eventNumber: String,
+        @Field("note") note: String,
+        @Field("qty") qty: Int? = 0
+    ): Call<AddAndConsumeData.Result>
+
+    @FormUrlEncoded
+    @POST("stocks/{id}/addition/")
+    fun postAddition(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("event_number") eventNumber: String,
+        @Field("note") note: String,
+        @Field("qty") qty: Int? = 0
+    ): Call<AddAndConsumeData.Result>
+
+    @FormUrlEncoded
+    @PUT("consumes/{id}/")
+    fun putConsume(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("event_number") eventNumber: String,
+        @Field("note") note: String,
+        @Field("qty") qty: Int? = 0
+    ): Call<AddAndConsumeData.Result>
+
+    @FormUrlEncoded
+    @PUT("additions/{id}/")
+    fun putAddition(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("event_number") eventNumber: String,
+        @Field("note") note: String,
+        @Field("qty") qty: Int? = 0
+    ): Call<AddAndConsumeData.Result>
+
+    @DELETE("additions/{id}/")
+    fun deleteAddition(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<ResponseBody>
+
+    @DELETE("consumes/{id}/")
+    fun deleteConsume(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<ResponseBody>
+
+    //@Headers("Content-type:application/json")
+    @GET("additions/{id}/")
+    fun getAdditionDetail(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<AddAndConsumeData.Result>
+
+    //@Headers("Content-type:application/json")
+    @GET("consumes/{id}/")
+    fun getConsumeDetail(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Call<AddAndConsumeData.Result>
+
 
 }
 

@@ -2,12 +2,21 @@ package com.meretas.itinventory.stock_inv.stock_detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.StockListData
-import com.meretas.itinventory.utils.DATA_INTENT_STOCK_LIST_DETAIL
+import com.meretas.itinventory.services.Api
+import com.meretas.itinventory.stock_inv.stock_detail.stock_use_add.AddAdditionStockActivity
+import com.meretas.itinventory.stock_inv.stock_detail.stock_use_add.AddConsumeStockActivity
+import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.activity_detail_stock.*
+import org.jetbrains.anko.startActivity
 
 class DetailStockActivity : AppCompatActivity() {
+
+    //View Model
+    private lateinit var viewModel: DetailStockViewModel
+    private lateinit var viewModelFactory: DetailStockViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,26 +24,34 @@ class DetailStockActivity : AppCompatActivity() {
 
         initPager()
 
+        //INIT VIEW MODEL
+        val application = requireNotNull(this).application
+        val apiService = Api.retrofitService
+        viewModelFactory = DetailStockViewModelFactory(apiService, application)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailStockViewModel::class.java)
+
+
+        //Intent dari stock list di transfer ke view model
         val intent = intent.getParcelableExtra<StockListData.Result>(
             DATA_INTENT_STOCK_LIST_DETAIL
         )
 
-        with(intent) {
-            tv_detail_stock_name.text = stockName
-            tv_detail_stock_branch.text = branch
-            tv_detail_stock_category.text = category
-            tv_detail_stock_status.text = if (active) "Aktif" else "Nonaktif"
-            tv_detail_stock_thresold.text = threshold.toString()
-            tv_detail_stock_create_date.text = createdAt
-            tv_detail_stock_unit.text = unit
-            tv_detail_stock_note.text = note
+        //INJECT DATA DARI INTENT KE VIEWMODEL
+        viewModel.postDetailStock(intent)
 
-            val added: Int = stockAdded ?: 0
-            val used: Int = stockUsed ?: 0
 
-            tv_detail_stock_additions.text = added.toString()
-            tv_detail_stock_consume.text = used.toString()
-            tv_detail_stock_resultstock.text = (added - used).toString()
+        bt_detail_stock_add.setOnClickListener {
+            startActivity<AddAdditionStockActivity>(
+                INTENT_DETAIL_ADD_ADDITION_ID to intent.id,
+                INTENT_DETAIL_ADD_ADDITION_NAME to intent.stockName
+            )
+        }
+
+        bt_detail_stock_consume.setOnClickListener {
+            startActivity<AddConsumeStockActivity>(
+                INTENT_DETAIL_ADD_CONSUME_ID to intent.id,
+                INTENT_DETAIL_ADD_CONSUME_NAME to intent.stockName
+            )
         }
 
     }

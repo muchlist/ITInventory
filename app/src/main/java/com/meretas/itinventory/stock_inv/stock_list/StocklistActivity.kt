@@ -13,6 +13,10 @@ import com.meretas.itinventory.stock_inv.stock_detail.DetailStockActivity
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_STOCK_LIST_DETAIL
 import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.Statis.Companion.isComputerUpdate
+import com.meretas.itinventory.utils.Statis.Companion.isStockChangeMinus
+import com.meretas.itinventory.utils.Statis.Companion.isStockChangePlus
+import com.meretas.itinventory.utils.Statis.Companion.isStockUpdate
 import com.meretas.itinventory.utils.Statis.Companion.whatStockActiveStatus
 import com.meretas.itinventory.utils.Statis.Companion.whatStockCategory
 import kotlinx.android.synthetic.main.activity_computer_list.*
@@ -83,9 +87,11 @@ class StocklistActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         //JIKA STOCK UPDATE TRUE < HANYA BISA TRUE JIKA ADA PENAMBAHAN STOCK
-        if (Statis.isStockUpdate) {
+        if (isStockUpdate || isStockChangeMinus || isStockChangePlus) {
             viewModel.getStockData(App.prefs.userBranchSave,whatStockCategory,whatStockActiveStatus)
-            Statis.isComputerUpdate = false
+            isStockUpdate = false
+            isStockChangeMinus = false
+            isStockChangePlus = false
         }
     }
 }

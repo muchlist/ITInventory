@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/consume_stock_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="64dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Kurangi Jumlah Stok"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:id="@+id/consume_stock_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@+id/consume_stock_title"
+                    app:layout_constraintTop_toBottomOf="@+id/consume_stock_title"
+                    tools:text="UPS 1200va" />
+
+            <LinearLayout
+                    android:id="@+id/linearLayout_ide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/consume_stock_name">
+
+                <ImageView
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="@dimen/spacing_middle"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:contentDescription="@string/dot"
+                        android:src="@drawable/shape_circle"
+                        android:tint="@color/red_400" />
+
+                <View
+                        android:layout_width="@dimen/spacing_middle"
+                        android:layout_height="0dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand"
+                        android:text="@string/detail"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/grey_80" />
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_ide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="1dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_ide">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <EditText
+                            android:id="@+id/et_consume_stock_event"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center_vertical"
+                            android:hint="Nomor Acara"
+                            android:inputType="text"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large" />
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5" />
+
+                    <EditText
+                            android:id="@+id/et_consume_stock_qty"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center_vertical"
+                            android:hint="Jumlah"
+                            android:inputType="number"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large" />
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5" />
+
+                    <EditText
+                            android:id="@+id/et_consume_stock_note"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center_vertical"
+                            android:hint="Catatan"
+                            android:inputType="textMultiLine|text"
+                            android:minHeight="@dimen/spacing_xxlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large" />
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                    android:id="@+id/bt_consume_stock_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Kurangkan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="*[Nomor Acara] diisi dengan nomor berita acara atau penanda lainnya.    *[Catatan] dapat di isi dengan lokasi dan keperluan pemakaian."
+                    app:layout_constraintEnd_toEndOf="@+id/cv_ide"
+                    app:layout_constraintStart_toStartOf="@+id/cv_ide"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_ide" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+            android:id="@+id/pb_frame_consume_stock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/progress_frame_color"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
