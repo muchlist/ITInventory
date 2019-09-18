@@ -28,7 +28,8 @@ class DetailStockActivity : AppCompatActivity() {
         val application = requireNotNull(this).application
         val apiService = Api.retrofitService
         viewModelFactory = DetailStockViewModelFactory(apiService, application)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(DetailStockViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, viewModelFactory).get(DetailStockViewModel::class.java)
 
 
         //Intent dari stock list di transfer ke view model

@@ -1,4 +1,4 @@
-package com.meretas.itinventory.stock_inv.stock_detail.stock_use_list_fragment
+package com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import com.meretas.itinventory.stock_inv.stock_detail.DetailStockViewModel

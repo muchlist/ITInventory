@@ -22,9 +22,9 @@ class DetailStockViewModel(
     val stockDetailData: LiveData<StockListData.Result>
         get() = _stockDetailData
 
-    private val _isstockDetailError = MutableLiveData<String>()
-    val isstockDetailError: LiveData<String>
-        get() = _isstockDetailError
+    private val _isStockDetailError = MutableLiveData<String>()
+    val isStockDetailError: LiveData<String>
+        get() = _isStockDetailError
 
 
     //ADDITION DATA
@@ -53,6 +53,11 @@ class DetailStockViewModel(
     val isConsumeListError: LiveData<String>
         get() = _isConsumeListError
 
+    //STATUS CHANGE
+    private val _isStatusChangeError = MutableLiveData<String>()
+    val isStatusChangeError: LiveData<String>
+        get() = _isStatusChangeError
+
     //INITIATE
     init {
         _stockDetailData.value = StockListData.Result(
@@ -80,11 +85,11 @@ class DetailStockViewModel(
                     val listAddition = response.body()
                     _stockDetailData.postValue(listAddition)
                 } else {
-                    _isstockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
+                    _isStockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
                 }
             }
             override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
-                _isstockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
+                _isStockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
             }
         })
     }
@@ -136,6 +141,26 @@ class DetailStockViewModel(
 
             override fun onFailure(call: Call<AddAndConsumeData>, t: Throwable) {
                 _isConsumeListLoading.value = false
+            }
+        })
+    }
+
+    //Merubah status Stock
+    fun changeStatus(id: Int, status: String) {
+        _isStatusChangeError.value = ""
+        apiService.getChangeStockStatus(App.prefs.authTokenSave,id,status).enqueue(object : Callback<StockListData.Result> {
+            override fun onResponse(call: Call<StockListData.Result>, response: Response<StockListData.Result>) {
+                if (response.isSuccessful) {
+                    val listAddition = response.body()
+                    _stockDetailData.postValue(listAddition)
+                    _isStatusChangeError.value = "Status dirubah"
+                } else {
+                    _isStatusChangeError.value = "Status gagal dirubah"
+                }
+            }
+
+            override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
+                _isStatusChangeError.value = "Status gagal dirubah"
             }
         })
     }

@@ -5,7 +5,7 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".stock_inv.stock_detail.stock_use_list_fragment.DetailStockFragment">
+        tools:context=".stock_inv.stock_detail.stock_use_pager_fragment.DetailStockFragment">
 
 
     <TextView

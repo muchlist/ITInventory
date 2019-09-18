@@ -1,4 +1,4 @@
-package com.meretas.itinventory.stock_inv.stock_detail.stock_use_list_fragment
+package com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment
 
 
 import android.os.Bundle
@@ -10,14 +10,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.stock_inv.stock_detail.DetailStockViewModel
+import com.meretas.itinventory.stock_inv.stock_edit.EditStockActivity
+import com.meretas.itinventory.utils.DATA_INTENT_STOCK_DETAIL
+import com.meretas.itinventory.utils.STOCK_ACTIVE
+import com.meretas.itinventory.utils.STOCK_NON_ACTIVE
 import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.Statis.Companion.isStockUpdate
 import kotlinx.android.synthetic.main.fragment_detail_stock.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 
 class DetailStockFragment : Fragment() {
 
     private lateinit var viewModel: DetailStockViewModel
+    private var statusActive: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +48,8 @@ class DetailStockFragment : Fragment() {
                 tv_detail_stock_create_date.text = createdAt
                 tv_detail_stock_unit.text = unit
                 tv_detail_stock_note.text = note
+                bt_detail_stock_nonaktif.text = if (active) "Nonaktifkan" else "aktifkan"
+                statusActive = active
 
                 val added: Int = stockAdded ?: 0
                 val used: Int = stockUsed ?: 0
@@ -51,19 +60,51 @@ class DetailStockFragment : Fragment() {
             }
         })
 
-        viewModel.isstockDetailError.observe(viewLifecycleOwner, Observer {
+        viewModel.isStockDetailError.observe(viewLifecycleOwner, Observer {
             if (!it.isNullOrEmpty()) {
                 activity?.toast(it)
             }
         })
 
+        viewModel.isStatusChangeError.observe(viewLifecycleOwner, Observer {
+            if (!it.isNullOrEmpty()) {
+                activity?.toast(it)
+            }
+        })
+
+        //BUTTON STATUS CHANGE
+        bt_detail_stock_nonaktif.setOnClickListener {
+            activity?.toast("Tahan tombol selama 2 detik untuk merubah status")
+        }
+        bt_detail_stock_nonaktif.setOnLongClickListener {
+            changeStatus()
+            return@setOnLongClickListener true
+        }
+
+        //BUTTON EDIT
+        bt_detail_stock_edit.setOnClickListener {
+            activity?.startActivity<EditStockActivity>(
+                DATA_INTENT_STOCK_DETAIL to viewModel.stockDetailData.value
+            )
+        }
 
     }
 
     override fun onResume() {
         super.onResume()
-        if(Statis.isStockChangePlus || Statis.isStockChangeMinus){
-            viewModel.getStockRefresh(viewModel.stockDetailData.value?.id?:0)
+        if (Statis.isStockChangePlus || Statis.isStockChangeMinus || isStockUpdate) {
+            viewModel.getStockRefresh(viewModel.stockDetailData.value?.id ?: 0)
         }
+    }
+
+    private fun changeStatus() {
+        when {
+            statusActive -> viewModel.changeStatus(
+                viewModel.stockDetailData.value?.id ?: 0,
+                STOCK_NON_ACTIVE
+            )
+            else -> viewModel.changeStatus(viewModel.stockDetailData.value?.id ?: 0, STOCK_ACTIVE)
+        }
+        isStockUpdate = true
     }
 }

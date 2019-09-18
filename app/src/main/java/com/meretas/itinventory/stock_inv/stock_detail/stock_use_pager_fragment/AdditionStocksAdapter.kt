@@ -1,4 +1,4 @@
-package com.meretas.itinventory.stock_inv.stock_detail.stock_use_list_fragment
+package com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment
 
 import android.content.Context
 import android.view.LayoutInflater

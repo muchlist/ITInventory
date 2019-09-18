@@ -1,4 +1,4 @@
-package com.meretas.itinventory.stock_inv.stock_add
+package com.meretas.itinventory.stock_inv.stock_edit
 
 import android.os.Bundle
 import android.view.View
@@ -7,31 +7,44 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
+import com.meretas.itinventory.data.StockListData
 import com.meretas.itinventory.data.StockPostData
-import com.meretas.itinventory.utils.App
+import com.meretas.itinventory.utils.DATA_INTENT_STOCK_DETAIL
 import com.meretas.itinventory.utils.Statis
-import kotlinx.android.synthetic.main.activity_add_stock.*
+import kotlinx.android.synthetic.main.activity_edit_stock.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
 
-class AddStockActivity : AppCompatActivity() {
+class EditStockActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: AddStockViewModel
+    private lateinit var viewModel: EditStockViewModel
     private lateinit var stock: StockPostData
+    private lateinit var intentData: StockListData.Result
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_stock)
+        setContentView(R.layout.activity_edit_stock)
 
-        viewModel = ViewModelProviders.of(this).get(AddStockViewModel::class.java)
+        //INIT VIEW MODEL
+        viewModel = ViewModelProviders.of(this).get(EditStockViewModel::class.java)
 
-        add_stock_title_branch.text = App.prefs.userBranchSave
+        //INTENT
+        intentData = intent.getParcelableExtra(DATA_INTENT_STOCK_DETAIL)
+
+        //INIT VIEW
+        tv_edit_stock_title_name.text = intentData.stockName
+        et_edit_stock_name.setText(intentData.stockName)
+        et_edit_stock_category.text = intentData.category
+        et_edit_stock_thresold.setText(intentData.threshold.toString())
+        et_edit_stock_unit.setText(intentData.unit)
+        et_edit_stock_note.setText(intentData.note)
+
 
         viewModel.isLoading.observe(this, Observer {
             if (it) {
-                pb_frame_add_stock.visibility = View.VISIBLE
+                pb_frame_edit_stock.visibility = View.VISIBLE
             } else {
-                pb_frame_add_stock.visibility = View.GONE
+                pb_frame_edit_stock.visibility = View.GONE
             }
         })
 
@@ -43,49 +56,37 @@ class AddStockActivity : AppCompatActivity() {
 
         viewModel.isSuccess.observe(this, Observer {
             if (it) {
-                val name = et_add_stock_name.text.toString()
                 //untuk reload list atau tidak ketika sudah ditambahkan
                 Statis.isStockUpdate = true
-                longToast("$name Berhasil ditambahkan")
-            }
-        })
-
-        viewModel.isCont.observe(this, Observer {
-            if (!it) {
                 finish()
-            } else {
-                et_add_stock_name.setText("")
             }
         })
 
-
-        et_add_stock_category.setOnClickListener { choiceCategory() }
-
+        //STOK CATEGORY CHOICES
+        et_edit_stock_category.setOnClickListener { choiceCategory() }
 
         //BUTTON SAVE
-        bt_add_stock_continue.setOnClickListener { sendDataStock(true) }
-        bt_add_stock_finish.setOnClickListener { sendDataStock(false) }
+        bt_edit_stock_continue.setOnClickListener { sendDataStock() }
     }
 
-    private fun sendDataStock(isContinue: Boolean) {
-        if (et_add_stock_name.text.toString().isNotEmpty()) {
+    private fun sendDataStock() {
+        if (et_edit_stock_name.text.toString().isNotEmpty()) {
             stock = StockPostData(
-                et_add_stock_name.text.toString(),
-                et_add_stock_category.text.toString(),
-                et_add_stock_thresold.text.toString().toInt(),
-                et_add_stock_unit.text.toString(),
+                et_edit_stock_name.text.toString(),
+                et_edit_stock_category.text.toString(),
+                et_edit_stock_thresold.text.toString().toInt(),
+                et_edit_stock_unit.text.toString(),
                 true,
-                et_add_stock_note.text.toString(),
-                0 //ID TIDAK DIPAKAI DALAM CREATE
+                et_edit_stock_note.text.toString(),
+                intentData.id
             )
 
-            viewModel.postStock(stock, isContinue)
+            viewModel.postStock(stock)
 
         } else {
             toast("Nama Stok Tidak Boleh Kosong!")
         }
     }
-
 
     private fun choiceCategory() {
         lateinit var dialog: AlertDialog
@@ -107,7 +108,7 @@ class AddStockActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(array, -1) { _, which ->
             val status = array[which]
             try {
-                et_add_stock_category.text = status
+                et_edit_stock_category.text = status
             } catch (e: IllegalArgumentException) {
                 toast("error")
             }

@@ -6,5 +6,6 @@ data class StockPostData (
     val threshold: Int? = 0,
     val unit: String? = "Unit",
     val active: Boolean,
-    val note: String?
+    val note: String?,
+    val id: Int
 )
