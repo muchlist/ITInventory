@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,7 +24,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="@string/filter_stok"
+                    android:text="@string/filter_komputer"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/quicksand"
-                    android:text="@string/status"
+                    android:text="@string/lokasi_"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/textView8"
                     app:layout_constraintTop_toBottomOf="@+id/textView22" />
@@ -57,13 +58,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/quicksand"
-                    android:text="@string/kategori"
+                    android:text="@string/divisi"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/textView8"
                     app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
             <Spinner
-                    android:id="@+id/sp_filter_stock_branch"
+                    android:id="@+id/sp_filter_computer_branch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -74,26 +75,26 @@
                     app:layout_constraintTop_toTopOf="@+id/textView22" />
 
             <Spinner
-                    android:id="@+id/sp_filter_stock_status"
+                    android:id="@+id/sp_filter_computer_lokasi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/textView23"
-                    app:layout_constraintEnd_toEndOf="@+id/sp_filter_stock_branch"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_filter_computer_branch"
                     app:layout_constraintStart_toEndOf="@+id/textView23"
-                    app:layout_constraintStart_toStartOf="@+id/sp_filter_stock_branch"
+                    app:layout_constraintStart_toStartOf="@+id/sp_filter_computer_branch"
                     app:layout_constraintTop_toTopOf="@+id/textView23" />
 
             <Spinner
-                    android:id="@+id/sp_filter_stock_category"
+                    android:id="@+id/sp_filter_computer_divisi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/textView25"
-                    app:layout_constraintEnd_toEndOf="@+id/sp_filter_stock_status"
-                    app:layout_constraintStart_toStartOf="@+id/sp_filter_stock_status"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_filter_computer_branch"
+                    app:layout_constraintStart_toStartOf="@+id/sp_filter_computer_branch"
                     app:layout_constraintTop_toTopOf="@+id/textView25" />
 
             <Button
-                    android:id="@+id/bt_filter_stock_apply"
+                    android:id="@+id/bt_filter_computer_apply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
@@ -102,7 +103,48 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+            <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/seat"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
                     app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+            <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/status"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+            <Spinner
+                    android:id="@+id/sp_filter_computer_seat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView27"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_filter_computer_divisi"
+                    app:layout_constraintStart_toEndOf="@+id/textView27"
+                    app:layout_constraintStart_toStartOf="@+id/sp_filter_computer_divisi"
+                    app:layout_constraintTop_toTopOf="@+id/textView27" />
+
+            <Spinner
+                    android:id="@+id/sp_filter_computer_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView30"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_filter_computer_seat"
+                    app:layout_constraintStart_toStartOf="@+id/sp_filter_computer_seat"
+                    app:layout_constraintTop_toTopOf="@+id/textView30" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

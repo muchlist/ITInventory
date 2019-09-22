@@ -33,6 +33,42 @@
         <item>Lainnya</item>
     </string-array>
 
+    <string-array name="computer_location_array">
+        <item>---</item>
+        <item>Bjm_Reg</item>
+        <item>Bjm_Trisakti</item>
+        <item>Bjm_TPKN</item>
+        <item>Bjm_Pulpis</item>
+    </string-array>
+
+    <string-array name="computer_division_array">
+        <item>---</item>
+        <item>Umum</item>
+        <item>Operasional</item>
+        <item>Komersial</item>
+        <item>Teknik</item>
+        <item>Keuangan</item>
+        <item>TIK</item>
+        <item>SMI</item>
+        <item>GM</item>
+        <item>Server</item>
+        <item>Lainnya</item>
+    </string-array>
+
+    <string-array name="computer_seat_manajemen_array">
+        <item>---</item>
+        <item>true</item>
+        <item>false</item>
+    </string-array>
+
+    <string-array name="computer_status_array">
+        <item>---</item>
+        <item>Baik</item>
+        <item>Backup</item>
+        <item>Rusak</item>
+        <item>Hilang</item>
+    </string-array>
+
 
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>
@@ -218,6 +254,10 @@
     <string name="tambah_jumlah_stok">Tambah Jumlah Stok</string>
     <string name="tambahkan">Tambahkan</string>
     <string name="nomor_acara_diisi_dengan_nomor_berita_acara_atau_penanda_lainnya_catatan_dapat_di_isi_dengan_lokasi_penyimpanan_dan_detil_pengadaan">*[Nomor Acara] diisi dengan nomor berita acara atau penanda lainnya. *[Catatan] dapat di isi dengan lokasi penyimpanan dan detil pengadaan.</string>
+    <string name="lokasi_">Lokasi</string>
+    <string name="seat">Seat M.</string>
+    <string name="filter_komputer">Filter Komputer</string>
+    <string name="inv_komputer">-- INV. KOMPUTER --</string>
 
 
 </resources>

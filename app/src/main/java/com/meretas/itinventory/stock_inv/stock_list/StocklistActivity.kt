@@ -71,7 +71,12 @@ class StocklistActivity : AppCompatActivity() {
 
         //BUTTON ADD
         bt_stocklist_tambah.setOnClickListener {
-            startActivity<AddStockActivity>()
+            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()){
+                toast("User Tidak Dapat Menambahkan Stok")
+            }else{
+                startActivity<AddStockActivity>()
+            }
+
         }
 
 

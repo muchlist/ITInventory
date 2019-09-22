@@ -8,7 +8,7 @@
 
 
     <LinearLayout
-            android:id="@+id/stock_chip_container"
+            android:id="@+id/linear_layout_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
@@ -51,7 +51,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bt_stocklist_tambah"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stock_chip_container" />
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_container" />
 
     <Button
             android:id="@+id/bt_stocklist_tambah"

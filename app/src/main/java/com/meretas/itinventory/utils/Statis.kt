@@ -19,6 +19,13 @@ class Statis {
         var whatStockActiveStatus = true
         var whatStockBranch = ""
 
+        //Computer List Filter
+        var whatComputerBranch = ""
+        var whatComputerLocation = ""
+        var whatComputerDivision = ""
+        var whatComputerSeatManajemen = ""
+        var whatComputerStatus = "Baik"
+
 
     }
 }

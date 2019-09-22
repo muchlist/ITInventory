@@ -14,7 +14,6 @@
         android:padding="8dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        app:cardBackgroundColor="@color/grey_line_very"
         app:cardCornerRadius="5dp"
         app:cardElevation="1dp"
         app:strokeColor="@color/grey_60"

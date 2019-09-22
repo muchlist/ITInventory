@@ -105,12 +105,15 @@ interface ApiService {
         @Path("id") id: Int
     ): Call<HistoryListData>
 
-    //@Headers("Content-type:application/json")
+    //?branch=&location=&division=&seat_management=true&status=
     @GET("computers/")
     fun getComputerList(
         @Header("Authorization") token: String,
-        @Query("branch") branch: String = "Banjarmasin",
+        @Query("branch") branch: String,
         @Query("location") location: String = "",
+        @Query("division") division: String,
+        @Query("seat_management") seat_management: String,
+        @Query("status") status: String,
         @Query("ordering") order: String = "division,client_name"
     ): Call<ComputerListData>
 

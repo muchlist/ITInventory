@@ -8,20 +8,35 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class ComputerListPresenter(private var view: ComputerListView?){
+class ComputerListPresenter(private var view: ComputerListView?) {
 
-    fun getComputerData(branch:String,
-                        location:String) {
+    fun getComputerData(
+        branch: String,
+        location: String,
+        division: String,
+        seatManagement: String,
+        status: String
+    ) {
 
         view?.showLoading()
 
-        Api.retrofitService.getComputerList(App.prefs.authTokenSave,branch,location).enqueue(object : Callback<ComputerListData> {
+        Api.retrofitService.getComputerList(
+            App.prefs.authTokenSave,
+            branch,
+            location,
+            division,
+            seatManagement,
+            status
+        ).enqueue(object : Callback<ComputerListData> {
             override fun onFailure(call: Call<ComputerListData>, t: Throwable) {
                 view?.hideLoading()
                 view?.showToast("Tidak dapat terhubung ke server")
             }
 
-            override fun onResponse(call: Call<ComputerListData>, response: Response<ComputerListData>) {
+            override fun onResponse(
+                call: Call<ComputerListData>,
+                response: Response<ComputerListData>
+            ) {
                 when {
                     response.isSuccessful -> {
                         val historyResponse = response.body()!!
@@ -47,39 +62,43 @@ class ComputerListPresenter(private var view: ComputerListView?){
         })
     }
 
-    fun getComputerDataSearch(search: String){
+    fun getComputerDataSearch(search: String) {
 
         view?.showLoading()
 
-        Api.retrofitService.getComputerListSearch(App.prefs.authTokenSave,search).enqueue(object : Callback<ComputerListData> {
-            override fun onFailure(call: Call<ComputerListData>, t: Throwable) {
-                view?.hideLoading()
-                view?.showToast(t.toString())
-            }
+        Api.retrofitService.getComputerListSearch(App.prefs.authTokenSave, search)
+            .enqueue(object : Callback<ComputerListData> {
+                override fun onFailure(call: Call<ComputerListData>, t: Throwable) {
+                    view?.hideLoading()
+                    view?.showToast(t.toString())
+                }
 
-            override fun onResponse(call: Call<ComputerListData>, response: Response<ComputerListData>) {
-                when {
-                    response.isSuccessful -> {
-                        val historyResponse = response.body()!!
-                        val historyList = historyResponse.results
-                        val unitCount = historyResponse.count.toString()
+                override fun onResponse(
+                    call: Call<ComputerListData>,
+                    response: Response<ComputerListData>
+                ) {
+                    when {
+                        response.isSuccessful -> {
+                            val historyResponse = response.body()!!
+                            val historyList = historyResponse.results
+                            val unitCount = historyResponse.count.toString()
 
-                        view?.hideLoading()
-                        view?.showComputers(historyList)
-                        view?.updateUnit(unitCount)
+                            view?.hideLoading()
+                            view?.showComputers(historyList)
+                            view?.updateUnit(unitCount)
 
-                    }
-                    response.code() == 401 -> {
-                        view?.hideLoading()
-                        view?.showToast(response.code().toString())
-                    }
-                    else -> {
-                        view?.hideLoading()
-                        view?.showToast(response.code().toString())
+                        }
+                        response.code() == 401 -> {
+                            view?.hideLoading()
+                            view?.showToast(response.code().toString())
+                        }
+                        else -> {
+                            view?.hideLoading()
+                            view?.showToast(response.code().toString())
+                        }
                     }
                 }
-            }
-        })
+            })
     }
 
     fun onDestroy() {
