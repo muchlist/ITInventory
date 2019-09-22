@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/quicksand"
-                android:text="Sisa :"
+                android:text="@string/sisa"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_stock_branch"
                 app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -94,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:contentDescription="@string/icon_low_value"
                 android:tint="@color/red_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

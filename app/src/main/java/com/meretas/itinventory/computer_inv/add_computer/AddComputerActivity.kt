@@ -65,7 +65,7 @@ class AddComputerActivity : AppCompatActivity() {
         })
 
         viewModel.isCont.observe(this, Observer {
-            if (!it){
+            if (!it) {
                 finish()
             } else {
                 et_add_name.setText("")
@@ -74,9 +74,7 @@ class AddComputerActivity : AppCompatActivity() {
 
         //MENYESUAIKAN LAYOUT, CHOICES LOCATION HANYA UNTUK BANJARMASIN
         tv_add_cabang.text = App.prefs.userBranchSave
-        if (App.prefs.userBranchSave == BANJARMASIN){
-            //PASS
-        } else {
+        if (App.prefs.userBranchSave != BANJARMASIN) {
             et_add_lokasi.visibility = View.GONE
         }
 

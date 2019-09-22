@@ -1,5 +1,6 @@
 package com.meretas.itinventory.computer_inv.computer_detail
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -20,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_detail_computer.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
+import java.lang.Character.toUpperCase
 
 class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
 
@@ -155,6 +157,7 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         super.onDestroy()
     }
 
+    @SuppressLint("DefaultLocale")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {

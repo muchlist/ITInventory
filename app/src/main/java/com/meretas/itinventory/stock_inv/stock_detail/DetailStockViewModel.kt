@@ -28,9 +28,9 @@ class DetailStockViewModel(
 
 
     //ADDITION DATA
-    private val _AdditionData: MutableLiveData<List<AddAndConsumeData.Result>> = MutableLiveData()
-    val AdditionData: LiveData<List<AddAndConsumeData.Result>>
-        get() = _AdditionData
+    private val _additionData: MutableLiveData<List<AddAndConsumeData.Result>> = MutableLiveData()
+    val additionData: LiveData<List<AddAndConsumeData.Result>>
+        get() = _additionData
 
     private val _isAdditionListLoading = MutableLiveData<Boolean>()
     val isAdditionListLoading: LiveData<Boolean>
@@ -41,9 +41,9 @@ class DetailStockViewModel(
         get() = _isAdditionListError
 
     //CONSUME DATA
-    private val _ConsumeData: MutableLiveData<List<AddAndConsumeData.Result>> = MutableLiveData()
-    val ConsumeData: LiveData<List<AddAndConsumeData.Result>>
-        get() = _ConsumeData
+    private val _consumeData: MutableLiveData<List<AddAndConsumeData.Result>> = MutableLiveData()
+    val consumeData: LiveData<List<AddAndConsumeData.Result>>
+        get() = _consumeData
 
     private val _isConsumeListLoading = MutableLiveData<Boolean>()
     val isConsumeListLoading: LiveData<Boolean>
@@ -108,7 +108,7 @@ class DetailStockViewModel(
             override fun onResponse(call: Call<AddAndConsumeData>, response: Response<AddAndConsumeData>) {
                 if (response.isSuccessful) {
                     val listAddition = response.body()?.results
-                    _AdditionData.postValue(listAddition)
+                    _additionData.postValue(listAddition)
                     _isAdditionListLoading.value = false
                 } else {
                     _isAdditionListError.value = "Terjadi Kesalahan"
@@ -131,7 +131,7 @@ class DetailStockViewModel(
             override fun onResponse(call: Call<AddAndConsumeData>, response: Response<AddAndConsumeData>) {
                 if (response.isSuccessful) {
                     val listConsume = response.body()?.results
-                    _ConsumeData.postValue(listConsume)
+                    _consumeData.postValue(listConsume)
                     _isConsumeListLoading.value = false
                 } else {
                     _isConsumeListError.value = "Terjadi Kesalahan"

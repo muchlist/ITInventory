@@ -3,16 +3,16 @@ package com.meretas.itinventory.stock_inv.stock_detail
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.AdditionStockFragment
-import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.ConsumeStockFragment
+import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.AdditionListStockFragment
+import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.ConsumeListStockFragment
 import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.DetailStockFragment
 
 class StockPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
 
     private val pages = listOf(
         DetailStockFragment(),
-        ConsumeStockFragment(),
-        AdditionStockFragment()
+        ConsumeListStockFragment(),
+        AdditionListStockFragment()
     )
 
     override fun getItem(position: Int): Fragment {

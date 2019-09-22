@@ -12,7 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".stock_inv.stock_edit.EditStockActivity"></activity>
+        <activity android:name=".stock_inv.stock_edit.EditStockActivity"/>
         <activity android:name=".stock_inv.stock_detail.stock_use_edit.EditStockUseActivity" />
         <activity android:name=".stock_inv.stock_detail.stock_use_detail.StockUseDetailActivity" />
         <activity android:name=".stock_inv.stock_detail.stock_use_add.AddConsumeStockActivity" />

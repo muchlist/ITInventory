@@ -7,7 +7,6 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
-import com.meretas.itinventory.utils.FROM_ADDITION_STOCK
 import com.meretas.itinventory.utils.Statis
 import com.meretas.itinventory.utils.Statis.Companion.isStockChangeMinus
 import com.meretas.itinventory.utils.Statis.Companion.isStockChangePlus

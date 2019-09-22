@@ -1,6 +1,39 @@
 <resources>
     <string name="app_name">ITventory</string>
 
+    <!--    ARRAY OPTION-->
+    <string-array name="branch_array">
+        <item>Banjarmasin</item>
+        <item>Sampit</item>
+        <item>Bagendang</item>
+        <item>Kotabaru</item>
+        <item>Batulicin</item>
+        <item>Mekarputih</item>
+        <item>Kumai</item>
+        <item>Bumiharjo</item>
+    </string-array>
+
+    <string-array name="stock_active_array">
+        <item>Aktif</item>
+        <item>Non Aktif</item>
+    </string-array>
+
+    <string-array name="stock_category_array">
+        <item>Semua</item>
+        <item>Komputer</item>
+        <item>Part komputer</item>
+        <item>UPS</item>
+        <item>Printer</item>
+        <item>CCTV</item>
+        <item>Jaringan</item>
+        <item>Server</item>
+        <item>Handheld</item>
+        <item>Display</item>
+        <item>Presensi</item>
+        <item>Lainnya</item>
+    </string-array>
+
+
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>
     <string name="identitas">Identitas</string>
@@ -83,8 +116,6 @@
     <string name="about">About</string>
     <string name="detail">Detail</string>
     <string name="itventory_ver_0_1">ITventory Ver 1.0.1</string>
-    <string name="developed_by_muchlis">Developed by IT Sampit</string>
-    <string name="supported_by_it_reg_kalimantan">Supported by IT Reg Kalimantan</string>
     <string name="ventory_login">ventory Login</string>
     <string name="itventory_logo">itventory logo</string>
     <string name="logo_muchlis">Logo Muchlis</string>
@@ -130,7 +161,7 @@
     <string name="security">Security</string>
     <string name="sec_desc">I value your trust in providing us your Personal Information, thus we are striving to use
         commercially acceptable means of protecting it. But remember that no method of transmission over the internet,
-        or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+        or method of electronic storage is 100 percent secure and reliable, and I cannot guarantee its absolute security.
     </string>
     <string name="children_s_privacy">Children’s Privacy</string>
     <string name="child_desc">These Services do not address anyone under the age of 13. I do not knowingly collect
@@ -150,9 +181,43 @@
         by App Privacy Policy Generator
     </string>
     <string name="contact_us">Contact Us</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tambah_nama_stok">Tambah Nama Stok</string>
+    <string name="nama_stok">Nama Stok</string>
+    <string name="satuan">Satuan</string>
+    <string name="ambang_batas">Ambang Batas</string>
+    <string name="lokasi_catatan">Lokasi / Catatan</string>
+    <string name="edit_stok">Edit Stok</string>
+    <string name="simpan__">Simpan</string>
+    <string name="hapus">Hapus</string>
+    <string name="ubah">ubah</string>
+    <string name="stok_barang">-- STOK BARANG --</string>
+    <string name="filter">Filter</string>
+    <string name="tambah_stok">Tambah Stok</string>
+    <string name="filter_stok">Filter Stok</string>
+    <string name="kategori">Kategori</string>
+    <string name="terapkan">Terapkan</string>
+    <string name="nonaktifkan">Nonaktifkan</string>
+    <string name="total_ditambahkan">Total Ditambahkan :</string>
+    <string name="total_terpakai">Total Terpakai :</string>
+    <string name="sisa">Sisa :</string>
+    <string name="batas">Batas :</string>
+    <string name="edit">Edit</string>
+    <string name="dibuat">Dibuat :</string>
+    <string name="cabang__">Cabang :</string>
+    <string name="ba">BA:</string>
+    <string name="icon_low_value">icon_low_value</string>
+    <string name="nomer_acara">Nomer Acara</string>
+    <string name="kurangi_jumlah_stok">Kurangi Jumlah Stok</string>
+    <string name="nomor_acara">Nomor Acara</string>
+    <string name="jumlah_">Jumlah</string>
+    <string name="catatan_">Catatan</string>
+    <string name="kurangkan">Kurangkan</string>
+    <string name="nomor_acara_diisi_dengan_nomor_berita_acara_atau_penanda_lainnya_catatan_dapat_di_isi_dengan_lokasi_dan_keperluan_pemakaian">*[Nomor Acara] diisi dengan nomor berita acara atau penanda lainnya. *[Catatan] dapat di isi dengan lokasi dan keperluan pemakaian.</string>
+    <string name="pakai_barang">Pakai Barang</string>
+    <string name="tambahkan_barang">Tambahkan barang</string>
+    <string name="tambah_jumlah_stok">Tambah Jumlah Stok</string>
+    <string name="tambahkan">Tambahkan</string>
+    <string name="nomor_acara_diisi_dengan_nomor_berita_acara_atau_penanda_lainnya_catatan_dapat_di_isi_dengan_lokasi_penyimpanan_dan_detil_pengadaan">*[Nomor Acara] diisi dengan nomor berita acara atau penanda lainnya. *[Catatan] dapat di isi dengan lokasi penyimpanan dan detil pengadaan.</string>
 
 
 </resources>

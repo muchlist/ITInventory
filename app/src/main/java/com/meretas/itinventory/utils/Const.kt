@@ -19,9 +19,10 @@ const val INTENT_DETAIL_ADD_CONSUME_ID = "id_consume"
 const val INTENT_DETAIL_ADD_CONSUME_NAME = "consume_name"
 
 //intent stock use detail
-const val SOURCE_INTENT_STOCK_USE = "stock_use_source"
-const val FROM_ADDITION_STOCK = "stock_use_addition"
-const val FROM_CONSUME_STOCK = "stock_use_consume"
+const val SOURCE_INTENT_STOCK_ACTIVE = "stock_use_source_active" //Key
+const val SOURCE_INTENT_STOCK_USE = "stock_use_source" //Key
+const val FROM_ADDITION_STOCK = "stock_use_addition" //Value
+const val FROM_CONSUME_STOCK = "stock_use_consume" //Value
 const val DATA_INTENT_STOCK_USE = "stock_use_data"
 
 //stock Status

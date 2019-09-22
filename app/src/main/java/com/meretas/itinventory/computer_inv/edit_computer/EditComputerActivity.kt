@@ -74,9 +74,7 @@ class EditComputerActivity : AppCompatActivity() {
         }
 
         //MENYESUAIKAN LAYOUT, CHOICES LOCATION HANYA UNTUK BANJARMASIN
-        if (App.prefs.userBranchSave == BANJARMASIN){
-            //PASS
-        } else {
+        if (App.prefs.userBranchSave != BANJARMASIN){
             et_edit_lokasi.visibility = View.GONE
         }
 

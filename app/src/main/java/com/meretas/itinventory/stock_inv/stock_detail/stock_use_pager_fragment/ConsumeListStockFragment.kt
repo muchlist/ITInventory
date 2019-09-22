@@ -12,16 +12,13 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import com.meretas.itinventory.stock_inv.stock_detail.DetailStockViewModel
 import com.meretas.itinventory.stock_inv.stock_detail.stock_use_detail.StockUseDetailActivity
-import com.meretas.itinventory.utils.DATA_INTENT_STOCK_USE
-import com.meretas.itinventory.utils.FROM_CONSUME_STOCK
-import com.meretas.itinventory.utils.SOURCE_INTENT_STOCK_USE
-import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.fragment_consume_stock.*
 import kotlinx.android.synthetic.main.fragment_consume_stock.view.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class ConsumeStockFragment : Fragment() {
+class ConsumeListStockFragment : Fragment() {
 
     private lateinit var viewModel: DetailStockViewModel
     private lateinit var consumeAdapter: ConsumeStockAdapter
@@ -50,7 +47,7 @@ class ConsumeStockFragment : Fragment() {
             }
         })
 
-        viewModel.ConsumeData.observe(viewLifecycleOwner, Observer {
+        viewModel.consumeData.observe(viewLifecycleOwner, Observer {
             this.consumeData.clear()
             this.consumeData.addAll(it)
             //runLayoutAnimation(rv_stock_additions)
@@ -71,7 +68,8 @@ class ConsumeStockFragment : Fragment() {
         consumeAdapter = ConsumeStockAdapter(activity, consumeData) {
             activity?.startActivity<StockUseDetailActivity>(
                 SOURCE_INTENT_STOCK_USE to FROM_CONSUME_STOCK,
-                DATA_INTENT_STOCK_USE to it
+                DATA_INTENT_STOCK_USE to it,
+                SOURCE_INTENT_STOCK_ACTIVE to viewModel.stockDetailData.value?.active
             )
         }
         view.rv_stock_consumes.adapter = consumeAdapter

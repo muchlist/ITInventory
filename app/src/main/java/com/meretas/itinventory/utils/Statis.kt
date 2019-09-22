@@ -14,7 +14,11 @@ class Statis {
         //ketika mengedit stock use detail maka di set true
         var isStockUseDetailUpdate = false
 
+        //Stock List Filter
         var whatStockCategory = ""
         var whatStockActiveStatus = true
+        var whatStockBranch = ""
+
+
     }
 }

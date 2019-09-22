@@ -21,6 +21,7 @@ class StockUseDetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel: StockUseDetailViewModel
     private lateinit var intentFrom: String
+    private lateinit var intentData: AddAndConsumeData.Result
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +35,12 @@ class StockUseDetailActivity : AppCompatActivity() {
         intentFrom = intent.getStringExtra(
             SOURCE_INTENT_STOCK_USE
         )
-        val intentData = intent.getParcelableExtra<AddAndConsumeData.Result>(
+        intentData = intent.getParcelableExtra(
             DATA_INTENT_STOCK_USE
         )
+            //mengecek apakah data stock active
+        val intentDataActive = intent.getBooleanExtra(SOURCE_INTENT_STOCK_ACTIVE, true)
+
         //INTENT END
 
 
@@ -52,6 +56,8 @@ class StockUseDetailActivity : AppCompatActivity() {
             tv_stockusedetail_note.text = it.note
             tv_stockusedetail_author.text = it.author
             tv_stockusedetail_date.text = it.createdAt
+
+            buttonCheckState(it.branch, intentDataActive)
         })
 
         when (intentFrom) {
@@ -64,26 +70,6 @@ class StockUseDetailActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        //TOMBOL EDIT
-        bt_stock_use_edit.setOnClickListener {
-            startActivity<EditStockUseActivity>(
-                SOURCE_INTENT_STOCK_USE to intentFrom,
-                DATA_INTENT_STOCK_USE to viewModel.stockUseDetailData.value
-            )
-        }
-
-        //TOMBOL DELETE
-        bt_stock_use_delete.setOnClickListener {
-            toast("Tahan tombol 2 detik untuk menghapus")
-        }
-
-        bt_stock_use_delete.setOnLongClickListener {
-            when (intentFrom) {
-                FROM_ADDITION_STOCK -> viewModel.deleteAddition(intentData.id)
-                FROM_CONSUME_STOCK -> viewModel.deleteConsume(intentData.id)
-            }
-            return@setOnLongClickListener true
-        }
 
         //OBSERVER
         viewModel.isLoading.observe(this, Observer {
@@ -113,6 +99,36 @@ class StockUseDetailActivity : AppCompatActivity() {
 
         //END OBSERVER
 
+    }
+
+    private fun buttonCheckState(branch: String, status: Boolean) {
+        if (App.prefs.userBranchSave != branch || App.prefs.isReadOnly || !status) {
+            bt_stock_use_edit.disable()
+            bt_stock_use_delete.disable()
+        } else {
+            bt_stock_use_edit.enable()
+            bt_stock_use_delete.enable()
+
+            //TOMBOL EDIT
+            bt_stock_use_edit.setOnClickListener {
+                startActivity<EditStockUseActivity>(
+                    SOURCE_INTENT_STOCK_USE to intentFrom,
+                    DATA_INTENT_STOCK_USE to viewModel.stockUseDetailData.value
+                )
+            }
+            //TOMBOL DELETE
+            bt_stock_use_delete.setOnClickListener {
+                toast("Tahan tombol 2 detik untuk menghapus")
+            }
+
+            bt_stock_use_delete.setOnLongClickListener {
+                when (intentFrom) {
+                    FROM_ADDITION_STOCK -> viewModel.deleteAddition(intentData.id)
+                    FROM_CONSUME_STOCK -> viewModel.deleteConsume(intentData.id)
+                }
+                return@setOnLongClickListener true
+            }
+        }
     }
 
     override fun onResume() {

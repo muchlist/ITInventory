@@ -3,13 +3,10 @@ package com.meretas.itinventory.stock_inv.stock_detail.stock_use_edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import com.meretas.itinventory.data.AddAndConsumePostData
-import com.meretas.itinventory.data.StockListData
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

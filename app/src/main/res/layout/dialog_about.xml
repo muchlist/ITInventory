@@ -50,7 +50,7 @@
                     app:layout_constraintStart_toEndOf="@+id/logo_pelindo"
                     android:layout_marginStart="16dp"/>
             <TextView
-                    android:text="Privacy Policy"
+                    android:text="@string/privacy_policy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/bt_privacy_policy"

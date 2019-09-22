@@ -11,10 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.stock_inv.stock_detail.DetailStockViewModel
 import com.meretas.itinventory.stock_inv.stock_edit.EditStockActivity
-import com.meretas.itinventory.utils.DATA_INTENT_STOCK_DETAIL
-import com.meretas.itinventory.utils.STOCK_ACTIVE
-import com.meretas.itinventory.utils.STOCK_NON_ACTIVE
-import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.*
 import com.meretas.itinventory.utils.Statis.Companion.isStockUpdate
 import kotlinx.android.synthetic.main.fragment_detail_stock.*
 import org.jetbrains.anko.startActivity
@@ -57,6 +54,9 @@ class DetailStockFragment : Fragment() {
                 tv_detail_stock_additions.text = added.toString()
                 tv_detail_stock_consume.text = used.toString()
                 tv_detail_stock_resultstock.text = (added - used).toString()
+
+                //BUTTON
+                buttonDisable(branch,active)
             }
         })
 
@@ -72,21 +72,6 @@ class DetailStockFragment : Fragment() {
             }
         })
 
-        //BUTTON STATUS CHANGE
-        bt_detail_stock_nonaktif.setOnClickListener {
-            activity?.toast("Tahan tombol selama 2 detik untuk merubah status")
-        }
-        bt_detail_stock_nonaktif.setOnLongClickListener {
-            changeStatus()
-            return@setOnLongClickListener true
-        }
-
-        //BUTTON EDIT
-        bt_detail_stock_edit.setOnClickListener {
-            activity?.startActivity<EditStockActivity>(
-                DATA_INTENT_STOCK_DETAIL to viewModel.stockDetailData.value
-            )
-        }
 
     }
 
@@ -107,4 +92,32 @@ class DetailStockFragment : Fragment() {
         }
         isStockUpdate = true
     }
+
+    private fun buttonDisable(branch: String, active: Boolean) {
+        if (App.prefs.userBranchSave != branch || App.prefs.isReadOnly) {
+            bt_detail_stock_edit.disable()
+            bt_detail_stock_nonaktif.disable()
+        } else {
+            //BUTTON STATUS CHANGE
+            bt_detail_stock_nonaktif.setOnClickListener {
+                activity?.toast("Tahan tombol selama 2 detik untuk merubah status")
+            }
+            bt_detail_stock_nonaktif.setOnLongClickListener {
+                changeStatus()
+                return@setOnLongClickListener true
+            }
+            if (active) {
+                //BUTTON EDIT
+                bt_detail_stock_edit.enable()
+                bt_detail_stock_edit.setOnClickListener {
+                    activity?.startActivity<EditStockActivity>(
+                        DATA_INTENT_STOCK_DETAIL to viewModel.stockDetailData.value
+                    )
+                }
+            } else {
+                bt_detail_stock_edit.disable()
+            }
+        }
+    }
+
 }

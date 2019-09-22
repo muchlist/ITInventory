@@ -66,7 +66,7 @@
             android:layout_marginEnd="8dp"
             android:backgroundTint="@color/button_color_red"
             android:fontFamily="@font/roboto"
-            android:text="Nonaktifkan"
+            android:text="@string/nonaktifkan"
             app:layout_constraintEnd_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_stock_note" />
 
@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand"
-                    android:text="Total Ditambahkan :"
+                    android:text="@string/total_ditambahkan"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView29"
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/quicksand"
-                    android:text="Total Terpakai :"
+                    android:text="@string/total_terpakai"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="Sisa :"
+                    android:text="@string/sisa"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/textView29"
@@ -198,7 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/quicksand"
-            android:text="Batas :"
+            android:text="@string/batas"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/tv_detail_stock_thresold"
             app:layout_constraintTop_toTopOf="@+id/tv_detail_stock_thresold" />
@@ -220,7 +220,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
-            android:text="Edit"
+            android:text="@string/edit"
             app:layout_constraintEnd_toEndOf="@+id/bt_detail_stock_nonaktif"
             app:layout_constraintTop_toBottomOf="@+id/bt_detail_stock_nonaktif" />
 
@@ -244,7 +244,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
-            android:text="Dibuat :"
+            android:text="@string/dibuat"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_name"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -254,7 +254,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand"
-            android:text="Cabang :"
+            android:text="@string/cabang__"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_detail_stock_category" />
@@ -265,7 +265,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/quicksand"
-            android:text="Catatan :"
+            android:text="@string/catatan"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/tv_detail_stock_note"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />

@@ -100,7 +100,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             presenter.getHistoryDashboard()
         }
 
-        //dialog
+        //INIT dialog
         myDialog = Dialog(this)
 
 
@@ -264,6 +264,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             doubleClickLogout = true
             Handler().postDelayed({ doubleClickLogout = false }, 2000)
         }
+
         myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
 

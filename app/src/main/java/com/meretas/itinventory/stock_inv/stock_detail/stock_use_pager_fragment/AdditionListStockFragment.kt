@@ -14,6 +14,7 @@ import com.meretas.itinventory.stock_inv.stock_detail.DetailStockViewModel
 import com.meretas.itinventory.stock_inv.stock_detail.stock_use_detail.StockUseDetailActivity
 import com.meretas.itinventory.utils.DATA_INTENT_STOCK_USE
 import com.meretas.itinventory.utils.FROM_ADDITION_STOCK
+import com.meretas.itinventory.utils.SOURCE_INTENT_STOCK_ACTIVE
 import com.meretas.itinventory.utils.SOURCE_INTENT_STOCK_USE
 import com.meretas.itinventory.utils.Statis.Companion.isStockChangePlus
 import kotlinx.android.synthetic.main.fragment_addition_stock.*
@@ -22,7 +23,7 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
 
 
-class AdditionStockFragment : Fragment() {
+class AdditionListStockFragment : Fragment() {
 
     private lateinit var viewModel: DetailStockViewModel
     private lateinit var additionAdapter: AdditionStocksAdapter
@@ -52,7 +53,7 @@ class AdditionStockFragment : Fragment() {
             }
         })
 
-        viewModel.AdditionData.observe(viewLifecycleOwner, Observer {
+        viewModel.additionData.observe(viewLifecycleOwner, Observer {
             this.additionsData.clear()
             this.additionsData.addAll(it)
             //runLayoutAnimation(rv_stock_additions)
@@ -75,7 +76,8 @@ class AdditionStockFragment : Fragment() {
         additionAdapter = AdditionStocksAdapter(activity, additionsData) {
             activity?.startActivity<StockUseDetailActivity>(
                 SOURCE_INTENT_STOCK_USE to FROM_ADDITION_STOCK,
-                DATA_INTENT_STOCK_USE to it
+                DATA_INTENT_STOCK_USE to it,
+                SOURCE_INTENT_STOCK_ACTIVE to viewModel.stockDetailData.value?.active
             )
         }
         view.rv_stock_additions.adapter = additionAdapter

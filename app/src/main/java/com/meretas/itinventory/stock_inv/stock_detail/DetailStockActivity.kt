@@ -2,6 +2,7 @@ package com.meretas.itinventory.stock_inv.stock_detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.StockListData
@@ -41,19 +42,31 @@ class DetailStockActivity : AppCompatActivity() {
         viewModel.postDetailStock(intent)
 
 
-        bt_detail_stock_add.setOnClickListener {
-            startActivity<AddAdditionStockActivity>(
-                INTENT_DETAIL_ADD_ADDITION_ID to intent.id,
-                INTENT_DETAIL_ADD_ADDITION_NAME to intent.stockName
-            )
-        }
+        viewModel.stockDetailData.observe(this, Observer {
+            //PERCABANGN TOMBOL MENURUT BRANCH
+            if (App.prefs.userBranchSave != it.branch || App.prefs.isReadOnly || !it.active) {
+                bt_detail_stock_add.disable()
+                bt_detail_stock_consume.disable()
+            } else {
+                bt_detail_stock_add.enable()
+                bt_detail_stock_consume.enable()
 
-        bt_detail_stock_consume.setOnClickListener {
-            startActivity<AddConsumeStockActivity>(
-                INTENT_DETAIL_ADD_CONSUME_ID to intent.id,
-                INTENT_DETAIL_ADD_CONSUME_NAME to intent.stockName
-            )
-        }
+                bt_detail_stock_add.setOnClickListener {
+                    startActivity<AddAdditionStockActivity>(
+                        INTENT_DETAIL_ADD_ADDITION_ID to intent.id,
+                        INTENT_DETAIL_ADD_ADDITION_NAME to intent.stockName
+                    )
+                }
+
+                bt_detail_stock_consume.setOnClickListener {
+                    startActivity<AddConsumeStockActivity>(
+                        INTENT_DETAIL_ADD_CONSUME_ID to intent.id,
+                        INTENT_DETAIL_ADD_CONSUME_NAME to intent.stockName
+                    )
+                }
+            }
+        })
+
 
     }
 
@@ -62,4 +75,5 @@ class DetailStockActivity : AppCompatActivity() {
         vp_detail_stock.offscreenPageLimit = 2
         tl_detail_stock.setupWithViewPager(vp_detail_stock)
     }
+
 }
