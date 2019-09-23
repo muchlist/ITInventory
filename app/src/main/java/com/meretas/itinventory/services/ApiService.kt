@@ -102,7 +102,8 @@ interface ApiService {
     @GET("computers/{id}/historys/")
     fun getHistoryPerComputer(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
     ): Call<HistoryListData>
 
     //?branch=&location=&division=&seat_management=true&status=
@@ -114,7 +115,8 @@ interface ApiService {
         @Query("division") division: String,
         @Query("seat_management") seat_management: String,
         @Query("status") status: String,
-        @Query("ordering") order: String = "division,client_name"
+        @Query("ordering") order: String = "division,client_name",
+        @Query("format") format: String = "json"
     ): Call<ComputerListData>
 
     //@Headers("Content-type:application/json")
@@ -122,7 +124,8 @@ interface ApiService {
     fun getComputerListSearch(
         @Header("Authorization") token: String,
         @Query("search") search: String?,
-        @Query("ordering") order: String = "client_name"
+        @Query("ordering") order: String = "client_name",
+        @Query("format") format: String = "json"
     ): Call<ComputerListData>
 
     //@Headers("Content-type:application/json")
@@ -132,14 +135,16 @@ interface ApiService {
         @Query("branch") branch: String = "Banjarmasin",
         @Query("category") category: String,
         @Query("active") active: Boolean = true,
-        @Query("ordering") order: String = "branch,category"
+        @Query("ordering") order: String = "branch,category",
+        @Query("format") format: String = "json"
     ): Call<StockListData>
 
     //@Headers("Content-type:application/json")
     @GET("stocks/{id}/")
     fun getStockDetail(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
     ): Call<StockListData.Result>
 
     @GET("stocks/{id}/{status}")
@@ -177,13 +182,15 @@ interface ApiService {
     @GET("stocks/{id}/additions/")
     fun getAdditionList(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
     ): Call<AddAndConsumeData>
 
     @GET("stocks/{id}/consumes/")
     fun getConsumeList(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
     ): Call<AddAndConsumeData>
 
     @FormUrlEncoded
@@ -242,14 +249,16 @@ interface ApiService {
     @GET("additions/{id}/")
     fun getAdditionDetail(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
     ): Call<AddAndConsumeData.Result>
 
     //@Headers("Content-type:application/json")
     @GET("consumes/{id}/")
     fun getConsumeDetail(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
     ): Call<AddAndConsumeData.Result>
 
 

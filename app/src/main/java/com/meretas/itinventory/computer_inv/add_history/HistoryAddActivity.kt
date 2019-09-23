@@ -25,7 +25,7 @@ class HistoryAddActivity : AppCompatActivity(), HistoryAddView {
         val intentID = intent.getIntExtra(INTENT_DETAIL_ADD_HISTORY_ID, 0)
         val intentName = intent.getStringExtra(INTENT_DETAIL_ADD_HISTORY_NAME)
 
-        tv_add_history_name.text = "PC " + intentName
+        tv_add_history_name.text = "PC $intentName"
 
         presenter = HistoryAddPresenter(this)
 

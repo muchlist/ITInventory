@@ -31,16 +31,3 @@ const val STOCK_NON_ACTIVE = "deactive"
 
 //Branch
 const val BANJARMASIN = "Banjarmasin"
-const val SAMPIT = "Sampit"
-const val BAGENDANG = "Bagendang"
-const val KOTABARU = "Kotabaru"
-const val BATULICIN = "Batulicin"
-const val MEKARPUTIH = "Mekarputih"
-const val BUMIHARJO = "Bumiharjo"
-const val KUMAI = "Kumai"
-
-//location
-const val REGIONAL = "Bjm_Reg"
-const val TRISAKTI = "Bjm_Trisakti"
-const val PULPIS = "Bjm_Pulpis"
-const val TPKB = "Bjm_TPKB"

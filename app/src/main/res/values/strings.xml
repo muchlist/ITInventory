@@ -111,7 +111,6 @@
     <string name="pastikan_status_server_tidak_sleep_sebelum_melakukan_login">* Pastikan status server OK
         sebelum melakukan login.
     </string>
-    <string name="sleep">SLEEP</string>
     <string name="catatan">Catatan :</string>
     <string name="status_">Status :</string>
     <string name="name">Name</string>
@@ -134,19 +133,6 @@
     <string name="seat_management_">Seat Management :</string>
     <string name="history">--RIWAYAT--</string>
     <string name="reload">RELOAD</string>
-    <string name="bjm">Bjm</string>
-    <string name="spt">Spt</string>
-    <string name="bgd">Bgd</string>
-    <string name="ktb">Ktb</string>
-    <string name="btl">Btl</string>
-    <string name="mkp">Mkp</string>
-    <string name="km">Km</string>
-    <string name="bhj">Bhj</string>
-    <string name="regional">Regional</string>
-    <string name="tpkb">TPKB</string>
-    <string name="trisakti">Trisakti</string>
-    <string name="pulangpisau">PulangPisau</string>
-    <string name="none">None</string>
     <string name="tambah_komputer">Tambah Komputer</string>
     <string name="jumlah">Jumlah : &#8212;</string>
     <string name="about">About</string>
@@ -240,7 +226,7 @@
     <string name="edit">Edit</string>
     <string name="dibuat">Dibuat :</string>
     <string name="cabang__">Cabang :</string>
-    <string name="ba">BA:</string>
+    <string name="ba">_</string>
     <string name="icon_low_value">icon_low_value</string>
     <string name="nomer_acara">Nomer Acara</string>
     <string name="kurangi_jumlah_stok">Kurangi Jumlah Stok</string>
@@ -258,6 +244,11 @@
     <string name="seat">Seat M.</string>
     <string name="filter_komputer">Filter Komputer</string>
     <string name="inv_komputer">-- INV. KOMPUTER --</string>
+    <string name="logo_menu_gridview">Logo Menu GridView</string>
+    <string name="ubah_penambahan">Ubah Penambahan</string>
+    <string name="ubah_pengurangan">Ubah Pengurangan</string>
+    <string name="ditambahkan">Ditambahkan</string>
+    <string name="dipakai">Dipakai</string>
 
 
 </resources>

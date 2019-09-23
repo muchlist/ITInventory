@@ -10,18 +10,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
 import com.meretas.itinventory.computer_inv.add_history.HistoryAddActivity
+import com.meretas.itinventory.computer_inv.edit_computer.EditComputerActivity
+import com.meretas.itinventory.computer_inv.history.HistoryDetailActivity
 import com.meretas.itinventory.dashboard.HistoryAdapter
 import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.data.ComputerPostData
 import com.meretas.itinventory.data.HistoryListData
-import com.meretas.itinventory.computer_inv.edit_computer.EditComputerActivity
-import com.meretas.itinventory.computer_inv.history.HistoryDetailActivity
 import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.activity_detail_computer.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
-import java.lang.Character.toUpperCase
 
 class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
 
@@ -36,13 +35,15 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
     private lateinit var historyAdapterB: HistoryAdapter
     private var historyDataB: MutableList<HistoryListData.Result> = mutableListOf()
 
+    @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_computer)
 
         presenter = DetailComputerPresenter(this)
 
-        val intent = intent.getParcelableExtra<ComputerListData.Result>(DATA_INTENT_COMPUTER_LIST_DETAIL)
+        val intent =
+            intent.getParcelableExtra<ComputerListData.Result>(DATA_INTENT_COMPUTER_LIST_DETAIL)
 
         mId = intent.id
         val mSeatManajemen: String
@@ -69,7 +70,8 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         tv_detail_branch.text = intent.branch
         tv_detail_division.text = intent.division
         tv_detail_location.text = mLokasi
-        tv_detail_full_pc.text = (intent.computerType + " - " + intent.merkModel + " - " + intent.year).toUpperCase()
+        tv_detail_full_pc.text =
+            (intent.computerType + " - " + intent.merkModel + " - " + intent.year).toUpperCase()
         tv_detail_seat_manajemen.text = mSeatManajemen
         tv_detail_os.text = translate.osTranslation(intent.operationSystem)
         tv_detail_prosessor.text = translate.processorTranslation(intent.processor)
@@ -80,7 +82,8 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         tv_detail_note.text = intent.note
 
         //Historr Recyclerview
-        rv_detail_history.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_detail_history.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         historyAdapterB = HistoryAdapter(this, historyDataB) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
@@ -164,7 +167,8 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
             if (resultCode == Activity.RESULT_OK) {
                 bt_detail_edit_computer.isClickable = false
 
-                val dataResult: ComputerPostData = data!!.getParcelableExtra(INTENT_EDIT_COMPUTER_RESULT)
+                val dataResult: ComputerPostData =
+                    data!!.getParcelableExtra(INTENT_EDIT_COMPUTER_RESULT)
                 tv_detail_client_name.text = dataResult.namaUser.toUpperCase()
                 tv_detail_hostname.text = dataResult.hostKomputer
                 tv_detail_ip_address.text = dataResult.alamatIp

@@ -8,7 +8,9 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.animation.GridLayoutAnimationController
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +19,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.PrivacyPolicyActivity
 import com.meretas.itinventory.R
 import com.meretas.itinventory.computer_inv.computer_list.ComputerListActivity
-import com.meretas.itinventory.data.HistoryListData
 import com.meretas.itinventory.computer_inv.history.HistoryDetailActivity
+import com.meretas.itinventory.data.DataMenu
+import com.meretas.itinventory.data.HistoryListData
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.stock_inv.stock_list.StocklistActivity
 import com.meretas.itinventory.utils.App
@@ -43,6 +46,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     private lateinit var myDialog: Dialog
     private var doubleClickLogout = false
 
+    //gridview
+    private lateinit var menuAdapter: MenuListAdapter
+    private var menuData: MutableList<DataMenu> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -61,7 +68,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
 
         //Historr Recyclerview
-        rv_history_dashboard.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        rv_history_dashboard.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         historyAdapter = HistoryAdapter(this, historyData) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
@@ -70,17 +78,6 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
         //mengisi History Recyclerview
         presenter.getHistoryDashboard()
-
-        //onclick listener menu
-        cv_dashboard_inventory.setOnClickListener {
-            startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
-        }
-        cv_dashboard_consumable.setOnClickListener {
-            startActivity<StocklistActivity>()
-        }
-        cv_dashboard_other.setOnClickListener {
-            toast("Menu Other Item Belum Tersedia")
-        }
 
         //SEARCHBAR LISTENER
         et_dashboard_searchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -104,14 +101,30 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         myDialog = Dialog(this)
 
 
-        //Declare Animation
-        val scaleToOne = AnimationUtils.loadAnimation(this, R.anim.scale_to_one)
-        val scaleToTwo = AnimationUtils.loadAnimation(this, R.anim.scale_to_two)
-        val scaleToThree = AnimationUtils.loadAnimation(this, R.anim.scale_to_three)
-        //SetAnimation
-        cv_dashboard_inventory.startAnimation(scaleToOne)
-        cv_dashboard_consumable.startAnimation(scaleToTwo)
-        cv_dashboard_other.startAnimation(scaleToThree)
+        //MENU LIST ITEM GRIDVIEW
+        menuData.apply {
+            clear()
+            add(DataMenu(0, "Komputer", R.drawable.ic_029_computer))
+            add(DataMenu(1, "Stok", R.drawable.ic_049_stock))
+            add(DataMenu(2, "Printer", R.drawable.ic_041_printer))
+            add(DataMenu(3, "Server", R.drawable.ic_047_server))
+            add(DataMenu(4, "CCTV", R.drawable.ic_042_cctv))
+        }
+
+        val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.grid_item_anim)
+        val controller = GridLayoutAnimationController(animation, .1f, .3f)
+
+        menuAdapter = MenuListAdapter(this, menuData) {
+
+            when (it.id) {
+                0 -> startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
+                1 -> startActivity<StocklistActivity>()
+                else -> toast("Menu Ini Belum Tersedia")
+            }
+        }
+        gv_dashboard_menu.layoutAnimation = controller
+        gv_dashboard_menu.adapter = menuAdapter
+
 
         //HIDE KEYBOARD
         et_dashboard_searchbar.isFocusable = false
@@ -186,7 +199,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         logoMuchlis.setOnClickListener {
             toast("Developed by Muchlis - IT Sampit")
         }
-        logoPelindo.setOnClickListener{
+        logoPelindo.setOnClickListener {
             toast("Supported by Pelindo Regional Kalimantan")
         }
         privacyPolicy.setOnClickListener {

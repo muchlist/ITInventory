@@ -61,8 +61,8 @@ class StockUseDetailActivity : AppCompatActivity() {
         })
 
         when (intentFrom) {
-            FROM_ADDITION_STOCK -> tv_stockuse_status.text = "Ditambahkan"
-            FROM_CONSUME_STOCK -> tv_stockuse_status.text = "Dipakai"
+            FROM_ADDITION_STOCK -> tv_stockuse_status.text = getString(R.string.ditambahkan)
+            FROM_CONSUME_STOCK -> tv_stockuse_status.text = getString(R.string.dipakai)
         }
 
         //TOMBOL CLOSE

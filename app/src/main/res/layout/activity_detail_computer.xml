@@ -327,6 +327,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/rv_detail_history"
                 android:paddingStart="32dp"
+                android:paddingEnd="32dp"
                 android:clipToPadding="false">
 
 

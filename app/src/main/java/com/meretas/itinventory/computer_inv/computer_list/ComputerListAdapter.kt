@@ -31,17 +31,13 @@ class ComputerListAdapter(
     class ViewHolder(view: View, val itemClick: (ComputerListData.Result) -> Unit) : RecyclerView.ViewHolder(view) {
         fun bindItem(items: ComputerListData.Result) {
 
-            var lowspec = "  "
-            if(items.seatManagement){
-                lowspec = "-M"
-            } else if (items.lowSpec){
-                lowspec = "-L"
-            }
-
             itemView.tv_computerlist_name.text = items.clientName
             itemView.tv_computerlist_ip.text = items.ipAddress
             itemView.tv_computerlist_division.text = items.division
-            itemView.tv_computerlist_islowspec.text = lowspec
+            itemView.tv_computerlist_islowspec.text = if (items.lowSpec) "L" else "-"
+            itemView.tv_computerlist_seat.text = if (items.seatManagement) "M" else "-"
+            itemView.tv_computerlist_condition.text = items.status[0].toString()
+            itemView.tv_computerlist_branch.text = items.branch
 
             //onClick
             itemView.setOnClickListener { itemClick(items) }

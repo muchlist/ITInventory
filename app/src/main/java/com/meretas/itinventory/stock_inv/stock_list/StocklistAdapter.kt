@@ -46,7 +46,7 @@ class StocklistAdapter(
             itemView.tv_stock_category.text = items.category
             itemView.tv_stock_branch.text = items.branch
             itemView.tv_stock_note.text = items.note
-            itemView.tv_stock_id.text = """# ${items.id}"""
+            itemView.tv_stock_id.text = "# ${items.id}"
             itemView.tv_stock_sisa_value.text = stockCurrent.toString()
             itemView.tv_stock_unit.text = items.unit
 

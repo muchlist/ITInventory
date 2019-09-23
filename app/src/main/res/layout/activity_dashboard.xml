@@ -31,22 +31,24 @@
     </RelativeLayout>
 
 
-    <androidx.cardview.widget.CardView android:id="@+id/search_bar"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="50dp"
-                                       android:layout_marginBottom="@dimen/spacing_medium"
-                                       android:layout_marginLeft="@dimen/spacing_middle"
-                                       android:layout_marginRight="@dimen/spacing_middle"
-                                       android:layout_marginTop="-30dp"
-                                       android:clipToPadding="false"
-                                       app:cardBackgroundColor="@android:color/white"
-                                       app:cardCornerRadius="4dp"
-                                       app:cardElevation="2dp">
+    <androidx.cardview.widget.CardView
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="-30dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:clipToPadding="false"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="2dp">
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:gravity="center_vertical"
-                      android:orientation="horizontal">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
             <androidx.appcompat.widget.SearchView
                     android:id="@+id/et_dashboard_searchbar"
@@ -54,14 +56,14 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    app:queryHint="Cari Komputer"
-                    app:iconifiedByDefault="false"
-                    app:queryBackground="@android:color/transparent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:imeOptions="actionSearch"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true">
+                    app:iconifiedByDefault="false"
+                    app:queryBackground="@android:color/transparent"
+                    app:queryHint="Cari Komputer">
 
             </androidx.appcompat.widget.SearchView>
 
@@ -70,9 +72,10 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@android:color/transparent"
                     android:clickable="true"
+                    android:contentDescription="@string/dot"
+                    android:focusable="true"
                     android:tint="@color/grey_60"
-                    app:srcCompat="@drawable/ic_menu" android:focusable="true"
-                    android:contentDescription="@string/dot"/>
+                    app:srcCompat="@drawable/ic_menu" />
 
         </LinearLayout>
 
@@ -92,70 +95,17 @@
                       android:descendantFocusability="blocksDescendants"
                       android:orientation="vertical">
 
-            <HorizontalScrollView android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:scrollbars="none"
-                                  android:clipToPadding="false"
-                                  android:background="@color/grey_line" android:paddingTop="@dimen/spacing_xlarge"
-                                  android:paddingBottom="@dimen/spacing_xmedium">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:layout_marginStart="@dimen/spacing_medium"
-                        android:layout_marginEnd="@dimen/spacing_medium"
-                        android:layout_marginTop="@dimen/spacing_medium">
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_xmedium"
-                            android:layout_marginStart="@dimen/spacing_xmedium">
-                        <com.google.android.material.card.MaterialCardView
-                                android:layout_width="140dp"
-                                android:layout_height="180dp"
-                                app:cardCornerRadius="4dp"
-                                app:cardElevation="3dp"
-                                android:id="@+id/cv_dashboard_inventory">
-                            <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" app:srcCompat="@drawable/inventory_edit"
-                                    android:scaleType="centerCrop" android:contentDescription="@string/dot"/>
-                        </com.google.android.material.card.MaterialCardView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_xmedium">
-                        <com.google.android.material.card.MaterialCardView
-                                android:layout_width="140dp"
-                                android:layout_height="180dp" app:cardCornerRadius="4dp" app:cardElevation="3dp"
-                                android:id="@+id/cv_dashboard_consumable">
-                            <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    app:srcCompat="@drawable/consumable_edit"
-                                    android:scaleType="centerCrop" android:contentDescription="@string/dot"/>
-                        </com.google.android.material.card.MaterialCardView>
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:layout_marginEnd="@dimen/spacing_xmedium">
-                        <com.google.android.material.card.MaterialCardView
-                                android:layout_width="140dp"
-                                android:layout_height="180dp" app:cardCornerRadius="4dp" app:cardElevation="3dp"
-                                android:id="@+id/cv_dashboard_other">
-                            <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" app:srcCompat="@drawable/other_edit"
-                                    android:scaleType="centerCrop" android:contentDescription="@string/dot"/>
-                        </com.google.android.material.card.MaterialCardView>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
+            <GridView
+                    android:id="@+id/gv_dashboard_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="235dp"
+                    android:animateLayoutChanges="true"
+                    android:background="@drawable/gradient_dashboard_grid"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:numColumns="2"
+                    android:paddingTop="45dp"
+                    android:paddingBottom="12dp"
+                    android:verticalSpacing="10dp" />
 
             <TextView
                     android:text="@string/history"
@@ -168,12 +118,14 @@
                     android:fontFamily="@font/roboto"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_history_dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/spacing_medium"
                     android:layout_marginTop="0dp"
-                    android:id="@+id/rv_history_dashboard" android:paddingStart="32dp" android:clipToPadding="false"
-            />
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:clipToPadding="false"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp" />
 
             <ProgressBar android:layout_width="match_parent"
                          android:layout_height="wrap_content"
@@ -190,6 +142,7 @@
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:layout_marginBottom="@dimen/spacing_xmedium" android:fontFamily="@font/roboto"
                     android:id="@+id/bt_dashboard_reload" android:visibility="invisible"/>
+
 
         </LinearLayout>
 

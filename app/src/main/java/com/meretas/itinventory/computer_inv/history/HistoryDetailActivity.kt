@@ -21,7 +21,7 @@ class HistoryDetailActivity : AppCompatActivity() {
         tv_historydetail_note.text = intent.note
         tv_historydetail_author.text = intent.author
         tv_historydetail_date.text = intent.createdAt
-        tv_historydetail_id.text = "#"+ intent.id.toString()
+        tv_historydetail_id.text = "#${intent.id}"
 
         iv_historydetail_close.setOnClickListener {
             onBackPressed()

@@ -32,8 +32,8 @@ class EditStockUseActivity : AppCompatActivity() {
 
         //INIT DATA DARI DETAIL UNTUK DI EDIT
         when (intentFrom) {
-            FROM_ADDITION_STOCK -> tv_edit_stock_use_title.text = "Ubah Penambahan"
-            FROM_CONSUME_STOCK -> tv_edit_stock_use_title.text = "Ubah Pengurangan"
+            FROM_ADDITION_STOCK -> tv_edit_stock_use_title.text = getString(R.string.ubah_penambahan)
+            FROM_CONSUME_STOCK -> tv_edit_stock_use_title.text = getString(R.string.ubah_pengurangan)
         }
         et_edit_stock_use_event.setText(intentData.eventNumber)
         et_edit_stock_use_qty.setText(intentData.qty.toString())

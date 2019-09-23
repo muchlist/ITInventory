@@ -37,10 +37,6 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
     //presenter
     private lateinit var presenter: ComputerListPresenter
 
-    //nilai branchText
-    private var branchText: String = ""
-    private var locationText: String = ""
-
     //JOB search cancleable
     val uiScope = CoroutineScope(Dispatchers.Main)
     private var textChangeCountJob: Job? = null
@@ -174,7 +170,7 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
     }
 
     override fun updateUnit(unit: String) {
-        tv_computerlist_unit.text = "Jumlah : " + unit
+        tv_computerlist_unit.text = "Jumlah : $unit"
     }
 
     override fun onStop() {

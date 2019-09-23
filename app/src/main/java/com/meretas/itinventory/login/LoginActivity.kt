@@ -1,5 +1,6 @@
 package com.meretas.itinventory.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     //presenter
     private lateinit var presenter: LoginPresenter
 
+    @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -23,7 +25,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
         presenter.getStatusConnection()
 
         btn_login_login.setOnClickListener {
-            val username = edt_username_login.editText?.text.toString()
+            val username = edt_username_login.editText?.text.toString().toLowerCase()
             val password = edt_password_login.editText?.text.toString()
             if(username.isEmpty() || password.isEmpty()){
                 toast("Username atau Password tidak boleh kosong")
@@ -42,10 +44,8 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun updateConnection(connected: Boolean) {
         if (connected) {
             iv_status_login.setImageResource(R.drawable.ic_baseline_check_box_24px)
-            tv_sleep_login.text = "OK"
         } else {
             iv_status_login.setImageResource(R.drawable.ic_baseline_indeterminate_check_box_24px)
-            tv_sleep_login.text = "SLEEP.. click me!"
         }
     }
 
