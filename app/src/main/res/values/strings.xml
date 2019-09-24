@@ -76,8 +76,8 @@
     <string name="nama_user">Nama User</string>
     <string name="informasi_perangkat">Informasi Perangkat</string>
     <string name="spesifikasi">Spesifikasi</string>
-    <string name="save_finish">SAVE FINISH</string>
-    <string name="save_continue">SAVE CONTINUE</string>
+    <string name="save_finish">Simpan Selesai</string>
+    <string name="save_continue">Simpan Lanjut</string>
     <string name="nama_host_komputer">Nama Host Komputer</string>
     <string name="alamat_ip">Alamat IP</string>
     <string name="nomer_inventaris">Nomer Inventaris</string>
@@ -95,7 +95,7 @@
     <string name="vga">VGA</string>
     <string name="status">Status</string>
     <string name="note">Catatan</string>
-    <string name="save">SAVE</string>
+    <string name="save">SIMPAN</string>
     <string name="profile">profile</string>
     <string name="membersihkan_kipas_prosesor_karena_sering_restart">Membersihkan kipas prosesor karena sering restart
     </string>
@@ -115,7 +115,7 @@
     <string name="status_">Status :</string>
     <string name="name">Name</string>
     <string name="simpan">SIMPAN</string>
-    <string name="edit_komputer">Edit Komputer</string>
+    <string name="edit_komputer">Ubah Komputer</string>
     <string name="tambah_history">Tambah Riwayat</string>
     <string name="history__">RIWAYAT</string>
     <string name="no_invent">No Invent ..................................</string>
@@ -208,7 +208,7 @@
     <string name="satuan">Satuan</string>
     <string name="ambang_batas">Ambang Batas</string>
     <string name="lokasi_catatan">Lokasi / Catatan</string>
-    <string name="edit_stok">Edit Stok</string>
+    <string name="edit_stok">Ubah Stok</string>
     <string name="simpan__">Simpan</string>
     <string name="hapus">Hapus</string>
     <string name="ubah">ubah</string>
@@ -223,7 +223,7 @@
     <string name="total_terpakai">Total Terpakai :</string>
     <string name="sisa">Sisa :</string>
     <string name="batas">Batas :</string>
-    <string name="edit">Edit</string>
+    <string name="edit">Ubah</string>
     <string name="dibuat">Dibuat :</string>
     <string name="cabang__">Cabang :</string>
     <string name="ba">_</string>

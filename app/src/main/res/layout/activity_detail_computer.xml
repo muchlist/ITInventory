@@ -62,7 +62,7 @@
                     android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView6"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:textStyle="bold"
-                    android:background="@color/button_color_red" android:textColor="@android:color/white"
+                    android:background="@color/button_color_second" android:textColor="@android:color/white"
                     android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:layout_width="0dp"
@@ -90,7 +90,7 @@
                     app:layout_constraintTop_toTopOf="@+id/textView2"
                     app:layout_constraintBottom_toBottomOf="@+id/textView2"
                     android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    android:textStyle="bold" android:background="@color/button_color_red"
+                    android:textStyle="bold" android:background="@color/button_color_second"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:layout_width="0dp"
@@ -137,7 +137,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView10"
                     app:layout_constraintStart_toEndOf="@+id/textView10" android:layout_marginStart="16dp"
                     tools:text="true" android:fontFamily="@font/quicksand" android:textSize="18sp"
-                    android:textStyle="bold" android:background="@color/button_color_red"
+                    android:textStyle="bold" android:background="@color/button_color_second"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:layout_width="wrap_content"
@@ -253,7 +253,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView"
                     tools:text="Baik" android:fontFamily="@font/quicksand" android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginStart="8dp"
-                    android:textStyle="bold" android:background="@color/button_color_red"
+                    android:textStyle="bold" android:background="@color/button_color_second"
                     android:textColor="@android:color/white" android:paddingStart="4dp" android:paddingEnd="4dp"/>
             <TextView
                     android:text="@string/cabang_"
@@ -359,7 +359,7 @@
                 android:layout_gravity="center_horizontal|end"
                 android:layout_marginBottom="32dp"
                 android:text="@string/edit_komputer"
-                android:backgroundTint="@color/button_color_red" android:fontFamily="@font/roboto"
+                android:backgroundTint="@color/button_color_second" android:fontFamily="@font/roboto"
                 android:id="@+id/bt_detail_edit_computer" android:layout_marginEnd="32dp"/>
 
     </LinearLayout>

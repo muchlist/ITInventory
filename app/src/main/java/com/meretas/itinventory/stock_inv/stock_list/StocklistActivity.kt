@@ -26,7 +26,7 @@ import com.meretas.itinventory.utils.Statis.Companion.isStockUpdate
 import com.meretas.itinventory.utils.Statis.Companion.whatStockActiveStatus
 import com.meretas.itinventory.utils.Statis.Companion.whatStockBranch
 import com.meretas.itinventory.utils.Statis.Companion.whatStockCategory
-import kotlinx.android.synthetic.main.activity_stocklist.*
+import kotlinx.android.synthetic.main.activity_list_stock.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -43,7 +43,7 @@ class StocklistActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stocklist)
+        setContentView(R.layout.activity_list_stock)
 
         //INIT VIEW MODEL
         viewModel = ViewModelProviders.of(this).get(StocklistViewModel::class.java)
@@ -71,9 +71,9 @@ class StocklistActivity : AppCompatActivity() {
 
         //BUTTON ADD
         bt_stocklist_tambah.setOnClickListener {
-            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()){
+            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
                 toast("User Tidak Dapat Menambahkan Stok")
-            }else{
+            } else {
                 startActivity<AddStockActivity>()
             }
 

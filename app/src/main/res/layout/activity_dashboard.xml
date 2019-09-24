@@ -6,26 +6,30 @@
               android:fitsSystemWindows="true"
               android:orientation="vertical">
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:background="@color/colorPrimary">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/colorPrimaryDark">
 
-        <ImageView android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:scaleType="centerCrop"
-                   android:src="@drawable/world_map"
-                   android:tint="@color/overlay_light_30"
-                   android:contentDescription="@string/dot"/>
-        <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar_dashboard"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="?attr/actionBarSize"
-                                                            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                                                            app:contentInsetStartWithNavigation="0dp"
-                                                            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                                                            app:subtitle="Cabang --"
-                                                            app:subtitleTextAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                                                            app:subtitleTextColor="@color/grey_10"
-                                                            app:title="Hai, --"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/dot"
+                android:scaleType="centerCrop"
+                android:src="@drawable/world_map"
+                android:tint="@color/overlay_light_30" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentInsetStartWithNavigation="0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:subtitle="Cabang --"
+                app:subtitleTextAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                app:subtitleTextColor="@color/grey_10"
+                app:title="Hai, --" />
 
 
     </RelativeLayout>
@@ -101,21 +105,23 @@
                     android:layout_height="235dp"
                     android:animateLayoutChanges="true"
                     android:background="@drawable/gradient_dashboard_grid"
-                    android:gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
                     android:numColumns="2"
                     android:paddingTop="45dp"
                     android:paddingBottom="12dp"
                     android:verticalSpacing="10dp" />
 
             <TextView
-                    android:text="@string/history"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing_middle"
                     android:layout_marginStart="@dimen/spacing_middle"
-                    android:textColor="@color/colorPrimary" android:layout_marginBottom="@dimen/spacing_medium"
-                    android:textStyle="bold" android:layout_marginTop="@dimen/spacing_large"
-                    android:fontFamily="@font/roboto"/>
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/history"
+                    android:textColor="@color/button_color_second"
+                    android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_history_dashboard"
@@ -133,15 +139,18 @@
                          android:visibility="gone"/>
 
             <Button
+                    android:id="@+id/bt_dashboard_reload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_xmedium"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:fontFamily="@font/roboto"
                     android:gravity="center"
                     android:text="@string/reload"
                     android:theme="@style/Button.Blue.Borderless"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/spacing_medium"
-                    android:layout_marginBottom="@dimen/spacing_xmedium" android:fontFamily="@font/roboto"
-                    android:id="@+id/bt_dashboard_reload" android:visibility="invisible"/>
+                    android:visibility="invisible" />
 
 
         </LinearLayout>

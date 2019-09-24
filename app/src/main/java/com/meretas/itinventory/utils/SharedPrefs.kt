@@ -37,11 +37,11 @@ class SharedPrefs(context: Context) {
         set(value) = prefs.edit().putString(_userBranch, value).apply()
 
     var isReadOnly: Boolean
-        get() = prefs.getBoolean(_isReadOnly,false)
+        get() = prefs.getBoolean(_isReadOnly, false)
         set(value) = prefs.edit().putBoolean(_isReadOnly, value).apply()
 
     var isCompleteLogin: Boolean
-        get() = prefs.getBoolean(_isCompleteLlogin,false)
+        get() = prefs.getBoolean(_isCompleteLlogin, false)
         set(value) = prefs.edit().putBoolean(_isCompleteLlogin, value).apply()
 
 }

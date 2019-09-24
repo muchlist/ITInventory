@@ -205,7 +205,7 @@
                     android:id="@+id/bt_add_stock_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/button_color_red"
+                    android:backgroundTint="@color/button_color_second"
                     android:text="@string/save_finish"
                     app:layout_constraintEnd_toEndOf="@+id/bt_add_stock_continue"
                     app:layout_constraintStart_toStartOf="@+id/bt_add_stock_continue"

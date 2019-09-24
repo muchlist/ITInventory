@@ -14,15 +14,15 @@ import retrofit2.Response
 class EditComputerViewModel : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading : LiveData<Boolean>
+    val isLoading: LiveData<Boolean>
         get() = _isLoading
 
     private val _isSuccess = MutableLiveData<Boolean>()
-    val isSuccess : LiveData<Boolean>
+    val isSuccess: LiveData<Boolean>
         get() = _isSuccess
 
     private val _isError = MutableLiveData<String>()
-    val isError : LiveData<String>
+    val isError: LiveData<String>
         get() = _isError
 
     init {
@@ -59,8 +59,11 @@ class EditComputerViewModel : ViewModel() {
             computer.note
         ).enqueue(object : Callback<ComputerListData.Result> {
 
-            override fun onResponse(call: Call<ComputerListData.Result>, response: Response<ComputerListData.Result>) {
-                if (response.isSuccessful){
+            override fun onResponse(
+                call: Call<ComputerListData.Result>,
+                response: Response<ComputerListData.Result>
+            ) {
+                if (response.isSuccessful) {
                     _isSuccess.value = true
                     _isLoading.value = false
                 } else {

@@ -6,22 +6,37 @@
         android:layout_height="match_parent"
         tools:context=".stock_inv.stock_detail.DetailStockActivity">
 
-    <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tl_detail_stock"
+    <LinearLayout
+            android:id="@+id/linear_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:paddingTop="24dp"
+            android:background="@drawable/shape_toolbar"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/white"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="8dp"
-            app:tabMode="scrollable"
-            app:tabRippleColor="@color/white"
-            app:tabTextColor="@color/white" />
+            app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tl_detail_stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/transfarent"
+                app:tabBackground="@drawable/tab"
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorGravity="center"
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="scrollable"
+                app:tabRippleColor="@color/white"
+                app:tabSelectedTextColor="@color/grey_60"
+                app:tabTextColor="@color/white"
+                app:tabUnboundedRipple="true" />
+
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_detail_stock"
@@ -30,13 +45,13 @@
             app:layout_constraintBottom_toTopOf="@+id/bt_detail_stock_consume"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tl_detail_stock" />
+            app:layout_constraintTop_toBottomOf="@+id/linear_toolbar" />
 
     <Button
             android:id="@+id/bt_detail_stock_consume"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/button_color_red"
+            android:backgroundTint="@color/colorPrimary"
             android:fontFamily="@font/roboto"
             android:text="@string/pakai_barang"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,6 +64,7 @@
             android:id="@+id/bt_detail_stock_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/button_color_second"
             android:fontFamily="@font/roboto"
             android:text="@string/tambahkan_barang"
             app:layout_constraintBottom_toBottomOf="parent"

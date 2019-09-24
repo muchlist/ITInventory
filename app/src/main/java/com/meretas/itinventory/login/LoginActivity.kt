@@ -27,10 +27,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
         btn_login_login.setOnClickListener {
             val username = edt_username_login.editText?.text.toString().toLowerCase()
             val password = edt_password_login.editText?.text.toString()
-            if(username.isEmpty() || password.isEmpty()){
+            if (username.isEmpty() || password.isEmpty()) {
                 toast("Username atau Password tidak boleh kosong")
-            }else{
-                presenter.getToken(username,password)
+            } else {
+                presenter.getToken(username, password)
             }
         }
 

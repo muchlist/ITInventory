@@ -12,30 +12,34 @@ import retrofit2.Response
 class DashboardPresenter(private var view: DashboarView?) {
 
     fun getCurrentUserInfo() {
-        Api.retrofitService.getCurrentUser(App.prefs.authTokenSave).enqueue(object : Callback<CurrentUserData> {
-            override fun onFailure(call: Call<CurrentUserData>, t: Throwable) {
+        Api.retrofitService.getCurrentUser(App.prefs.authTokenSave)
+            .enqueue(object : Callback<CurrentUserData> {
+                override fun onFailure(call: Call<CurrentUserData>, t: Throwable) {
 
-            }
-
-            override fun onResponse(call: Call<CurrentUserData>, response: Response<CurrentUserData>) {
-                when {
-                    response.isSuccessful -> {
-                        val userResponse = response.body()!!
-                        val name = userResponse.firstName + " " + userResponse.lastName
-                        val branch = userResponse.profile?.userBranch ?: "Profil Null"
-                        val isReadOnly = userResponse.profile?.isReadOnly ?: true
-
-                        view?.getUserInfo(name, branch, isReadOnly)
-                        App.prefs.isCompleteLogin = true
-                    }
-                    response.code() == 401 -> {
-                        App.prefs.authTokenSave = ""
-                        view?.showToastAndReload(response.code().toString())
-                    }
-                    else -> view?.showToastAndReload(response.code().toString())
                 }
-            }
-        })
+
+                override fun onResponse(
+                    call: Call<CurrentUserData>,
+                    response: Response<CurrentUserData>
+                ) {
+                    when {
+                        response.isSuccessful -> {
+                            val userResponse = response.body()!!
+                            val name = userResponse.firstName + " " + userResponse.lastName
+                            val branch = userResponse.profile?.userBranch ?: "Profil Null"
+                            val isReadOnly = userResponse.profile?.isReadOnly ?: true
+
+                            view?.getUserInfo(name, branch, isReadOnly)
+                            App.prefs.isCompleteLogin = true
+                        }
+                        response.code() == 401 -> {
+                            App.prefs.authTokenSave = ""
+                            view?.showToastAndReload(response.code().toString())
+                        }
+                        else -> view?.showToastAndReload(response.code().toString())
+                    }
+                }
+            })
 
     }
 
@@ -43,35 +47,39 @@ class DashboardPresenter(private var view: DashboarView?) {
 
         view?.showProgressBarHistory()
 
-        Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave).enqueue(object : Callback<HistoryListData> {
-            override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
-                view?.hideProgressBarHistory()
-                view?.showToastAndReload("Tidak dapat terhubung ke server")
-            }
+        Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave)
+            .enqueue(object : Callback<HistoryListData> {
+                override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
+                    view?.hideProgressBarHistory()
+                    view?.showToastAndReload("Tidak dapat terhubung ke server")
+                }
 
-            override fun onResponse(call: Call<HistoryListData>, response: Response<HistoryListData>) {
-                when {
-                    response.isSuccessful -> {
-                        val historyResponse = response.body()!!
-                        val historyList = historyResponse.results
+                override fun onResponse(
+                    call: Call<HistoryListData>,
+                    response: Response<HistoryListData>
+                ) {
+                    when {
+                        response.isSuccessful -> {
+                            val historyResponse = response.body()!!
+                            val historyList = historyResponse.results
 
-                        view?.hideProgressBarHistory()
-                        view?.showHistory(historyList)
+                            view?.hideProgressBarHistory()
+                            view?.showHistory(historyList)
 
-                    }
-                    response.code() == 401 -> {
-                        view?.hideProgressBarHistory()
-                        App.prefs.authTokenSave = ""
-                        view?.showToastAndReload(response.code().toString())
+                        }
+                        response.code() == 401 -> {
+                            view?.hideProgressBarHistory()
+                            App.prefs.authTokenSave = ""
+                            view?.showToastAndReload(response.code().toString())
 
-                    }
-                    else -> {
-                        view?.hideProgressBarHistory()
-                        view?.showToastAndReload(response.code().toString())
+                        }
+                        else -> {
+                            view?.hideProgressBarHistory()
+                            view?.showToastAndReload(response.code().toString())
+                        }
                     }
                 }
-            }
-        })
+            })
     }
 
     fun onDestroy() {

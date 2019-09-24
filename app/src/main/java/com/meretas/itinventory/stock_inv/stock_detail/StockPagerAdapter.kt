@@ -7,7 +7,7 @@ import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.A
 import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.ConsumeListStockFragment
 import com.meretas.itinventory.stock_inv.stock_detail.stock_use_pager_fragment.DetailStockFragment
 
-class StockPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
+class StockPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     private val pages = listOf(
         DetailStockFragment(),
@@ -24,7 +24,7 @@ class StockPagerAdapter (fm: FragmentManager) : FragmentPagerAdapter(fm){
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when(position){
+        return when (position) {
             0 -> "Detail"
             1 -> "Dipakai"
             else -> "Ditambahkan"

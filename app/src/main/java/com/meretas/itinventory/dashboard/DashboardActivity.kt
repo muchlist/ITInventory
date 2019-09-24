@@ -119,7 +119,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             when (it.id) {
                 0 -> startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
                 1 -> startActivity<StocklistActivity>()
-                else -> toast("Menu Ini Belum Tersedia")
+                else -> toast("Menu ${it.title} masih dalam tahap pengembangan")
             }
         }
         gv_dashboard_menu.layoutAnimation = controller
@@ -197,7 +197,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         val privacyPolicy: TextView = myDialog.findViewById(R.id.bt_privacy_policy)
 
         logoMuchlis.setOnClickListener {
-            toast("Developed by Muchlis - IT Sampit")
+            toast("Developed by Muchlis")
         }
         logoPelindo.setOnClickListener {
             toast("Supported by Pelindo Regional Kalimantan")

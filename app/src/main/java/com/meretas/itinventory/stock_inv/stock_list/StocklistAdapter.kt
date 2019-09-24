@@ -28,7 +28,8 @@ class StocklistAdapter(
     }
 
 
-    class ViewHolder(view: View, val itemClick: (StockListData.Result) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (StockListData.Result) -> Unit) :
+        RecyclerView.ViewHolder(view) {
         fun bindItem(items: StockListData.Result) {
 
 //            var lowspec = "  "
@@ -38,8 +39,8 @@ class StocklistAdapter(
 //                lowspec = "-L"
 //            }
 
-            val stockAdded = items.stockAdded?:0
-            val stockUsed = items.stockUsed?:0
+            val stockAdded = items.stockAdded ?: 0
+            val stockUsed = items.stockUsed ?: 0
             val stockCurrent = stockAdded - stockUsed
 
             itemView.tv_stock_name.text = items.stockName
@@ -50,7 +51,7 @@ class StocklistAdapter(
             itemView.tv_stock_sisa_value.text = stockCurrent.toString()
             itemView.tv_stock_unit.text = items.unit
 
-            if (stockCurrent >= items.threshold && items.active){
+            if (stockCurrent >= items.threshold && items.active) {
                 itemView.iv_stock_indicator.visibility = View.INVISIBLE
             } else {
                 itemView.iv_stock_indicator.visibility = View.VISIBLE

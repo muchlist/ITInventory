@@ -15,7 +15,7 @@
         android:paddingEnd="16dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="1dp"
-        app:strokeColor="@color/grey_60"
+        app:strokeColor="@color/grey_40"
         app:strokeWidth="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +47,6 @@
                 android:fontFamily="@font/quicksand_bold"
                 android:singleLine="true"
                 android:textAllCaps="true"
-                android:textColor="@color/grey_80"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -83,7 +82,7 @@
                 android:id="@+id/tv_stock_con_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/button_color_red"
+                android:background="@color/colorPrimary"
                 android:fontFamily="@font/quicksand"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"
@@ -98,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:background="@color/button_color_red"
+                android:background="@color/colorPrimary"
                 android:fontFamily="@font/quicksand"
                 android:paddingStart="4dp"
                 android:paddingEnd="4dp"

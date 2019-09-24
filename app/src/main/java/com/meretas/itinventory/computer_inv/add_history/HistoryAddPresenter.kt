@@ -13,7 +13,8 @@ class HistoryAddPresenter(private var view: HistoryAddView?) {
         id: Int,
         note: String,
         status: String
-    ) { view?.showLoading()
+    ) {
+        view?.showLoading()
         Api.retrofitService.postHistory(App.prefs.authTokenSave, id, note, status)
             .enqueue(object : Callback<HistoryListData.Result> {
                 override fun onFailure(call: Call<HistoryListData.Result>, t: Throwable) {

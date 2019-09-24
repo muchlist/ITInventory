@@ -1,13 +1,15 @@
 package com.meretas.itinventory.stock_inv.stock_detail.stock_use_add
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumePostData
-import com.meretas.itinventory.utils.*
+import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_CONSUME_ID
+import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_CONSUME_NAME
+import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_add_consume_stock.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast

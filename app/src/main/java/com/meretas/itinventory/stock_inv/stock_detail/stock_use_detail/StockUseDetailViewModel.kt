@@ -60,14 +60,17 @@ class StockUseDetailViewModel : ViewModel() {
         _stockUseDetailData.value = data
     }
 
-    fun getStockUseDetailRefreshFromAddition(id:Int){
+    fun getStockUseDetailRefreshFromAddition(id: Int) {
         _isError.value = ""
 
         Api.retrofitService.getAdditionDetail(
             App.prefs.authTokenSave, id
         ).enqueue(object : Callback<AddAndConsumeData.Result> {
 
-            override fun onResponse(call: Call<AddAndConsumeData.Result>, response: Response<AddAndConsumeData.Result>) {
+            override fun onResponse(
+                call: Call<AddAndConsumeData.Result>,
+                response: Response<AddAndConsumeData.Result>
+            ) {
                 if (response.isSuccessful) {
                     _isError.value = "Data diperbarui"
                     _stockUseDetailData.value = response.body()
@@ -84,14 +87,17 @@ class StockUseDetailViewModel : ViewModel() {
         })
     }
 
-    fun getStockUseDetailRefreshFromConsume(id:Int){
+    fun getStockUseDetailRefreshFromConsume(id: Int) {
         _isError.value = ""
 
         Api.retrofitService.getConsumeDetail(
             App.prefs.authTokenSave, id
         ).enqueue(object : Callback<AddAndConsumeData.Result> {
 
-            override fun onResponse(call: Call<AddAndConsumeData.Result>, response: Response<AddAndConsumeData.Result>) {
+            override fun onResponse(
+                call: Call<AddAndConsumeData.Result>,
+                response: Response<AddAndConsumeData.Result>
+            ) {
                 if (response.isSuccessful) {
                     _isError.value = "Data diperbarui"
                     _stockUseDetailData.value = response.body()

@@ -28,7 +28,8 @@ class ComputerListAdapter(
     }
 
 
-    class ViewHolder(view: View, val itemClick: (ComputerListData.Result) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (ComputerListData.Result) -> Unit) :
+        RecyclerView.ViewHolder(view) {
         fun bindItem(items: ComputerListData.Result) {
 
             itemView.tv_computerlist_name.text = items.clientName

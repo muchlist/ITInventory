@@ -78,25 +78,30 @@ class DetailStockViewModel(
     }
 
     //REFRESH STOCK DATA DARI INTENT JIKA ADA PERUBAHAN isStockChangePlus
-    fun getStockRefresh(id: Int){
-        apiService.getStockDetail(App.prefs.authTokenSave,id).enqueue(object : Callback<StockListData.Result> {
-            override fun onResponse(call: Call<StockListData.Result>, response: Response<StockListData.Result>) {
-                if (response.isSuccessful) {
-                    val listAddition = response.body()
-                    _stockDetailData.postValue(listAddition)
-                } else {
+    fun getStockRefresh(id: Int) {
+        apiService.getStockDetail(App.prefs.authTokenSave, id)
+            .enqueue(object : Callback<StockListData.Result> {
+                override fun onResponse(
+                    call: Call<StockListData.Result>,
+                    response: Response<StockListData.Result>
+                ) {
+                    if (response.isSuccessful) {
+                        val listAddition = response.body()
+                        _stockDetailData.postValue(listAddition)
+                    } else {
+                        _isStockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
+                    }
+                }
+
+                override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
                     _isStockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
                 }
-            }
-            override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
-                _isStockDetailError.value = "Data yang ditampilkan gagal diperbaharui"
-            }
-        })
+            })
     }
 
 
     //Mengambil data dari activity intent ke live data
-    fun postDetailStock(data : StockListData.Result) {
+    fun postDetailStock(data: StockListData.Result) {
         _stockDetailData.value = data
     }
 
@@ -104,22 +109,26 @@ class DetailStockViewModel(
     fun getAdditionList(id: Int) {
         _isAdditionListError.value = ""
         _isAdditionListLoading.value = true
-        apiService.getAdditionList(App.prefs.authTokenSave,id).enqueue(object : Callback<AddAndConsumeData> {
-            override fun onResponse(call: Call<AddAndConsumeData>, response: Response<AddAndConsumeData>) {
-                if (response.isSuccessful) {
-                    val listAddition = response.body()?.results
-                    _additionData.postValue(listAddition)
-                    _isAdditionListLoading.value = false
-                } else {
-                    _isAdditionListError.value = "Terjadi Kesalahan"
+        apiService.getAdditionList(App.prefs.authTokenSave, id)
+            .enqueue(object : Callback<AddAndConsumeData> {
+                override fun onResponse(
+                    call: Call<AddAndConsumeData>,
+                    response: Response<AddAndConsumeData>
+                ) {
+                    if (response.isSuccessful) {
+                        val listAddition = response.body()?.results
+                        _additionData.postValue(listAddition)
+                        _isAdditionListLoading.value = false
+                    } else {
+                        _isAdditionListError.value = "Terjadi Kesalahan"
+                        _isAdditionListLoading.value = false
+                    }
+                }
+
+                override fun onFailure(call: Call<AddAndConsumeData>, t: Throwable) {
                     _isAdditionListLoading.value = false
                 }
-            }
-
-            override fun onFailure(call: Call<AddAndConsumeData>, t: Throwable) {
-                _isAdditionListLoading.value = false
-            }
-        })
+            })
     }
 
 
@@ -127,42 +136,50 @@ class DetailStockViewModel(
     fun getConsumeList(id: Int) {
         _isConsumeListError.value = ""
         _isConsumeListLoading.value = true
-        apiService.getConsumeList(App.prefs.authTokenSave,id).enqueue(object : Callback<AddAndConsumeData> {
-            override fun onResponse(call: Call<AddAndConsumeData>, response: Response<AddAndConsumeData>) {
-                if (response.isSuccessful) {
-                    val listConsume = response.body()?.results
-                    _consumeData.postValue(listConsume)
-                    _isConsumeListLoading.value = false
-                } else {
-                    _isConsumeListError.value = "Terjadi Kesalahan"
+        apiService.getConsumeList(App.prefs.authTokenSave, id)
+            .enqueue(object : Callback<AddAndConsumeData> {
+                override fun onResponse(
+                    call: Call<AddAndConsumeData>,
+                    response: Response<AddAndConsumeData>
+                ) {
+                    if (response.isSuccessful) {
+                        val listConsume = response.body()?.results
+                        _consumeData.postValue(listConsume)
+                        _isConsumeListLoading.value = false
+                    } else {
+                        _isConsumeListError.value = "Terjadi Kesalahan"
+                        _isConsumeListLoading.value = false
+                    }
+                }
+
+                override fun onFailure(call: Call<AddAndConsumeData>, t: Throwable) {
                     _isConsumeListLoading.value = false
                 }
-            }
-
-            override fun onFailure(call: Call<AddAndConsumeData>, t: Throwable) {
-                _isConsumeListLoading.value = false
-            }
-        })
+            })
     }
 
     //Merubah status Stock
     fun changeStatus(id: Int, status: String) {
         _isStatusChangeError.value = ""
-        apiService.getChangeStockStatus(App.prefs.authTokenSave,id,status).enqueue(object : Callback<StockListData.Result> {
-            override fun onResponse(call: Call<StockListData.Result>, response: Response<StockListData.Result>) {
-                if (response.isSuccessful) {
-                    val listAddition = response.body()
-                    _stockDetailData.postValue(listAddition)
-                    _isStatusChangeError.value = "Status dirubah"
-                } else {
+        apiService.getChangeStockStatus(App.prefs.authTokenSave, id, status)
+            .enqueue(object : Callback<StockListData.Result> {
+                override fun onResponse(
+                    call: Call<StockListData.Result>,
+                    response: Response<StockListData.Result>
+                ) {
+                    if (response.isSuccessful) {
+                        val listAddition = response.body()
+                        _stockDetailData.postValue(listAddition)
+                        _isStatusChangeError.value = "Status dirubah"
+                    } else {
+                        _isStatusChangeError.value = "Status gagal dirubah"
+                    }
+                }
+
+                override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
                     _isStatusChangeError.value = "Status gagal dirubah"
                 }
-            }
-
-            override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
-                _isStatusChangeError.value = "Status gagal dirubah"
-            }
-        })
+            })
     }
 
 

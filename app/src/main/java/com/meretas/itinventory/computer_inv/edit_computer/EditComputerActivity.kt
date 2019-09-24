@@ -74,7 +74,7 @@ class EditComputerActivity : AppCompatActivity() {
         }
 
         //MENYESUAIKAN LAYOUT, CHOICES LOCATION HANYA UNTUK BANJARMASIN
-        if (App.prefs.userBranchSave != BANJARMASIN){
+        if (App.prefs.userBranchSave != BANJARMASIN) {
             et_edit_lokasi.visibility = View.GONE
         }
 
@@ -99,7 +99,7 @@ class EditComputerActivity : AppCompatActivity() {
                 longToast("${computerData.namaUser} berhasil dirubah!")
                 Statis.isComputerUpdate = true
                 val data = Intent()
-                data.putExtra(INTENT_EDIT_COMPUTER_RESULT ,computerData)
+                data.putExtra(INTENT_EDIT_COMPUTER_RESULT, computerData)
                 setResult(Activity.RESULT_OK, data)
                 finish()
             }

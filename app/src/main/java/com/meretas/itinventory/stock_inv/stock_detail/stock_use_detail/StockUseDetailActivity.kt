@@ -38,7 +38,7 @@ class StockUseDetailActivity : AppCompatActivity() {
         intentData = intent.getParcelableExtra(
             DATA_INTENT_STOCK_USE
         )
-            //mengecek apakah data stock active
+        //mengecek apakah data stock active
         val intentDataActive = intent.getBooleanExtra(SOURCE_INTENT_STOCK_ACTIVE, true)
 
         //INTENT END

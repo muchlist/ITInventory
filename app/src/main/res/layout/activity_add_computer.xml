@@ -572,7 +572,7 @@
                     android:layout_marginBottom="@dimen/spacing_xlarge"
                     android:text="@string/save_finish"
                     android:id="@+id/bt_add_computer_and_finish"
-                    android:backgroundTint="@color/button_color_red"/>
+                    android:backgroundTint="@color/button_color_second"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

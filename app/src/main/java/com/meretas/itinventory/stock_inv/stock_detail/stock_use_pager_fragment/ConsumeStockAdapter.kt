@@ -9,7 +9,7 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import kotlinx.android.synthetic.main.item_stock_consume.view.*
 
-class ConsumeStockAdapter (
+class ConsumeStockAdapter(
     private val context: Context?,
     private val itemConsume: List<AddAndConsumeData.Result>,
     private val itemClick: (AddAndConsumeData.Result) -> Unit
@@ -27,10 +27,11 @@ class ConsumeStockAdapter (
         holder.bindItem(itemConsume[position])
     }
 
-    class ViewHolder(view: View, val itemClick: (AddAndConsumeData.Result) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (AddAndConsumeData.Result) -> Unit) :
+        RecyclerView.ViewHolder(view) {
         fun bindItem(items: AddAndConsumeData.Result) {
 
-            with(items){
+            with(items) {
                 itemView.tv_stock_con_nomer.text = eventNumber
                 itemView.tv_stock_con_note.text = note
                 itemView.tv_stock_con_value.text = qty.toString()

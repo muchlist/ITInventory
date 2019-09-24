@@ -8,7 +8,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import com.meretas.itinventory.data.AddAndConsumePostData
-import com.meretas.itinventory.utils.*
+import com.meretas.itinventory.utils.DATA_INTENT_STOCK_USE
+import com.meretas.itinventory.utils.FROM_ADDITION_STOCK
+import com.meretas.itinventory.utils.FROM_CONSUME_STOCK
+import com.meretas.itinventory.utils.SOURCE_INTENT_STOCK_USE
 import com.meretas.itinventory.utils.Statis.Companion.isStockUseDetailUpdate
 import kotlinx.android.synthetic.main.activity_edit_stock_use.*
 import org.jetbrains.anko.longToast
@@ -32,8 +35,10 @@ class EditStockUseActivity : AppCompatActivity() {
 
         //INIT DATA DARI DETAIL UNTUK DI EDIT
         when (intentFrom) {
-            FROM_ADDITION_STOCK -> tv_edit_stock_use_title.text = getString(R.string.ubah_penambahan)
-            FROM_CONSUME_STOCK -> tv_edit_stock_use_title.text = getString(R.string.ubah_pengurangan)
+            FROM_ADDITION_STOCK -> tv_edit_stock_use_title.text =
+                getString(R.string.ubah_penambahan)
+            FROM_CONSUME_STOCK -> tv_edit_stock_use_title.text =
+                getString(R.string.ubah_pengurangan)
         }
         et_edit_stock_use_event.setText(intentData.eventNumber)
         et_edit_stock_use_qty.setText(intentData.qty.toString())

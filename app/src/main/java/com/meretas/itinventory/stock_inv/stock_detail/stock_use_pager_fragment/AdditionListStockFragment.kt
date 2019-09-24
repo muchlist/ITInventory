@@ -19,8 +19,8 @@ import com.meretas.itinventory.utils.SOURCE_INTENT_STOCK_USE
 import com.meretas.itinventory.utils.Statis.Companion.isStockChangePlus
 import kotlinx.android.synthetic.main.fragment_addition_stock.*
 import kotlinx.android.synthetic.main.fragment_addition_stock.view.*
-import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 
 class AdditionListStockFragment : Fragment() {
@@ -64,10 +64,10 @@ class AdditionListStockFragment : Fragment() {
 
         //PULL TO REFRESH
         refresh_stock_additions.setOnRefreshListener {
-            viewModel.getAdditionList(viewModel.stockDetailData.value?.id?:0)
+            viewModel.getAdditionList(viewModel.stockDetailData.value?.id ?: 0)
         }
 
-        viewModel.getAdditionList(viewModel.stockDetailData.value?.id?:0)
+        viewModel.getAdditionList(viewModel.stockDetailData.value?.id ?: 0)
 
     }
 
@@ -91,8 +91,8 @@ class AdditionListStockFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        if(isStockChangePlus){
-            viewModel.getAdditionList(viewModel.stockDetailData.value?.id?:0)
+        if (isStockChangePlus) {
+            viewModel.getAdditionList(viewModel.stockDetailData.value?.id ?: 0)
         }
     }
 

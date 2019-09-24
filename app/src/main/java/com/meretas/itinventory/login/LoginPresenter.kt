@@ -55,7 +55,10 @@ class LoginPresenter(private var view: LoginView?) {
                 view?.updateConnection(false)
             }
 
-            override fun onResponse(call: Call<CurrentUserData>, response: Response<CurrentUserData>) {
+            override fun onResponse(
+                call: Call<CurrentUserData>,
+                response: Response<CurrentUserData>
+            ) {
                 when {
                     response.isSuccessful -> view?.updateConnection(true)
                     response.code() == 401 -> view?.updateConnection(true)

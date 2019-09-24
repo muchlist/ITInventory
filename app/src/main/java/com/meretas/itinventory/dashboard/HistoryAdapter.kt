@@ -28,7 +28,8 @@ class HistoryAdapter(
     }
 
 
-    class ViewHolder(view: View, val itemClick: (HistoryListData.Result) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (HistoryListData.Result) -> Unit) :
+        RecyclerView.ViewHolder(view) {
         fun bindItem(items: HistoryListData.Result) {
 
             itemView.tv_history_pc.text = "PC ${items.computer}"

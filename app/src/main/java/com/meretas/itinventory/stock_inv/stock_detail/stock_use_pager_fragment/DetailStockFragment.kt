@@ -56,7 +56,7 @@ class DetailStockFragment : Fragment() {
                 tv_detail_stock_resultstock.text = (added - used).toString()
 
                 //BUTTON
-                buttonDisable(branch,active)
+                buttonDisable(branch, active)
             }
         })
 

@@ -10,14 +10,16 @@ import android.widget.TextView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.DataMenu
 
-class MenuListAdapter(private var c: Context?,
-                      private var listMenu: List<DataMenu>,
-                      private var itemClick: (DataMenu)-> Unit): BaseAdapter() {
+class MenuListAdapter(
+    private var c: Context?,
+    private var listMenu: List<DataMenu>,
+    private var itemClick: (DataMenu) -> Unit
+) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var view = convertView
-        if (view == null){
-            view = LayoutInflater.from(c).inflate(R.layout.item_grid_menu_dashboard, parent,false)
+        if (view == null) {
+            view = LayoutInflater.from(c).inflate(R.layout.item_grid_menu_dashboard, parent, false)
         }
 
         val menu = this.getItem(position) as DataMenu

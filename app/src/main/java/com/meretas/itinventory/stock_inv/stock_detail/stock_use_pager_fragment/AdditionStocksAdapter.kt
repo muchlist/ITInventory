@@ -9,10 +9,10 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.data.AddAndConsumeData
 import kotlinx.android.synthetic.main.item_stock_addition.view.*
 
-class AdditionStocksAdapter (
-                             private val context: Context?,
-                             private val itemHistory: List<AddAndConsumeData.Result>,
-                             private val itemClick: (AddAndConsumeData.Result) -> Unit
+class AdditionStocksAdapter(
+    private val context: Context?,
+    private val itemHistory: List<AddAndConsumeData.Result>,
+    private val itemClick: (AddAndConsumeData.Result) -> Unit
 ) : RecyclerView.Adapter<AdditionStocksAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,10 +27,11 @@ class AdditionStocksAdapter (
         holder.bindItem(itemHistory[position])
     }
 
-    class ViewHolder(view: View, val itemClick: (AddAndConsumeData.Result) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val itemClick: (AddAndConsumeData.Result) -> Unit) :
+        RecyclerView.ViewHolder(view) {
         fun bindItem(items: AddAndConsumeData.Result) {
 
-            with(items){
+            with(items) {
                 itemView.tv_stock_add_nomer.text = eventNumber
                 itemView.tv_stock_add_note.text = note
                 itemView.tv_stock_add_value.text = qty.toString()
