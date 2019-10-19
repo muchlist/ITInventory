@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".computer_inv.computer_list.ComputerListActivity">
+        tools:context=".inv_computer.computer_list.ComputerListActivity">
 
     <LinearLayout
             android:id="@+id/linear_layout_container"

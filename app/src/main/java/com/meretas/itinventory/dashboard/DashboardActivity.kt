@@ -18,12 +18,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.PrivacyPolicyActivity
 import com.meretas.itinventory.R
-import com.meretas.itinventory.computer_inv.computer_list.ComputerListActivity
-import com.meretas.itinventory.computer_inv.history.HistoryDetailActivity
+import com.meretas.itinventory.inv_computer.computer_list.ComputerListActivity
+import com.meretas.itinventory.inv_computer.computer_history.HistoryDetailActivity
 import com.meretas.itinventory.data.DataMenu
 import com.meretas.itinventory.data.HistoryListData
+import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
 import com.meretas.itinventory.login.LoginActivity
-import com.meretas.itinventory.stock_inv.stock_list.StocklistActivity
+import com.meretas.itinventory.inv_stock.stock_list.StocklistActivity
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_DETAIL_HISTORY
@@ -119,6 +120,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             when (it.id) {
                 0 -> startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
                 1 -> startActivity<StocklistActivity>()
+                4 -> startActivity<CctvListActivity>()
                 else -> toast("Menu ${it.title} masih dalam tahap pengembangan")
             }
         }

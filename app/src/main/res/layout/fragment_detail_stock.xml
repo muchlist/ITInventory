@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            tools:context=".stock_inv.stock_detail.stock_use_pager_fragment.DetailStockFragment">
+            tools:context=".inv_stock.stock_detail.stock_use_pager_fragment.DetailStockFragment">
 
 
         <TextView

@@ -22,6 +22,7 @@ private val retrofit = Retrofit.Builder()
 
 interface ApiService {
 
+    //USER
     @FormUrlEncoded
     @POST("rest-auth/login/")
     fun getTokenLogin(
@@ -29,15 +30,31 @@ interface ApiService {
         @Field("password") password: String
     ): Call<TokenData>
 
-    //@Headers("Content-type:application/json")
-    @FormUrlEncoded
-    @POST("computers/{id}/history/")
-    fun postHistory(
+    @GET("user/")
+    fun getCurrentUser(
+        @Header("Authorization") token: String
+    ): Call<CurrentUserData>
+
+    //COMPUTER
+    @GET("computers/")
+    fun getComputerList(
         @Header("Authorization") token: String,
-        @Path("id") id: Int,
-        @Field("note") note: String,
-        @Field("status_history") status_history: String
-    ): Call<HistoryListData.Result>
+        @Query("branch") branch: String,
+        @Query("location") location: String = "",
+        @Query("division") division: String,
+        @Query("seat_management") seat_management: String,
+        @Query("status") status: String,
+        @Query("ordering") order: String = "division,client_name",
+        @Query("format") format: String = "json"
+    ): Call<ComputerListData>
+
+    @GET("computers/")
+    fun getComputerListSearch(
+        @Header("Authorization") token: String,
+        @Query("search") search: String?,
+        @Query("ordering") order: String = "client_name",
+        @Query("format") format: String = "json"
+    ): Call<ComputerListData>
 
     @FormUrlEncoded
     @POST("computers/")
@@ -86,19 +103,21 @@ interface ApiService {
         @Field("note") note: String?
     ): Call<ComputerListData.Result>
 
-    //@Headers("Content-type:application/json")
-    @GET("user/")
-    fun getCurrentUser(
-        @Header("Authorization") token: String
-    ): Call<CurrentUserData>
+    //HISTORY COMPUTER
+    @FormUrlEncoded
+    @POST("computers/{id}/history/")
+    fun postHistory(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("note") note: String,
+        @Field("status_history") status_history: String
+    ): Call<HistoryListData.Result>
 
-    //@Headers("Content-type:application/json")
     @GET("historys/")
     fun getHistoryDashboard(
         @Header("Authorization") token: String
     ): Call<HistoryListData>
 
-    //@Headers("Content-type:application/json")
     @GET("computers/{id}/historys/")
     fun getHistoryPerComputer(
         @Header("Authorization") token: String,
@@ -106,29 +125,7 @@ interface ApiService {
         @Query("format") format: String = "json"
     ): Call<HistoryListData>
 
-    //?branch=&location=&division=&seat_management=true&status=
-    @GET("computers/")
-    fun getComputerList(
-        @Header("Authorization") token: String,
-        @Query("branch") branch: String,
-        @Query("location") location: String = "",
-        @Query("division") division: String,
-        @Query("seat_management") seat_management: String,
-        @Query("status") status: String,
-        @Query("ordering") order: String = "division,client_name",
-        @Query("format") format: String = "json"
-    ): Call<ComputerListData>
-
-    //@Headers("Content-type:application/json")
-    @GET("computers/")
-    fun getComputerListSearch(
-        @Header("Authorization") token: String,
-        @Query("search") search: String?,
-        @Query("ordering") order: String = "client_name",
-        @Query("format") format: String = "json"
-    ): Call<ComputerListData>
-
-    //@Headers("Content-type:application/json")
+    //STOCK
     @GET("stocks/")
     fun getStockList(
         @Header("Authorization") token: String,
@@ -139,7 +136,6 @@ interface ApiService {
         @Query("format") format: String = "json"
     ): Call<StockListData>
 
-    //@Headers("Content-type:application/json")
     @GET("stocks/{id}/")
     fun getStockDetail(
         @Header("Authorization") token: String,
@@ -245,7 +241,6 @@ interface ApiService {
         @Path("id") id: Int
     ): Call<ResponseBody>
 
-    //@Headers("Content-type:application/json")
     @GET("additions/{id}/")
     fun getAdditionDetail(
         @Header("Authorization") token: String,
@@ -253,13 +248,43 @@ interface ApiService {
         @Query("format") format: String = "json"
     ): Call<AddAndConsumeData.Result>
 
-    //@Headers("Content-type:application/json")
     @GET("consumes/{id}/")
     fun getConsumeDetail(
         @Header("Authorization") token: String,
         @Path("id") id: Int,
         @Query("format") format: String = "json"
     ): Call<AddAndConsumeData.Result>
+
+    //CCTV
+    @GET("cctvs/")
+    fun getCctvList(
+        @Header("Authorization") token: String,
+        @Query("branch") branch: String,
+        @Query("status") status: String,
+        @Query("ordering") order: String = "branch,cctv_name",
+        @Query("format") format: String = "json"
+    ): Call<CctvListData>
+
+    @GET("cctvs/")
+    fun getCctvListSearch(
+        @Header("Authorization") token: String,
+        @Query("search") search: String?,
+        @Query("ordering") order: String = "branch,cctv_name",
+        @Query("format") format: String = "json"
+    ): Call<CctvListData>
+
+    @FormUrlEncoded
+    @POST("cctvs/")
+    fun postCctv(
+        @Header("Authorization") token: String,
+        @Field("cctv_name") cctvName: String,
+        @Field("ip_address") ipAddress: String?,
+        @Field("location") location: String? = "None",
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("status") status: String? = "Aktif",
+        @Field("note") note: String?
+    ): Call<CctvListData.Result>
 
 
 }
@@ -269,19 +294,3 @@ object Api {
         retrofit.create(ApiService::class.java)
     }
 }
-
-
-/*interface ApiService {
-
-    @FormUrlEncoded
-    @POST("rest-auth/login/")
-    fun getTokenLogin(
-        @Field("username") username: String,
-        @Field("password") password: String
-    ): Call<TokenData>
-
-    @Headers("Content-Type:application/json; charset=UTF-8")
-    @GET("user/")
-    fun getCurrentUser(@Header("Authorization") token : String): Call<CurrentUserData>
-
-}*/

@@ -69,6 +69,14 @@
         <item>Hilang</item>
     </string-array>
 
+    <string-array name="cctv_status_array">
+        <item>---</item>
+        <item>Aktif</item>
+        <item>Backup</item>
+        <item>Rusak</item>
+        <item>Lainnya</item>
+    </string-array>
+
 
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>
@@ -249,6 +257,9 @@
     <string name="ubah_pengurangan">Ubah Pengurangan</string>
     <string name="ditambahkan">Ditambahkan</string>
     <string name="dipakai">Dipakai</string>
+    <string name="inv_cctv">-- INV. CCTV</string>
+    <string name="tambah_cctv">tambah cctv</string>
+    <string name="filter_cctv">Filter Cctv</string>
 
 
 </resources>

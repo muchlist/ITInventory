@@ -12,42 +12,52 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".stock_inv.stock_edit.EditStockActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_detail.stock_use_edit.EditStockUseActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_detail.stock_use_detail.StockUseDetailActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_detail.stock_use_add.AddConsumeStockActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_detail.stock_use_add.AddAdditionStockActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_detail.DetailStockActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_add.AddStockActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".stock_inv.stock_list.StocklistActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name=".PrivacyPolicyActivity"
-                android:screenOrientation="portrait"/>
+        <activity android:name=".inv_cctv.cctv_list.CctvListActivity" />
         <activity
-                android:name=".computer_inv.edit_computer.EditComputerActivity"
+                android:name=".inv_stock.stock_edit.EditStockActivity"
                 android:screenOrientation="portrait" />
         <activity
-                android:name=".computer_inv.add_computer.AddComputerActivity"
+                android:name=".inv_stock.stock_detail.stock_use_edit.EditStockUseActivity"
                 android:screenOrientation="portrait" />
         <activity
-                android:name=".computer_inv.add_history.HistoryAddActivity"
+                android:name=".inv_stock.stock_detail.stock_use_detail.StockUseDetailActivity"
                 android:screenOrientation="portrait" />
         <activity
-                android:name=".computer_inv.computer_detail.DetailComputerActivity"
+                android:name=".inv_stock.stock_detail.stock_use_add.AddConsumeStockActivity"
                 android:screenOrientation="portrait" />
         <activity
-                android:name=".computer_inv.computer_list.ComputerListActivity"
+                android:name=".inv_stock.stock_detail.stock_use_add.AddAdditionStockActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_stock.stock_detail.DetailStockActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_stock.stock_add.AddStockActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_stock.stock_list.StocklistActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".PrivacyPolicyActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_computer.computer_edit.EditComputerActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_computer.computer_add.AddComputerActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_computer.add_history.HistoryAddActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_computer.computer_detail.DetailComputerActivity"
+                android:screenOrientation="portrait" />
+        <activity
+                android:name=".inv_computer.computer_list.ComputerListActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-                android:name=".computer_inv.history.HistoryDetailActivity"
+                android:name=".inv_computer.computer_history.HistoryDetailActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateAlwaysHidden" />
         <activity

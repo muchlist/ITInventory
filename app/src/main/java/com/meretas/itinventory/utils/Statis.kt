@@ -26,6 +26,9 @@ class Statis {
         var whatComputerSeatManajemen = ""
         var whatComputerStatus = "Baik"
 
+        //Cctv List Filter
+        var whatCctvBranch = ""
+        var whatCctvStatus = "Aktif"
 
     }
 }
