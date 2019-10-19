@@ -77,6 +77,13 @@
         <item>Lainnya</item>
     </string-array>
 
+    <string-array name="cctv_status_array_post">
+        <item>Aktif</item>
+        <item>Backup</item>
+        <item>Rusak</item>
+        <item>Lainnya</item>
+    </string-array>
+
 
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>
@@ -260,6 +267,8 @@
     <string name="inv_cctv">-- INV. CCTV</string>
     <string name="tambah_cctv">tambah cctv</string>
     <string name="filter_cctv">Filter Cctv</string>
+    <string name="tambah_cctv_add">Tambah Cctv</string>
+    <string name="nama_cctv">Nama Cctv</string>
 
 
 </resources>

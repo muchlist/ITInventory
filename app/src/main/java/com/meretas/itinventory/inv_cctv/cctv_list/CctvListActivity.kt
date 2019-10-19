@@ -17,13 +17,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.CctvListData
+import com.meretas.itinventory.inv_cctv.cctv_add.AddCctvActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
-import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.Statis.Companion.isCctvUpdate
 import com.meretas.itinventory.utils.Statis.Companion.whatCctvBranch
 import com.meretas.itinventory.utils.Statis.Companion.whatCctvStatus
 import kotlinx.android.synthetic.main.activity_cctv_list.*
 import kotlinx.coroutines.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class CctvListActivity : AppCompatActivity() {
@@ -91,6 +93,8 @@ class CctvListActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        bt_cctvlist_tambah.setOnClickListener { startActivity<AddCctvActivity>() }
 
         hideKeyboard()
 
@@ -244,6 +248,14 @@ class CctvListActivity : AppCompatActivity() {
     private fun hideKeyboard() {
         et_cctvlist_searchbar.isFocusable = false
         et_cctvlist_searchbar.clearFocus()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isCctvUpdate) {
+            requestDataFromInternet()
+        }
+        isCctvUpdate = false
     }
 
     override fun onStop() {
