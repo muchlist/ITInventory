@@ -11,12 +11,12 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.dashboard.HistoryCctvAdapter
 import com.meretas.itinventory.data.CctvListData
 import com.meretas.itinventory.data.HistoryListCctvData
+import com.meretas.itinventory.inv_cctv.cctv_history.AddCctvHistoryActivity
 import com.meretas.itinventory.services.Api
-import com.meretas.itinventory.utils.App
-import com.meretas.itinventory.utils.DATA_INTENT_CCTV_LIST_TO_DETAIL
-import com.meretas.itinventory.utils.disable
-import com.meretas.itinventory.utils.enable
+import com.meretas.itinventory.utils.*
+import com.meretas.itinventory.utils.Statis.Companion.isCctvHistoryUpdate
 import kotlinx.android.synthetic.main.activity_detail_cctv.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class DetailCctvActivity : AppCompatActivity() {
@@ -29,12 +29,15 @@ class DetailCctvActivity : AppCompatActivity() {
     private lateinit var historyCctvAdapter: HistoryCctvAdapter
     private var historyCctvData: MutableList<HistoryListCctvData.Result> = mutableListOf()
 
+    //INTENT
+    private lateinit var intentData: CctvListData.Result
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_cctv)
 
         //Intent dari stock list di transfer ke view model
-        val intent = intent.getParcelableExtra<CctvListData.Result>(
+        intentData = intent.getParcelableExtra(
             DATA_INTENT_CCTV_LIST_TO_DETAIL
         )
 
@@ -43,11 +46,33 @@ class DetailCctvActivity : AppCompatActivity() {
         viewModelObserve()
 
         //INJECT DATA DARI INTENT KE VIEWMODEL
-        viewModel.injectCctvDataToViewModel(intent)
+        viewModel.injectCctvDataToViewModel(intentData)
 
         setRecyclerView()
-        viewModel.getCctvHistory(App.prefs.authTokenSave, intent.id)
+        viewModel.getCctvHistory(App.prefs.authTokenSave, intentData.id)
 
+        //PERCABANGN TOMBOL MENURUT BRANCH
+        if (App.prefs.userBranchSave != intentData.branch || App.prefs.isReadOnly) {
+            bt_detail_cctv_add_history.disable()
+            bt_detail_edit_cctv.disable()
+        } else {
+            bt_detail_cctv_add_history.enable()
+            bt_detail_edit_cctv.enable()
+
+            bt_detail_cctv_add_history.setOnClickListener {
+                startActivity<AddCctvHistoryActivity>(
+                    INTENT_DETAIL_ADD_HISTORY_CCTV_ID to intentData.id,
+                    INTENT_DETAIL_ADD_HISTORY_CCTV_NAME to intentData.cctvName
+                )
+            }
+
+            bt_detail_edit_cctv.setOnClickListener {
+                /*                 startActivity<AddConsumeStockActivity>(
+                 INTENT_DETAIL_ADD_CONSUME_ID to intent.id,
+                 INTENT_DETAIL_ADD_CONSUME_NAME to intent.stockName
+             )*/
+            }
+        }
 
     }
 
@@ -63,13 +88,13 @@ class DetailCctvActivity : AppCompatActivity() {
         rv_detail_cctv_history.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         historyCctvAdapter = HistoryCctvAdapter(this, historyCctvData) {
-           /* startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)*/
+            /* startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)*/
         }
         rv_detail_cctv_history.adapter = historyCctvAdapter
         rv_detail_cctv_history.setHasFixedSize(true)
     }
 
-    private fun viewModelObserve(){
+    private fun viewModelObserve() {
         //LOADING PROGRESS
         viewModel.isLoading.observe(this, Observer {
             if (it) {
@@ -97,29 +122,6 @@ class DetailCctvActivity : AppCompatActivity() {
             tv_detail_cctv_year.text = it.year
             tv_detail_cctv_status.text = it.status
             tv_detail_cctv_note.text = it.note
-
-            //PERCABANGN TOMBOL MENURUT BRANCH
-            if (App.prefs.userBranchSave != it.branch || App.prefs.isReadOnly) {
-                bt_detail_cctv_add_history.disable()
-                bt_detail_edit_cctv.disable()
-            } else {
-                bt_detail_cctv_add_history.enable()
-                bt_detail_edit_cctv.enable()
-
-                bt_detail_cctv_add_history.setOnClickListener {
-                    /*                    startActivity<AddAdditionStockActivity>(
-                        INTENT_DETAIL_ADD_ADDITION_ID to intent.id,
-                        INTENT_DETAIL_ADD_ADDITION_NAME to intent.stockName
-                    )*/
-                }
-
-                bt_detail_edit_cctv.setOnClickListener {
-                    /*                 startActivity<AddConsumeStockActivity>(
-                     INTENT_DETAIL_ADD_CONSUME_ID to intent.id,
-                     INTENT_DETAIL_ADD_CONSUME_NAME to intent.stockName
-                 )*/
-                }
-            }
         })
 
         viewModel.cctvDetailHistoryCctvData.observe(this, Observer {
@@ -133,5 +135,17 @@ class DetailCctvActivity : AppCompatActivity() {
                 rv_detail_cctv_history.startAnimation(topToBottom)
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (isCctvHistoryUpdate) {
+            viewModel.getCctvHistory(
+                token = App.prefs.authTokenSave,
+                cctvId = intentData.id
+            )
+            isCctvHistoryUpdate = false
+        }
     }
 }

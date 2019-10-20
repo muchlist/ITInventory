@@ -5,8 +5,8 @@ package com.meretas.itinventory.utils
 const val DATA_INTENT_DASHBOARD_DETAIL_HISTORY = "data_history"
 const val DATA_INTENT_DASHBOARD_COMPUTER_LIST = "data_computer"
 const val DATA_INTENT_COMPUTER_LIST_DETAIL = "detail_computer"
-const val INTENT_DETAIL_ADD_HISTORY_ID = "add_history"
-const val INTENT_DETAIL_ADD_HISTORY_NAME = "add_name"
+const val INTENT_DETAIL_ADD_HISTORY_ID = "add_history_computer_id"
+const val INTENT_DETAIL_ADD_HISTORY_NAME = "add_history_computer_name"
 const val INTENT_DETAIL_EDIT_COMPUTER = "edit_computer"
 const val INTENT_EDIT_COMPUTER_RESULT = "edit_computer_result"
 
@@ -20,6 +20,8 @@ const val INTENT_DETAIL_ADD_CONSUME_NAME = "consume_name"
 
 //intent cctv
 const val DATA_INTENT_CCTV_LIST_TO_DETAIL = "list_cctv_to_detail_cctv"
+const val INTENT_DETAIL_ADD_HISTORY_CCTV_ID = "add_history_cctv_id"
+const val INTENT_DETAIL_ADD_HISTORY_CCTV_NAME = "add_history_cctv_name"
 
 //intent stock use detail
 const val SOURCE_INTENT_STOCK_ACTIVE = "stock_use_source_active" //Key

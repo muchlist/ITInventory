@@ -12,6 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".inv_cctv.cctv_history.AddCctvHistoryActivity"></activity>
         <activity android:name=".inv_cctv.cctv_detail.DetailCctvActivity" />
         <activity android:name=".inv_cctv.cctv_add.AddCctvActivity" />
         <activity android:name=".inv_cctv.cctv_list.CctvListActivity" />
@@ -77,9 +78,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <meta-computerData
-                android:name="preloaded_fonts"
-                android:resource="@array/preloaded_fonts" />-->
     </application>
 
 </manifest>

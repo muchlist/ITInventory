@@ -84,6 +84,18 @@
         <item>Lainnya</item>
     </string-array>
 
+    <string-array name="cctv_history_status">
+        <item>Pengecekan</item>,
+        <item>Diperbaiki</item>,
+        <item>Bermasalah</item>,
+        <item>Rusak</item>,
+        <item>Pindah_Tempat</item>,
+        <item>Dibersihkan</item>,
+        <item>Digudangkan</item>,
+        <item>Dimusnahkan</item>,
+        <item>Hilang</item>
+    </string-array>
+
 
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>

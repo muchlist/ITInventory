@@ -6,6 +6,7 @@ class Statis {
         var isHistoryUpdate = false  //apakah history update jika iya list history akan di reset
         var isStockUpdate = false
         var isCctvUpdate = false //false di CctvListActivity , true di AddCctvActivity
+        var isCctvHistoryUpdate = false
 
         //apabila stok berubah (menambahkan, mengurangkan, mengedit)
         // maka ketiga fragment stock_detail fragment di reload di onresume
