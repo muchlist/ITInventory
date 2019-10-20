@@ -1,6 +1,6 @@
 package com.meretas.itinventory.inv_computer.add_history
 
-import com.meretas.itinventory.data.HistoryListData
+import com.meretas.itinventory.data.HistoryListComputerData
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import retrofit2.Call
@@ -16,15 +16,15 @@ class HistoryAddPresenter(private var view: HistoryAddView?) {
     ) {
         view?.showLoading()
         Api.retrofitService.postHistory(App.prefs.authTokenSave, id, note, status)
-            .enqueue(object : Callback<HistoryListData.Result> {
-                override fun onFailure(call: Call<HistoryListData.Result>, t: Throwable) {
+            .enqueue(object : Callback<HistoryListComputerData.Result> {
+                override fun onFailure(call: Call<HistoryListComputerData.Result>, t: Throwable) {
                     view?.showError(t.toString())
                     view?.hideLoading()
                 }
 
                 override fun onResponse(
-                    call: Call<HistoryListData.Result>,
-                    response: Response<HistoryListData.Result>
+                    call: Call<HistoryListComputerData.Result>,
+                    response: Response<HistoryListComputerData.Result>
                 ) {
                     when {
                         response.isSuccessful -> {

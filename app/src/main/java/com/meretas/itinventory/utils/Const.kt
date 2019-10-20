@@ -18,6 +18,9 @@ const val INTENT_DETAIL_ADD_ADDITION_NAME = "addition_name"
 const val INTENT_DETAIL_ADD_CONSUME_ID = "id_consume"
 const val INTENT_DETAIL_ADD_CONSUME_NAME = "consume_name"
 
+//intent cctv
+const val DATA_INTENT_CCTV_LIST_TO_DETAIL = "list_cctv_to_detail_cctv"
+
 //intent stock use detail
 const val SOURCE_INTENT_STOCK_ACTIVE = "stock_use_source_active" //Key
 const val SOURCE_INTENT_STOCK_USE = "stock_use_source" //Key

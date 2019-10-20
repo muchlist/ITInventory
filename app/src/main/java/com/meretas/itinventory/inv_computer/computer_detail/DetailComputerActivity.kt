@@ -12,10 +12,10 @@ import com.meretas.itinventory.R
 import com.meretas.itinventory.inv_computer.add_history.HistoryAddActivity
 import com.meretas.itinventory.inv_computer.computer_edit.EditComputerActivity
 import com.meretas.itinventory.inv_computer.computer_history.HistoryDetailActivity
-import com.meretas.itinventory.dashboard.HistoryAdapter
+import com.meretas.itinventory.dashboard.HistoryComputerAdapter
 import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.data.ComputerPostData
-import com.meretas.itinventory.data.HistoryListData
+import com.meretas.itinventory.data.HistoryListComputerData
 import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.activity_detail_computer.*
 import org.jetbrains.anko.startActivity
@@ -32,8 +32,8 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
     private lateinit var presenter: DetailComputerPresenter
 
     //recyclerview
-    private lateinit var historyAdapterB: HistoryAdapter
-    private var historyDataB: MutableList<HistoryListData.Result> = mutableListOf()
+    private lateinit var historyComputerAdapterB: HistoryComputerAdapter
+    private var historyComputerDataB: MutableList<HistoryListComputerData.Result> = mutableListOf()
 
     @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,10 +84,10 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         //Historr Recyclerview
         rv_detail_history.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyAdapterB = HistoryAdapter(this, historyDataB) {
+        historyComputerAdapterB = HistoryComputerAdapter(this, historyComputerDataB) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
-        rv_detail_history.adapter = historyAdapterB
+        rv_detail_history.adapter = historyComputerAdapterB
 
         //mengisi History Recyclerview
         presenter.getHistoryDetail(mId)
@@ -133,14 +133,13 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         pb_detail_computer_history.visibility = View.GONE
     }
 
-    override fun showHistoryList(historyList: List<HistoryListData.Result>) {
-        historyDataB.clear()
-        historyDataB.addAll(historyList)
-        historyAdapterB.notifyDataSetChanged()
+    override fun showHistoryList(historyListComputer: List<HistoryListComputerData.Result>) {
+        historyComputerDataB.clear()
+        historyComputerDataB.addAll(historyListComputer)
+        historyComputerAdapterB.notifyDataSetChanged()
 
-        //Declare Animation
+        //Declare And SetAnimation
         val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
-        //SetAnimation
         rv_detail_history.startAnimation(topToBottom)
     }
 

@@ -111,19 +111,19 @@ interface ApiService {
         @Path("id") id: Int,
         @Field("note") note: String,
         @Field("status_history") status_history: String
-    ): Call<HistoryListData.Result>
+    ): Call<HistoryListComputerData.Result>
 
     @GET("historys/")
     fun getHistoryDashboard(
         @Header("Authorization") token: String
-    ): Call<HistoryListData>
+    ): Call<HistoryListComputerData>
 
     @GET("computers/{id}/historys/")
     fun getHistoryPerComputer(
         @Header("Authorization") token: String,
         @Path("id") id: Int,
         @Query("format") format: String = "json"
-    ): Call<HistoryListData>
+    ): Call<HistoryListComputerData>
 
     //STOCK
     @GET("stocks/")
@@ -285,6 +285,28 @@ interface ApiService {
         @Field("status") status: String? = "Aktif",
         @Field("note") note: String?
     ): Call<CctvListData.Result>
+
+    //HISTORY CCTV
+    @FormUrlEncoded
+    @POST("cctvs/{id}/history/")
+    fun postHistoryCctv(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("note") note: String,
+        @Field("status_history") status_history: String
+    ): Call<HistoryListCctvData.Result>
+
+    @GET("cctv-historys/")
+    fun getHistoryCctvDashboard(
+        @Header("Authorization") token: String
+    ): Call<HistoryListCctvData>
+
+    @GET("cctvs/{id}/historys/")
+    fun getHistoryPerCctv(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
+    ): Call<HistoryListCctvData>
 
 
 }

@@ -20,8 +20,8 @@ import com.meretas.itinventory.PrivacyPolicyActivity
 import com.meretas.itinventory.R
 import com.meretas.itinventory.inv_computer.computer_list.ComputerListActivity
 import com.meretas.itinventory.inv_computer.computer_history.HistoryDetailActivity
-import com.meretas.itinventory.data.DataMenu
-import com.meretas.itinventory.data.HistoryListData
+import com.meretas.itinventory.data.MenuData
+import com.meretas.itinventory.data.HistoryListComputerData
 import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.inv_stock.stock_list.StocklistActivity
@@ -41,15 +41,15 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     private lateinit var presenter: DashboardPresenter
 
     //recycler view
-    private lateinit var historyAdapter: HistoryAdapter
-    private var historyData: MutableList<HistoryListData.Result> = mutableListOf()
+    private lateinit var historyComputerAdapter: HistoryComputerAdapter
+    private var historyComputerData: MutableList<HistoryListComputerData.Result> = mutableListOf()
 
     private lateinit var myDialog: Dialog
     private var doubleClickLogout = false
 
     //gridview
     private lateinit var menuAdapter: MenuListAdapter
-    private var menuData: MutableList<DataMenu> = mutableListOf()
+    private var menuDataData: MutableList<MenuData> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,10 +71,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         //Historr Recyclerview
         rv_history_dashboard.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyAdapter = HistoryAdapter(this, historyData) {
+        historyComputerAdapter = HistoryComputerAdapter(this, historyComputerData) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
-        rv_history_dashboard.adapter = historyAdapter
+        rv_history_dashboard.adapter = historyComputerAdapter
 
 
         //mengisi History Recyclerview
@@ -103,19 +103,19 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
 
         //MENU LIST ITEM GRIDVIEW
-        menuData.apply {
+        menuDataData.apply {
             clear()
-            add(DataMenu(0, "Komputer", R.drawable.ic_029_computer))
-            add(DataMenu(1, "Stok", R.drawable.ic_049_stock))
-            add(DataMenu(2, "Printer", R.drawable.ic_041_printer))
-            add(DataMenu(3, "Server", R.drawable.ic_047_server))
-            add(DataMenu(4, "CCTV", R.drawable.ic_042_cctv))
+            add(MenuData(0, "Komputer", R.drawable.ic_029_computer))
+            add(MenuData(1, "Stok", R.drawable.ic_049_stock))
+            add(MenuData(2, "Printer", R.drawable.ic_041_printer))
+            add(MenuData(3, "Server", R.drawable.ic_047_server))
+            add(MenuData(4, "CCTV", R.drawable.ic_018_cctv))
         }
 
         val animation: Animation = AnimationUtils.loadAnimation(this, R.anim.grid_item_anim)
         val controller = GridLayoutAnimationController(animation, .1f, .3f)
 
-        menuAdapter = MenuListAdapter(this, menuData) {
+        menuAdapter = MenuListAdapter(this, menuDataData) {
 
             when (it.id) {
                 0 -> startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
@@ -142,10 +142,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         App.prefs.isReadOnly = isReadOnly
     }
 
-    override fun showHistory(data: List<HistoryListData.Result>) {
-        historyData.clear()
-        historyData.addAll(data)
-        historyAdapter.notifyDataSetChanged()
+    override fun showHistory(computerData: List<HistoryListComputerData.Result>) {
+        historyComputerData.clear()
+        historyComputerData.addAll(computerData)
+        historyComputerAdapter.notifyDataSetChanged()
 
         //Declare Animation
         val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)

@@ -1,7 +1,7 @@
 package com.meretas.itinventory.dashboard
 
 import com.meretas.itinventory.data.CurrentUserData
-import com.meretas.itinventory.data.HistoryListData
+import com.meretas.itinventory.data.HistoryListComputerData
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import retrofit2.Call
@@ -48,15 +48,15 @@ class DashboardPresenter(private var view: DashboarView?) {
         view?.showProgressBarHistory()
 
         Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave)
-            .enqueue(object : Callback<HistoryListData> {
-                override fun onFailure(call: Call<HistoryListData>, t: Throwable) {
+            .enqueue(object : Callback<HistoryListComputerData> {
+                override fun onFailure(call: Call<HistoryListComputerData>, t: Throwable) {
                     view?.hideProgressBarHistory()
                     view?.showToastAndReload("Tidak dapat terhubung ke server")
                 }
 
                 override fun onResponse(
-                    call: Call<HistoryListData>,
-                    response: Response<HistoryListData>
+                    call: Call<HistoryListComputerData>,
+                    response: Response<HistoryListComputerData>
                 ) {
                     when {
                         response.isSuccessful -> {

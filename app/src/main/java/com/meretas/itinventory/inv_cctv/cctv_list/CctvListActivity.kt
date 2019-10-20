@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.CctvListData
 import com.meretas.itinventory.inv_cctv.cctv_add.AddCctvActivity
+import com.meretas.itinventory.inv_cctv.cctv_detail.DetailCctvActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
+import com.meretas.itinventory.utils.DATA_INTENT_CCTV_LIST_TO_DETAIL
 import com.meretas.itinventory.utils.Statis.Companion.isCctvUpdate
 import com.meretas.itinventory.utils.Statis.Companion.whatCctvBranch
 import com.meretas.itinventory.utils.Statis.Companion.whatCctvStatus
@@ -117,9 +119,9 @@ class CctvListActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         rv_cctvlist.layoutManager = LinearLayoutManager(this)
         cctvAdapter = CctvListAdapter(this, cctvData) {
-            /*startActivity<DetailStockActivity>(
-                DATA_INTENT_STOCK_LIST_DETAIL to it
-            )*/
+            startActivity<DetailCctvActivity>(
+                DATA_INTENT_CCTV_LIST_TO_DETAIL to it
+            )
         }
         rv_cctvlist.adapter = cctvAdapter
         rv_cctvlist.setHasFixedSize(true)

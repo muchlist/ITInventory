@@ -85,7 +85,7 @@ class AddCctvActivity : AppCompatActivity() {
         val arrayDropdown = resources.getStringArray(R.array.cctv_status_array_post)
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Pilih Kategori Barang")
+        builder.setTitle("Pilih Status")
         builder.setSingleChoiceItems(arrayDropdown, -1) { _, which ->
             val status = arrayDropdown[which]
             try {
@@ -115,7 +115,7 @@ class AddCctvActivity : AppCompatActivity() {
             viewModel.postCctv(cctv, isContinue)
 
         } else {
-            toast("Nama Cctv Tidak Boleh Kosong!")
+            toast("Nama cctv tidak boleh kosong!")
         }
     }
 }

@@ -8,12 +8,12 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.meretas.itinventory.R
-import com.meretas.itinventory.data.DataMenu
+import com.meretas.itinventory.data.MenuData
 
 class MenuListAdapter(
     private var c: Context?,
-    private var listMenu: List<DataMenu>,
-    private var itemClick: (DataMenu) -> Unit
+    private var listMenuData: List<MenuData>,
+    private var itemClick: (MenuData) -> Unit
 ) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -22,7 +22,7 @@ class MenuListAdapter(
             view = LayoutInflater.from(c).inflate(R.layout.item_grid_menu_dashboard, parent, false)
         }
 
-        val menu = this.getItem(position) as DataMenu
+        val menu = this.getItem(position) as MenuData
 
         val menuImage = view?.findViewById(R.id.iv_menu_dashboard) as ImageView
         val menuTitle = view.findViewById(R.id.tv_title_dashboard) as TextView
@@ -37,7 +37,7 @@ class MenuListAdapter(
     }
 
     override fun getItem(position: Int): Any {
-        return listMenu[position]
+        return listMenuData[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -45,7 +45,7 @@ class MenuListAdapter(
     }
 
     override fun getCount(): Int {
-        return listMenu.size
+        return listMenuData.size
     }
 
 }

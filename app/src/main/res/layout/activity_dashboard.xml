@@ -99,18 +99,18 @@
                       android:descendantFocusability="blocksDescendants"
                       android:orientation="vertical">
 
-                <GridView
-                        android:id="@+id/gv_dashboard_menu"
-                        android:layout_width="match_parent"
-                        android:layout_height="235dp"
-                        android:layout_gravity="center"
-                        android:animateLayoutChanges="true"
-                        android:background="@drawable/gradient_dashboard_grid"
-                        android:gravity="center"
-                        android:numColumns="2"
-                        android:paddingTop="45dp"
-                        android:paddingBottom="12dp"
-                        android:verticalSpacing="10dp" />
+            <GridView
+                    android:id="@+id/gv_dashboard_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="235dp"
+                    android:layout_gravity="center"
+                    android:animateLayoutChanges="true"
+                    android:background="@drawable/gradient_dashboard_grid"
+                    android:gravity="center"
+                    android:numColumns="2"
+                    android:paddingTop="45dp"
+                    android:paddingBottom="12dp"
+                    android:verticalSpacing="10dp" />
 
             <TextView
                     android:layout_width="wrap_content"

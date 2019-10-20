@@ -3,7 +3,7 @@ package com.meretas.itinventory.inv_computer.computer_history
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.meretas.itinventory.R
-import com.meretas.itinventory.data.HistoryListData
+import com.meretas.itinventory.data.HistoryListComputerData
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_DETAIL_HISTORY
 import kotlinx.android.synthetic.main.activity_history_detail.*
 
@@ -14,7 +14,7 @@ class HistoryDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_history_detail)
 
         val intent =
-            intent.getParcelableExtra<HistoryListData.Result>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY)
+            intent.getParcelableExtra<HistoryListComputerData.Result>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY)
 
         tv_historydetail_komputer.text = intent.computer
         tv_historydetail_branch.text = intent.branch
