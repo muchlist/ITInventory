@@ -5,7 +5,8 @@ import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
-data class HistoryListComputerData(
+//DIGUNAKAN UNTUK HISTORY SEMUA DATA, JSON HISTORY COMPUTER MENGGUNAKAN INI
+data class HistoryListGeneralData(
     @Json(name = "count") val count: Int,
     @Json(name = "next") val next: String?,
     @Json(name = "previous") val previous: String?,

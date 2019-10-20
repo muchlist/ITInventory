@@ -9,13 +9,13 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
-import com.meretas.itinventory.inv_computer.add_history.HistoryAddActivity
+import com.meretas.itinventory.inv_computer.computer_add_history.AddHistoryComputerActivity
 import com.meretas.itinventory.inv_computer.computer_edit.EditComputerActivity
-import com.meretas.itinventory.inv_computer.computer_history.HistoryDetailActivity
-import com.meretas.itinventory.dashboard.HistoryComputerAdapter
+import com.meretas.itinventory.dashboard.HistoryDetailActivity
+import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.data.ComputerPostData
-import com.meretas.itinventory.data.HistoryListComputerData
+import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.activity_detail_computer.*
 import org.jetbrains.anko.startActivity
@@ -32,8 +32,8 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
     private lateinit var presenter: DetailComputerPresenter
 
     //recyclerview
-    private lateinit var historyComputerAdapterB: HistoryComputerAdapter
-    private var historyComputerDataB: MutableList<HistoryListComputerData.Result> = mutableListOf()
+    private lateinit var historyGeneralAdapterB: HistoryGeneralAdapter
+    private var historyGeneralDataB: MutableList<HistoryListGeneralData.Result> = mutableListOf()
 
     @SuppressLint("DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,16 +84,16 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         //Historr Recyclerview
         rv_detail_history.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyComputerAdapterB = HistoryComputerAdapter(this, historyComputerDataB) {
+        historyGeneralAdapterB = HistoryGeneralAdapter(this, historyGeneralDataB) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
-        rv_detail_history.adapter = historyComputerAdapterB
+        rv_detail_history.adapter = historyGeneralAdapterB
 
         //mengisi History Recyclerview
         presenter.getHistoryDetail(mId)
 
         bt_detail_add_history.setOnClickListener {
-            startActivity<HistoryAddActivity>(
+            startActivity<AddHistoryComputerActivity>(
                 INTENT_DETAIL_ADD_HISTORY_ID to intent.id,
                 INTENT_DETAIL_ADD_HISTORY_NAME to intent.clientName
             )
@@ -112,8 +112,8 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
 
         //IF BRANCH TIDAK SAMA DENGAN BRANCH USER TIDAK DAPAT MENAMBAH HISTORY DAN EDIT
         if (App.prefs.userBranchSave != intent.branch || App.prefs.isReadOnly) {
-            bt_detail_add_history.visibility = View.INVISIBLE
-            bt_detail_edit_computer.visibility = View.INVISIBLE
+            bt_detail_add_history.disable()
+            bt_detail_edit_computer.disable()
         } else {
             //Declare Animation
             val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
@@ -133,10 +133,10 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         pb_detail_computer_history.visibility = View.GONE
     }
 
-    override fun showHistoryList(historyListComputer: List<HistoryListComputerData.Result>) {
-        historyComputerDataB.clear()
-        historyComputerDataB.addAll(historyListComputer)
-        historyComputerAdapterB.notifyDataSetChanged()
+    override fun showHistoryList(historyListGeneral: List<HistoryListGeneralData.Result>) {
+        historyGeneralDataB.clear()
+        historyGeneralDataB.addAll(historyListGeneral)
+        historyGeneralAdapterB.notifyDataSetChanged()
 
         //Declare And SetAnimation
         val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)

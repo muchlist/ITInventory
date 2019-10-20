@@ -187,13 +187,13 @@
     <string name="information_collection_and_use">Information Collection and Use</string>
     <string name="log_data">Log Data</string>
     <string name="log_desc">I want to inform you that whenever you use my Service, in a case of an error in the app I
-        collect computerData and information (through third party products) on your phone called Log Data. This Log Data may
+        collect generalData and information (through third party products) on your phone called Log Data. This Log Data may
         include information such as your device Internet Protocol (“IP”) address, device name, operating system version,
         the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other
         statistics.
     </string>
     <string name="cookies">Cookies</string>
-    <string name="cookie_desc">Cookies are files with a small amount of computerData that are commonly used as anonymous unique
+    <string name="cookie_desc">Cookies are files with a small amount of generalData that are commonly used as anonymous unique
         identifiers. These are sent to your browser from the websites that you visit and are stored on your device\'s
         internal memory. This Service does not use these “cookies” explicitly. However, the app may use third party code
         and libraries that use “cookies” to collect information and improve their services. You have the option to

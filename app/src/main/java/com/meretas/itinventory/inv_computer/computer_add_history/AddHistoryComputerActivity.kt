@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_computer.add_history
+package com.meretas.itinventory.inv_computer.computer_add_history
 
 import android.content.Context
 import android.os.Bundle
@@ -14,9 +14,9 @@ import kotlinx.android.synthetic.main.activity_history_add.*
 import org.jetbrains.anko.toast
 
 
-class HistoryAddActivity : AppCompatActivity(), HistoryAddView {
+class AddHistoryComputerActivity : AppCompatActivity(), AddHistoryComputerView {
 
-    private lateinit var presenter: HistoryAddPresenter
+    private lateinit var historyComputerPresenter: AddHistoryComputerPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class HistoryAddActivity : AppCompatActivity(), HistoryAddView {
 
         tv_add_history_name.text = "PC $intentName"
 
-        presenter = HistoryAddPresenter(this)
+        historyComputerPresenter = AddHistoryComputerPresenter(this)
 
         //BUTTON ADD HISTORY
         bt_add_history.setOnClickListener {
@@ -38,7 +38,7 @@ class HistoryAddActivity : AppCompatActivity(), HistoryAddView {
 
             val note: String = et_add_history_note.text.toString()
             val status = et_add_history_status.text.toString()
-            presenter.postHistory(intentID, note, status)
+            historyComputerPresenter.postHistory(intentID, note, status)
         }
 
         //STATUS CHOICES
@@ -65,7 +65,7 @@ class HistoryAddActivity : AppCompatActivity(), HistoryAddView {
     }
 
     override fun onDestroy() {
-        presenter.onDestroy()
+        historyComputerPresenter.onDestroy()
         super.onDestroy()
     }
 

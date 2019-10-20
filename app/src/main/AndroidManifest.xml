@@ -50,7 +50,7 @@
                 android:name=".inv_computer.computer_add.AddComputerActivity"
                 android:screenOrientation="portrait" />
         <activity
-                android:name=".inv_computer.add_history.HistoryAddActivity"
+                android:name=".inv_computer.computer_add_history.AddHistoryComputerActivity"
                 android:screenOrientation="portrait" />
         <activity
                 android:name=".inv_computer.computer_detail.DetailComputerActivity"
@@ -60,7 +60,7 @@
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-                android:name=".inv_computer.computer_history.HistoryDetailActivity"
+                android:name=".dashboard.HistoryDetailActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateAlwaysHidden" />
         <activity

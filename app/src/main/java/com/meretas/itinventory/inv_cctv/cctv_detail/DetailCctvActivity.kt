@@ -8,10 +8,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
-import com.meretas.itinventory.dashboard.HistoryCctvAdapter
+import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.CctvListData
-import com.meretas.itinventory.data.HistoryListCctvData
+import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.inv_cctv.cctv_history.AddCctvHistoryActivity
+import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.*
 import com.meretas.itinventory.utils.Statis.Companion.isCctvHistoryUpdate
@@ -26,8 +27,8 @@ class DetailCctvActivity : AppCompatActivity() {
     private lateinit var viewModelFactory: DetailCctvViewModelFactory
 
     //recyclerview
-    private lateinit var historyCctvAdapter: HistoryCctvAdapter
-    private var historyCctvData: MutableList<HistoryListCctvData.Result> = mutableListOf()
+    private lateinit var historyCctvAdapter: HistoryGeneralAdapter
+    private var historyCctvData: MutableList<HistoryListGeneralData.Result> = mutableListOf()
 
     //INTENT
     private lateinit var intentData: CctvListData.Result
@@ -74,6 +75,10 @@ class DetailCctvActivity : AppCompatActivity() {
             }
         }
 
+        iv_detail_back_cctv.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun initViewModel() {
@@ -87,8 +92,8 @@ class DetailCctvActivity : AppCompatActivity() {
     private fun setRecyclerView() {
         rv_detail_cctv_history.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyCctvAdapter = HistoryCctvAdapter(this, historyCctvData) {
-            /* startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)*/
+        historyCctvAdapter = HistoryGeneralAdapter(this, historyCctvData) {
+            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
         rv_detail_cctv_history.adapter = historyCctvAdapter
         rv_detail_cctv_history.setHasFixedSize(true)
@@ -127,7 +132,7 @@ class DetailCctvActivity : AppCompatActivity() {
         viewModel.cctvDetailHistoryCctvData.observe(this, Observer {
             it?.let {
                 historyCctvData.clear()
-                historyCctvData.addAll(it.results)
+                historyCctvData.addAll(it)
                 historyCctvAdapter.notifyDataSetChanged()
 
                 //Declare And SetAnimation

@@ -184,6 +184,28 @@ class AddComputerActivity : AppCompatActivity() {
             try {
                 et_add_seat_manajemen_pc.text = status
                 seatManajement = status == "Ya"
+
+                //set OS
+                val osSeatMan = "Windows 10"
+                tv_add_os.text = osSeatMan
+                sistemOperasi = translasi.osTranslationReverse(osSeatMan)
+
+                //set Proc
+                val procSeatMan = "Setara i5"
+                tv_add_processor.text = procSeatMan
+                processor = translasi.processorTranslationReverse(procSeatMan)
+
+                //set Ram
+                val ramSeatMan = "4 GB DDR4"
+                tv_add_ram.text = ramSeatMan
+                ram = translasi.ramTranslationReverse(ramSeatMan) //ALALALALALALALALALALALLAALLA
+
+                //set Hard disk
+                val hardDiskSeatMan = "1 TB"
+                tv_add_hardisk.text = hardDiskSeatMan
+                hardisk = translasi.hardiskTranslationReverse(hardDiskSeatMan)
+
+
             } catch (e: IllegalArgumentException) {
                 toast("error")
             }
@@ -289,7 +311,6 @@ class AddComputerActivity : AppCompatActivity() {
             try {
                 tv_add_hardisk.text = status
                 hardisk = translasi.hardiskTranslationReverse(status)
-
             } catch (e: IllegalArgumentException) {
                 toast("error")
             }

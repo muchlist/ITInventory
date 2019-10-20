@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.meretas.itinventory.data.CctvListData
 import com.meretas.itinventory.data.HistoryListCctvData
+import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.services.ApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,8 +33,9 @@ class DetailCctvViewModel(
         get() = _isError
 
     //History RV Data
-    private val _cctvDetailHistoryCctvData: MutableLiveData<HistoryListCctvData> = MutableLiveData()
-    val cctvDetailHistoryCctvData: LiveData<HistoryListCctvData>
+    private val _cctvDetailHistoryCctvData: MutableLiveData<List<HistoryListGeneralData.Result>> =
+        MutableLiveData()
+    val cctvDetailHistoryCctvData: LiveData<List<HistoryListGeneralData.Result>>
         get() = _cctvDetailHistoryCctvData
 
 
@@ -59,7 +61,7 @@ class DetailCctvViewModel(
         _cctvDetailData.value = data
     }
 
-    fun getCctvHistory(token : String, cctvId: Int){
+    fun getCctvHistory(token: String, cctvId: Int) {
         _isError.value = ""
         _isLoading.value = true
         apiService.getHistoryPerCctv(token, cctvId)
@@ -71,8 +73,27 @@ class DetailCctvViewModel(
                 ) {
                     when {
                         response.isSuccessful -> {
-                            val listAddition = response.body()
-                            _cctvDetailHistoryCctvData.postValue(listAddition)
+                            val data = response.body()?.results
+                            val historyData: MutableList<HistoryListGeneralData.Result> =
+                                mutableListOf()
+                            data?.let {
+                                for (i in data) {
+                                    historyData.add(
+                                        HistoryListGeneralData.Result(
+                                            id = i.id,
+                                            author = i.author,
+                                            branch = i.branch,
+                                            computer = i.cctv,
+                                            computerId = i.cctvId,
+                                            createdAt = i.createdAt,
+                                            updatedAt = i.updatedAt,
+                                            statusHistory = i.statusHistory,
+                                            note = i.note
+                                        )
+                                    )
+                                }
+                            }
+                            _cctvDetailHistoryCctvData.postValue(historyData)
                             _isLoading.value = false
                         }
                         response.code() == 401 -> {

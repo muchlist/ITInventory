@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
-import com.meretas.itinventory.data.HistoryListCctvData
+import com.meretas.itinventory.data.HistoryListGeneralData
 import kotlinx.android.synthetic.main.item_history_dashboard.view.*
 
-class HistoryCctvAdapter(
+class HistoryGeneralAdapter(
     private val context: Context?,
-    private val itemHistoryCctv: List<HistoryListCctvData.Result>,
-    private val itemClick: (HistoryListCctvData.Result) -> Unit
-) : RecyclerView.Adapter<HistoryCctvAdapter.ViewHolder>() {
+    private val itemHistoryGeneral: List<HistoryListGeneralData.Result>,
+    private val itemClick: (HistoryListGeneralData.Result) -> Unit
+) : RecyclerView.Adapter<HistoryGeneralAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
@@ -21,18 +21,18 @@ class HistoryCctvAdapter(
         return ViewHolder(view, itemClick)
     }
 
-    override fun getItemCount(): Int = itemHistoryCctv.size
+    override fun getItemCount(): Int = itemHistoryGeneral.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(itemHistoryCctv[position])
+        holder.bindItem(itemHistoryGeneral[position])
     }
 
 
-    class ViewHolder(view: View, val itemClick: (HistoryListCctvData.Result) -> Unit) :
+    class ViewHolder(view: View, val itemClick: (HistoryListGeneralData.Result) -> Unit) :
         RecyclerView.ViewHolder(view) {
-        fun bindItem(items: HistoryListCctvData.Result) {
+        fun bindItem(items: HistoryListGeneralData.Result) {
 
-            itemView.tv_history_name.text = "CCTV " + items.cctv
+            itemView.tv_history_name.text = items.computer
             itemView.tv_history_status.text = items.statusHistory
             itemView.tv_history_note.text = items.note
             itemView.tv_history_author.text = items.author

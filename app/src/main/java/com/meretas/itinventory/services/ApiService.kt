@@ -111,19 +111,19 @@ interface ApiService {
         @Path("id") id: Int,
         @Field("note") note: String,
         @Field("status_history") status_history: String
-    ): Call<HistoryListComputerData.Result>
+    ): Call<HistoryListGeneralData.Result>
 
     @GET("historys/")
     fun getHistoryDashboard(
         @Header("Authorization") token: String
-    ): Call<HistoryListComputerData>
+    ): Call<HistoryListGeneralData>
 
     @GET("computers/{id}/historys/")
     fun getHistoryPerComputer(
         @Header("Authorization") token: String,
         @Path("id") id: Int,
         @Query("format") format: String = "json"
-    ): Call<HistoryListComputerData>
+    ): Call<HistoryListGeneralData>
 
     //STOCK
     @GET("stocks/")

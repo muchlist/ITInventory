@@ -19,9 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.PrivacyPolicyActivity
 import com.meretas.itinventory.R
 import com.meretas.itinventory.inv_computer.computer_list.ComputerListActivity
-import com.meretas.itinventory.inv_computer.computer_history.HistoryDetailActivity
 import com.meretas.itinventory.data.MenuData
-import com.meretas.itinventory.data.HistoryListComputerData
+import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.inv_stock.stock_list.StocklistActivity
@@ -41,8 +40,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     private lateinit var presenter: DashboardPresenter
 
     //recycler view
-    private lateinit var historyComputerAdapter: HistoryComputerAdapter
-    private var historyComputerData: MutableList<HistoryListComputerData.Result> = mutableListOf()
+    private lateinit var historyGeneralAdapter: HistoryGeneralAdapter
+    private var historyGeneralData: MutableList<HistoryListGeneralData.Result> = mutableListOf()
 
     private lateinit var myDialog: Dialog
     private var doubleClickLogout = false
@@ -71,10 +70,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         //Historr Recyclerview
         rv_history_dashboard.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyComputerAdapter = HistoryComputerAdapter(this, historyComputerData) {
+        historyGeneralAdapter = HistoryGeneralAdapter(this, historyGeneralData) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
-        rv_history_dashboard.adapter = historyComputerAdapter
+        rv_history_dashboard.adapter = historyGeneralAdapter
 
 
         //mengisi History Recyclerview
@@ -142,10 +141,10 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         App.prefs.isReadOnly = isReadOnly
     }
 
-    override fun showHistory(computerData: List<HistoryListComputerData.Result>) {
-        historyComputerData.clear()
-        historyComputerData.addAll(computerData)
-        historyComputerAdapter.notifyDataSetChanged()
+    override fun showHistory(generalData: List<HistoryListGeneralData.Result>) {
+        historyGeneralData.clear()
+        historyGeneralData.addAll(generalData)
+        historyGeneralAdapter.notifyDataSetChanged()
 
         //Declare Animation
         val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)

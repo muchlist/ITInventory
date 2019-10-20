@@ -1,6 +1,6 @@
 package com.meretas.itinventory.inv_computer.computer_detail
 
-import com.meretas.itinventory.data.HistoryListComputerData
+import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import retrofit2.Call
@@ -14,15 +14,15 @@ class DetailComputerPresenter(private var view: DetailComputerView?) {
         view?.showLoadingHistory()
 
         Api.retrofitService.getHistoryPerComputer(App.prefs.authTokenSave, id)
-            .enqueue(object : Callback<HistoryListComputerData> {
-                override fun onFailure(call: Call<HistoryListComputerData>, t: Throwable) {
+            .enqueue(object : Callback<HistoryListGeneralData> {
+                override fun onFailure(call: Call<HistoryListGeneralData>, t: Throwable) {
                     view?.hideLoadingHistory()
                     view?.showToastError("Server Sleep")
                 }
 
                 override fun onResponse(
-                    call: Call<HistoryListComputerData>,
-                    response: Response<HistoryListComputerData>
+                    call: Call<HistoryListGeneralData>,
+                    response: Response<HistoryListGeneralData>
                 ) {
                     when {
                         response.isSuccessful -> {
