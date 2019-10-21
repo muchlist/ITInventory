@@ -13,7 +13,7 @@ import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_HISTORY_CCTV_ID
 import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_HISTORY_CCTV_NAME
-import com.meretas.itinventory.utils.Statis.Companion.isCctvHistoryUpdate
+import com.meretas.itinventory.utils.Statis.Companion.isHistoryUpdate
 import kotlinx.android.synthetic.main.activity_history_add.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
@@ -81,7 +81,7 @@ class AddCctvHistoryActivity : AppCompatActivity() {
         viewModel.isSuccess.observe(this, Observer {
             if (it) {
                 //untuk reload list ketika history berhasil ditambahkan
-                isCctvHistoryUpdate = true
+                isHistoryUpdate = true
                 finish()
             }
         })

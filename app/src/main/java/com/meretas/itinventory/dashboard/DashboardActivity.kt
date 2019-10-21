@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils
 import android.view.animation.GridLayoutAnimationController
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,6 +52,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     private lateinit var menuAdapter: MenuListAdapter
     private var menuDataData: MutableList<MenuData> = mutableListOf()
 
+    private lateinit var historyArrayDropdown : Array<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -67,18 +70,12 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         }
         presenter.getCurrentUserInfo(App.prefs.authTokenSave)
 
+        setRecyclerView()
 
-        //Historr Recyclerview
-        rv_history_dashboard.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        historyGeneralAdapter = HistoryGeneralAdapter(this, historyGeneralData) {
-            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
-        }
-        rv_history_dashboard.adapter = historyGeneralAdapter
-
-
-        //mengisi History Recyclerview MAMAMAMAMAMAMMAMAMAMAMAMAMAMAMAMAMAMAAMMAMAAMAM
-        presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
+        //HISTORY TEXT AND LOAD
+        historyArrayDropdown = resources.getStringArray(R.array.history_select)
+        tv_dashboard_history_selection.text = App.prefs.historySelected
+        callGetHistoryPresenter()
 
         //SEARCHBAR LISTENER
         et_dashboard_searchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -127,11 +124,64 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         gv_dashboard_menu.layoutAnimation = controller
         gv_dashboard_menu.adapter = menuAdapter
 
+        //SELECT HISTORY BUTTON
+        tv_dashboard_history_selection.setOnClickListener {
+            historySelector()
+        }
 
         //HIDE KEYBOARD
         et_dashboard_searchbar.isFocusable = false
         et_dashboard_searchbar.clearFocus()
 
+    }
+
+    private fun setRecyclerView() {
+        //RECYCLERVIEW
+        rv_history_dashboard.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        historyGeneralAdapter = HistoryGeneralAdapter(this, historyGeneralData) {
+            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
+        }
+        rv_history_dashboard.adapter = historyGeneralAdapter
+    }
+
+    private fun historySelector() {
+        lateinit var dialog: AlertDialog
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Pilih History")
+        builder.setSingleChoiceItems(historyArrayDropdown, -1) { _, which ->
+            val history = historyArrayDropdown[which]
+            try {
+                tv_dashboard_history_selection.text = history
+                App.prefs.historySelected = history
+                callGetHistoryPresenter()
+            } catch (e: IllegalArgumentException) {
+                toast("error")
+            }
+            dialog.dismiss()
+        }
+        dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun callGetHistoryPresenter(){
+        when(App.prefs.historySelected){
+            historyArrayDropdown[0] -> presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
+            historyArrayDropdown[3] -> presenter.getCctvHistoryDashboard(App.prefs.authTokenSave)
+        }
+    }
+
+    override fun showHistory(generalData: List<HistoryListGeneralData.Result>) {
+        historyGeneralData.clear()
+        historyGeneralData.addAll(generalData)
+        historyGeneralAdapter.notifyDataSetChanged()
+        rv_history_dashboard.scrollToPosition(0)
+
+        //Declare Animation
+        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
+        rv_history_dashboard.startAnimation(topToBottom)
+
+        reloadButtonAppear()
     }
 
     override fun getUserInfo(name: String, branch: String, isReadOnly: Boolean) {
@@ -140,18 +190,6 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         App.prefs.userNameSave = name
         App.prefs.userBranchSave = branch
         App.prefs.isReadOnly = isReadOnly
-    }
-
-    override fun showHistory(generalData: List<HistoryListGeneralData.Result>) {
-        historyGeneralData.clear()
-        historyGeneralData.addAll(generalData)
-        historyGeneralAdapter.notifyDataSetChanged()
-
-        //Declare Animation
-        val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
-        rv_history_dashboard.startAnimation(topToBottom)
-
-        reloadButtonAppear()
     }
 
     override fun hideProgressBarHistory() {
@@ -288,7 +326,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     override fun onResume() {
         super.onResume()
         if (Statis.isHistoryUpdate) {
-            presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
+            callGetHistoryPresenter()
             Statis.isHistoryUpdate = false
         }
     }

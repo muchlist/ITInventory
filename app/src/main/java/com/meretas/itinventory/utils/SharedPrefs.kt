@@ -13,6 +13,8 @@ class SharedPrefs(context: Context) {
     private val _userBranch = "userBranch"
     private val _isReadOnly = "userReadOnly"
     private val _isCompleteLlogin = "userCompleteLogin"
+    private val _historySelected = "historySelected"
+
 
     val prefs: SharedPreferences = context.getSharedPreferences(_prefsFileName, 0)
 
@@ -43,5 +45,9 @@ class SharedPrefs(context: Context) {
     var isCompleteLogin: Boolean
         get() = prefs.getBoolean(_isCompleteLlogin, false)
         set(value) = prefs.edit().putBoolean(_isCompleteLlogin, value).apply()
+
+    var historySelected: String
+        get() = prefs.getString(_historySelected, "Komputer") ?: "Komputer"
+        set(value) = prefs.edit().putString(_historySelected, value).apply()
 
 }

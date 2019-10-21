@@ -96,6 +96,13 @@
         <item>Hilang</item>
     </string-array>
 
+    <string-array name="history_select">
+        <item>Komputer</item>
+        <item>Printer</item>
+        <item>Server</item>
+        <item>CCTV</item>
+    </string-array>
+
 
     <string name="error">Server Sleep</string>
     <string name="dot">Dot Point</string>

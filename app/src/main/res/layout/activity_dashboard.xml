@@ -112,17 +112,45 @@
                     android:paddingBottom="12dp"
                     android:verticalSpacing="10dp" />
 
-            <TextView
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_middle"
-                    android:layout_marginTop="@dimen/spacing_large"
-                    android:layout_marginEnd="@dimen/spacing_middle"
-                    android:layout_marginBottom="@dimen/spacing_medium"
-                    android:fontFamily="@font/roboto"
-                    android:text="@string/history"
-                    android:textColor="@color/button_color_second"
-                    android:textStyle="bold" />
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_middle"
+                        android:layout_marginEnd="@dimen/spacing_middle"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/history"
+                        android:textColor="@color/button_color_second"
+                        android:textStyle="bold" />
+
+                <TextView
+                        android:id="@+id/tv_dashboard_history_selection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/button_stroke_history"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/quicksand"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:hint="Komputer"
+                        android:longClickable="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_history_dashboard"

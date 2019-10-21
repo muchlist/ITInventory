@@ -16,8 +16,8 @@ import com.meretas.itinventory.inv_cctv.cctv_edit.EditCctvActivity
 import com.meretas.itinventory.inv_cctv.cctv_history.AddCctvHistoryActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.*
-import com.meretas.itinventory.utils.Statis.Companion.isCctvHistoryUpdate
 import com.meretas.itinventory.utils.Statis.Companion.isCctvUpdate
+import com.meretas.itinventory.utils.Statis.Companion.isHistoryUpdate
 import kotlinx.android.synthetic.main.activity_detail_cctv.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -148,12 +148,11 @@ class DetailCctvActivity : AppCompatActivity() {
             viewModel.getCctvRefresh(App.prefs.authTokenSave, intentData.id)
         }
 
-        if (isCctvHistoryUpdate) {
+        if (isHistoryUpdate) {
             viewModel.getCctvHistory(
                 token = App.prefs.authTokenSave,
                 cctvId = intentData.id
             )
-            isCctvHistoryUpdate = false
         }
     }
 }
