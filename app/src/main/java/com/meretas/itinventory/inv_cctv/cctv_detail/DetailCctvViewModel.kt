@@ -116,26 +116,26 @@ class DetailCctvViewModel(
     }
 
     //REFRESH STOCK DATA DARI INTENT JIKA ADA PERUBAHAN isStockChangePlus
-    /*fun getStockRefresh(id: Int) {
-        apiService.getStockDetail(App.prefs.authTokenSave, id)
-            .enqueue(object : Callback<StockListData.Result> {
+    fun getCctvRefresh(token: String, id: Int) {
+        _isError.value = ""
+        apiService.getCctvRefresh(token, id)
+            .enqueue(object : Callback<CctvListData.Result> {
                 override fun onResponse(
-                    call: Call<StockListData.Result>,
-                    response: Response<StockListData.Result>
+                    call: Call<CctvListData.Result>,
+                    response: Response<CctvListData.Result>
                 ) {
                     if (response.isSuccessful) {
-                        val listAddition = response.body()
-                        _stockDetailData.postValue(listAddition)
+                        _cctvDetailData.postValue(response.body())
                     } else {
                         _isError.value = "Data yang ditampilkan gagal diperbaharui"
                     }
                 }
 
-                override fun onFailure(call: Call<StockListData.Result>, t: Throwable) {
+                override fun onFailure(call: Call<CctvListData.Result>, t: Throwable) {
                     _isError.value = "Data yang ditampilkan gagal diperbaharui"
                 }
             })
-    }*/
+    }
 
 
 }

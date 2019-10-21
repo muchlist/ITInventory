@@ -273,6 +273,13 @@ interface ApiService {
         @Query("format") format: String = "json"
     ): Call<CctvListData>
 
+    @GET("cctvs/{id}")
+    fun getCctvRefresh(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
+    ): Call<CctvListData.Result>
+
     @FormUrlEncoded
     @POST("cctvs/")
     fun postCctv(
@@ -280,6 +287,20 @@ interface ApiService {
         @Field("cctv_name") cctvName: String,
         @Field("ip_address") ipAddress: String?,
         @Field("location") location: String? = "None",
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("status") status: String? = "Aktif",
+        @Field("note") note: String?
+    ): Call<CctvListData.Result>
+
+    @FormUrlEncoded
+    @PUT("cctvs/{id}/")
+    fun putCctv(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("cctv_name") cctvName: String,
+        @Field("ip_address") ipAddress: String?,
+        @Field("location") location: String?,
         @Field("year") year: String?,
         @Field("merk_model") merkModel: String?,
         @Field("status") status: String? = "Aktif",

@@ -2,17 +2,17 @@ package com.meretas.itinventory.dashboard
 
 import com.meretas.itinventory.data.CurrentUserData
 import com.meretas.itinventory.data.HistoryListGeneralData
-import com.meretas.itinventory.services.Api
+import com.meretas.itinventory.services.ApiService
 import com.meretas.itinventory.utils.App
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class DashboardPresenter(private var view: DashboarView?) {
+class DashboardPresenter(private var view: DashboarView?, private val apiService: ApiService) {
 
-    fun getCurrentUserInfo() {
-        Api.retrofitService.getCurrentUser(App.prefs.authTokenSave)
+    fun getCurrentUserInfo(token: String) {
+        apiService.getCurrentUser(token)
             .enqueue(object : Callback<CurrentUserData> {
                 override fun onFailure(call: Call<CurrentUserData>, t: Throwable) {
 
@@ -43,11 +43,11 @@ class DashboardPresenter(private var view: DashboarView?) {
 
     }
 
-    fun getHistoryDashboard() {
+    fun getComputerHistoryDashboard(token: String) {
 
         view?.showProgressBarHistory()
 
-        Api.retrofitService.getHistoryDashboard(App.prefs.authTokenSave)
+        apiService.getHistoryDashboard(token)
             .enqueue(object : Callback<HistoryListGeneralData> {
                 override fun onFailure(call: Call<HistoryListGeneralData>, t: Throwable) {
                     view?.hideProgressBarHistory()

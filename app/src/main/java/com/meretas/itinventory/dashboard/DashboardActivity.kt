@@ -24,6 +24,7 @@ import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.inv_stock.stock_list.StocklistActivity
+import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_DETAIL_HISTORY
@@ -54,7 +55,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        presenter = DashboardPresenter(this)
+        presenter = DashboardPresenter(this, Api.retrofitService)
 
         //toolbar
         setSupportActionBar(toolbar_dashboard)
@@ -64,7 +65,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             toolbar_dashboard.title = App.prefs.userNameSave
             toolbar_dashboard.subtitle = App.prefs.userBranchSave
         }
-        presenter.getCurrentUserInfo()
+        presenter.getCurrentUserInfo(App.prefs.authTokenSave)
 
 
         //Historr Recyclerview
@@ -76,8 +77,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         rv_history_dashboard.adapter = historyGeneralAdapter
 
 
-        //mengisi History Recyclerview
-        presenter.getHistoryDashboard()
+        //mengisi History Recyclerview MAMAMAMAMAMAMMAMAMAMAMAMAMAMAMAMAMAMAAMMAMAAMAM
+        presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
 
         //SEARCHBAR LISTENER
         et_dashboard_searchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -93,8 +94,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
         bt_dashboard_reload.setOnClickListener {
             bt_dashboard_reload.visibility = View.INVISIBLE
-            presenter.getCurrentUserInfo()
-            presenter.getHistoryDashboard()
+            presenter.getCurrentUserInfo(App.prefs.authTokenSave)
+            presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
         }
 
         //INIT dialog
@@ -231,28 +232,28 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         accountOne.setOnClickListener {
             App.prefs.userBranchSave = ""
             App.prefs.authTokenSave = App.prefs.authTokenOne
-            presenter.getCurrentUserInfo()
+            presenter.getCurrentUserInfo(App.prefs.authTokenSave)
             myDialog.dismiss()
         }
 
         textAccountOne.setOnClickListener {
             App.prefs.userBranchSave = ""
             App.prefs.authTokenSave = App.prefs.authTokenOne
-            presenter.getCurrentUserInfo()
+            presenter.getCurrentUserInfo(App.prefs.authTokenSave)
             myDialog.dismiss()
         }
 
         accountTwo.setOnClickListener {
             App.prefs.userBranchSave = ""
             App.prefs.authTokenSave = App.prefs.authTokenTwo
-            presenter.getCurrentUserInfo()
+            presenter.getCurrentUserInfo(App.prefs.authTokenSave)
             myDialog.dismiss()
         }
 
         textAccountTwo.setOnClickListener {
             App.prefs.userBranchSave = ""
             App.prefs.authTokenSave = App.prefs.authTokenTwo
-            presenter.getCurrentUserInfo()
+            presenter.getCurrentUserInfo(App.prefs.authTokenSave)
             myDialog.dismiss()
         }
 
@@ -287,7 +288,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     override fun onResume() {
         super.onResume()
         if (Statis.isHistoryUpdate) {
-            presenter.getHistoryDashboard()
+            presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
             Statis.isHistoryUpdate = false
         }
     }

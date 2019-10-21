@@ -284,6 +284,7 @@
     <string name="merk_model_dot">Merk Model ............................</string>
     <string name="tahun_dot">Tahun .....................................</string>
     <string name="ubah_cctv">Ubah Cctv</string>
+    <string name="edit_cctv">Edit Cctv</string>
 
 
 </resources>

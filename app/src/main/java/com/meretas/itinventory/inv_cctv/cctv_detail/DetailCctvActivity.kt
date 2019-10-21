@@ -8,14 +8,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
+import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.CctvListData
 import com.meretas.itinventory.data.HistoryListGeneralData
+import com.meretas.itinventory.inv_cctv.cctv_edit.EditCctvActivity
 import com.meretas.itinventory.inv_cctv.cctv_history.AddCctvHistoryActivity
-import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.*
 import com.meretas.itinventory.utils.Statis.Companion.isCctvHistoryUpdate
+import com.meretas.itinventory.utils.Statis.Companion.isCctvUpdate
 import kotlinx.android.synthetic.main.activity_detail_cctv.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -68,10 +70,9 @@ class DetailCctvActivity : AppCompatActivity() {
             }
 
             bt_detail_edit_cctv.setOnClickListener {
-                /*                 startActivity<AddConsumeStockActivity>(
-                 INTENT_DETAIL_ADD_CONSUME_ID to intent.id,
-                 INTENT_DETAIL_ADD_CONSUME_NAME to intent.stockName
-             )*/
+                startActivity<EditCctvActivity>(
+                    DATA_INTENT_CCTV_DETAIL to viewModel.cctvDetailData.value
+                )
             }
         }
 
@@ -118,7 +119,6 @@ class DetailCctvActivity : AppCompatActivity() {
 
         //DETAIL
         viewModel.cctvDetailData.observe(this, Observer {
-
             tv_detail_cctv_name.text = it.cctvName
             tv_detail_cctv_ip_address.text = it.ipAddress
             tv_detail_cctv_branch.text = it.branch
@@ -144,6 +144,9 @@ class DetailCctvActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        if (isCctvUpdate) {
+            viewModel.getCctvRefresh(App.prefs.authTokenSave, intentData.id)
+        }
 
         if (isCctvHistoryUpdate) {
             viewModel.getCctvHistory(
