@@ -55,6 +55,19 @@
         <item>Lainnya</item>
     </string-array>
 
+    <string-array name="computer_division_array_post">
+        <item>Umum</item>
+        <item>Operasional</item>
+        <item>Komersial</item>
+        <item>Teknik</item>
+        <item>Keuangan</item>
+        <item>TIK</item>
+        <item>SMI</item>
+        <item>GM</item>
+        <item>Server</item>
+        <item>Lainnya</item>
+    </string-array>
+
     <string-array name="computer_seat_manajemen_array">
         <item>---</item>
         <item>true</item>
@@ -86,6 +99,13 @@
 
     <string-array name="printer_status_array">
         <item>---</item>
+        <item>Baik</item>
+        <item>Backup</item>
+        <item>Rusak</item>
+        <item>Lainnya</item>
+    </string-array>
+
+    <string-array name="printer_status_array_post">
         <item>Baik</item>
         <item>Backup</item>
         <item>Rusak</item>
@@ -302,6 +322,8 @@
     <string name="tahun_dot">Tahun .....................................</string>
     <string name="ubah_cctv">Ubah Cctv</string>
     <string name="edit_cctv">Edit Cctv</string>
+    <string name="tambah_printer">Tambah Printer</string>
+    <string name="nama_printer">Nama Printer</string>
 
 
 </resources>

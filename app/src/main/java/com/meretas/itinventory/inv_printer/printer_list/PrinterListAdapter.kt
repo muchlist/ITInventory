@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_printer
+package com.meretas.itinventory.inv_printer.printer_list
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -18,7 +18,10 @@ class PrinterListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context)
             .inflate(R.layout.item_printer_list, parent, false)
-        return ViewHolder(view, itemClick)
+        return ViewHolder(
+            view,
+            itemClick
+        )
     }
 
     override fun getItemCount(): Int = itemPrint.size

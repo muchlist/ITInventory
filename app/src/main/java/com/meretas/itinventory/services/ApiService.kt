@@ -356,6 +356,19 @@ interface ApiService {
         @Query("format") format: String = "json"
     ): Call<PrinterListData.Result>
 
+    @FormUrlEncoded
+    @POST("printers/")
+    fun postPrinter(
+        @Header("Authorization") token: String,
+        @Field("printer_name") printerName: String,
+        @Field("ip_address") ipAddress: String?,
+        @Field("division") division: String,
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("status") status: String? = "Baik",
+        @Field("note") note: String?
+    ): Call<PrinterListData.Result>
+
 
 }
 

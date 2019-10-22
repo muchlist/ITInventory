@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_printer
+package com.meretas.itinventory.inv_printer.printer_list
 
 
 import android.app.Application
@@ -13,7 +13,10 @@ class PrinterListViewModelFactory(
     @Suppress("uncheked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PrinterListViewModel::class.java)) {
-            return PrinterListViewModel(apiService, application) as T
+            return PrinterListViewModel(
+                apiService,
+                application
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

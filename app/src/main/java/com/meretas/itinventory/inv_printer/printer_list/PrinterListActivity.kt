@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_printer
+package com.meretas.itinventory.inv_printer.printer_list
 
 import android.app.Dialog
 import android.graphics.Color
@@ -17,11 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.PrinterListData
+import com.meretas.itinventory.inv_printer.printer_add.AddPrinterActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_printer_list.*
 import kotlinx.coroutines.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class PrinterListActivity : AppCompatActivity() {
@@ -92,7 +94,7 @@ class PrinterListActivity : AppCompatActivity() {
         })
 
         bt_printerlist_tambah.setOnClickListener {
-            //startActivity<AddPrinterActivity>()
+            startActivity<AddPrinterActivity>()
         }
 
         hideKeyboard()
@@ -102,7 +104,11 @@ class PrinterListActivity : AppCompatActivity() {
     private fun initViewModel() {
         val application = requireNotNull(this).application
         val apiService = Api.retrofitService
-        viewModelFactory = PrinterListViewModelFactory(apiService, application)
+        viewModelFactory =
+            PrinterListViewModelFactory(
+                apiService,
+                application
+            )
         viewModel =
             ViewModelProviders.of(this, viewModelFactory).get(PrinterListViewModel::class.java)
     }
@@ -116,11 +122,12 @@ class PrinterListActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
         rv_printerlist.layoutManager = LinearLayoutManager(this)
-        printerAdapter = PrinterListAdapter(this, printerData) {
-//            startActivity<DetailPrinterActivity>(
+        printerAdapter =
+            PrinterListAdapter(this, printerData) {
+                //            startActivity<DetailPrinterActivity>(
 //                DATA_INTENT_CCTV_LIST_TO_DETAIL to it
 //            )
-        }
+            }
         rv_printerlist.adapter = printerAdapter
         rv_printerlist.setHasFixedSize(true)
     }

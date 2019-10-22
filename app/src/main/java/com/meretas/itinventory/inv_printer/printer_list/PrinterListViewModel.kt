@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_printer
+package com.meretas.itinventory.inv_printer.printer_list
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
