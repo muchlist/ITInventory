@@ -103,13 +103,14 @@
                     android:id="@+id/gv_dashboard_menu"
                     android:layout_width="match_parent"
                     android:layout_height="235dp"
-                    android:layout_gravity="center"
                     android:animateLayoutChanges="true"
                     android:background="@drawable/gradient_dashboard_grid"
+                    android:columnWidth="160dp"
                     android:gravity="center"
                     android:numColumns="2"
                     android:paddingTop="45dp"
                     android:paddingBottom="12dp"
+                    android:stretchMode="spacingWidthUniform"
                     android:verticalSpacing="10dp" />
 
             <LinearLayout

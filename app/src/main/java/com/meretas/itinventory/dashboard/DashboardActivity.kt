@@ -136,13 +136,13 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     }
 
     private fun setRecyclerView() {
-        //RECYCLERVIEW
         rv_history_dashboard.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         historyGeneralAdapter = HistoryGeneralAdapter(this, historyGeneralData) {
             startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
         rv_history_dashboard.adapter = historyGeneralAdapter
+        rv_history_dashboard.hasFixedSize()
     }
 
     private fun historySelector() {

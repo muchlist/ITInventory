@@ -12,7 +12,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".inv_cctv.cctv_edit.EditCctvActivity"></activity>
+        <activity android:name=".inv_cctv.cctv_edit.EditCctvActivity" />
         <activity android:name=".inv_cctv.cctv_history.AddCctvHistoryActivity" />
         <activity android:name=".inv_cctv.cctv_detail.DetailCctvActivity" />
         <activity android:name=".inv_cctv.cctv_add.AddCctvActivity" />

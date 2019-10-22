@@ -37,6 +37,7 @@ class HistoryGeneralAdapter(
             itemView.tv_history_note.text = items.note
             itemView.tv_history_author.text = items.author
             itemView.tv_history_date.text = items.createdAt
+            itemView.tv_history_branch.text = items.branch
 
             //onClick
             itemView.setOnClickListener { itemClick(items) }
