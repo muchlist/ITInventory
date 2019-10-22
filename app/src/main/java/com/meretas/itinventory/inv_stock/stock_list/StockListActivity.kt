@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.activity_list_stock.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class StocklistActivity : AppCompatActivity() {
+class StockListActivity : AppCompatActivity() {
 
     private lateinit var viewModel: StocklistViewModel
 

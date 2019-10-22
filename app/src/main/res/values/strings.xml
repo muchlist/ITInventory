@@ -84,6 +84,14 @@
         <item>Lainnya</item>
     </string-array>
 
+    <string-array name="printer_status_array">
+        <item>---</item>
+        <item>Baik</item>
+        <item>Backup</item>
+        <item>Rusak</item>
+        <item>Lainnya</item>
+    </string-array>
+
     <string-array name="cctv_history_status">
         <item>Pengecekan</item>,
         <item>Diperbaiki</item>,
@@ -284,8 +292,10 @@
     <string name="ditambahkan">Ditambahkan</string>
     <string name="dipakai">Dipakai</string>
     <string name="inv_cctv">-- INV. CCTV</string>
+    <string name="inv_printer">-- INV. Printer</string>
     <string name="tambah_cctv">tambah cctv</string>
     <string name="filter_cctv">Filter Cctv</string>
+    <string name="filter_printer">Filter Printer</string>
     <string name="tambah_cctv_add">Tambah Cctv</string>
     <string name="nama_cctv">Nama Cctv</string>
     <string name="merk_model_dot">Merk Model ............................</string>

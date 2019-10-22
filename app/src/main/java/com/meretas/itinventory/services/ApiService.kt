@@ -330,6 +330,33 @@ interface ApiService {
     ): Call<HistoryListCctvData>
 
 
+    //Printer
+    @GET("printers/")
+    fun getPrinterList(
+        @Header("Authorization") token: String,
+        @Query("branch") branch: String,
+        @Query("division") division: String,
+        @Query("status") status: String,
+        @Query("ordering") order: String = "branch,division,printer_name",
+        @Query("format") format: String = "json"
+    ): Call<PrinterListData>
+
+    @GET("printers/")
+    fun getPrinterListSearch(
+        @Header("Authorization") token: String,
+        @Query("search") search: String?,
+        @Query("ordering") order: String = "branch,division,printer_name",
+        @Query("format") format: String = "json"
+    ): Call<PrinterListData>
+
+    @GET("printers/{id}")
+    fun getPrinterRefresh(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
+    ): Call<PrinterListData.Result>
+
+
 }
 
 object Api {

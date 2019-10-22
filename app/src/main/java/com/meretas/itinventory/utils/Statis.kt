@@ -6,6 +6,7 @@ class Statis {
         var isHistoryUpdate = false  //apakah history update jika iya list history akan di reset
         var isStockUpdate = false
         var isCctvUpdate = false //false di CctvListActivity , true di AddCctvActivity
+        var isPrinterUpdate = false //false di PrinterListActivity , true di AddPrinterActivity
 
         //apabila stok berubah (menambahkan, mengurangkan, mengedit)
         // maka ketiga fragment stock_detail fragment di reload di onresume
@@ -30,6 +31,11 @@ class Statis {
         //Cctv List Filter
         var whatCctvBranch = ""
         var whatCctvStatus = "Aktif"
+
+        //Cctv List Filter
+        var whatPrinterBranch = ""
+        var whatPrinterStatus = "Baik"
+        var whatPrinterDivision = "Umum"
 
     }
 }

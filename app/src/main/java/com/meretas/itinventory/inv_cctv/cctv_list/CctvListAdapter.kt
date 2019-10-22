@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_cctv_list.view.*
 
 class CctvListAdapter(
     private val context: Context?,
-    private val itemStock: List<CctvListData.Result>,
+    private val itemCctv: List<CctvListData.Result>,
     private val itemClick: (CctvListData.Result) -> Unit
 ) : RecyclerView.Adapter<CctvListAdapter.ViewHolder>() {
 
@@ -21,10 +21,10 @@ class CctvListAdapter(
         return ViewHolder(view, itemClick)
     }
 
-    override fun getItemCount(): Int = itemStock.size
+    override fun getItemCount(): Int = itemCctv.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(itemStock[position])
+        holder.bindItem(itemCctv[position])
     }
 
 

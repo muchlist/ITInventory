@@ -23,8 +23,9 @@ import com.meretas.itinventory.inv_computer.computer_list.ComputerListActivity
 import com.meretas.itinventory.data.MenuData
 import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
+import com.meretas.itinventory.inv_printer.PrinterListActivity
 import com.meretas.itinventory.login.LoginActivity
-import com.meretas.itinventory.inv_stock.stock_list.StocklistActivity
+import com.meretas.itinventory.inv_stock.stock_list.StockListActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
@@ -116,7 +117,8 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
             when (it.id) {
                 0 -> startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
-                1 -> startActivity<StocklistActivity>()
+                1 -> startActivity<StockListActivity>()
+                2 -> startActivity<PrinterListActivity>()
                 4 -> startActivity<CctvListActivity>()
                 else -> toast("Menu ${it.title} masih dalam tahap pengembangan")
             }
