@@ -1,37 +1,37 @@
-package com.meretas.itinventory.inv_cctv.cctv_history
+package com.meretas.itinventory.inv_printer.printer_history
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.meretas.itinventory.R
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
-import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_HISTORY_CCTV_ID
-import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_HISTORY_CCTV_NAME
-import com.meretas.itinventory.utils.Statis.Companion.isHistoryUpdate
+import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_HISTORY_PRINTER_ID
+import com.meretas.itinventory.utils.INTENT_DETAIL_ADD_HISTORY_PRINTER_NAME
+import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_history_add.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
 
-class AddCctvHistoryActivity : AppCompatActivity() {
+class AddPrinterHistoryActivity : AppCompatActivity() {
 
     //View Model
-    private lateinit var viewModel: AddCctvHistoryViewModel
-    private lateinit var viewModelFactory: AddCctvHistoryViewModelfactory
+    private lateinit var viewModel: AddPrinterHistoryViewModel
+    private lateinit var viewModelFactory: AddPrinterHistoryViewModelfactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_add)
 
-        val intentID = intent.getIntExtra(INTENT_DETAIL_ADD_HISTORY_CCTV_ID, 0)
-        val intentName = intent.getStringExtra(INTENT_DETAIL_ADD_HISTORY_CCTV_NAME)
+        val intentID = intent.getIntExtra(INTENT_DETAIL_ADD_HISTORY_PRINTER_ID, 0)
+        val intentName = intent.getStringExtra(INTENT_DETAIL_ADD_HISTORY_PRINTER_NAME)
 
-        tv_add_history_name.text = "Cctv $intentName"
+        tv_add_history_name.text = "Printer $intentName"
 
         initViewModel()
 
@@ -58,9 +58,9 @@ class AddCctvHistoryActivity : AppCompatActivity() {
     private fun initViewModel() {
         val application = requireNotNull(this).application
         val apiService = Api.retrofitService
-        viewModelFactory = AddCctvHistoryViewModelfactory(apiService, application)
+        viewModelFactory = AddPrinterHistoryViewModelfactory(apiService, application)
         viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(AddCctvHistoryViewModel::class.java)
+            ViewModelProviders.of(this, viewModelFactory).get(AddPrinterHistoryViewModel::class.java)
     }
 
     private fun viewModelObserver() {
@@ -81,7 +81,7 @@ class AddCctvHistoryActivity : AppCompatActivity() {
         viewModel.isSuccess.observe(this, Observer {
             if (it) {
                 //untuk reload list ketika history berhasil ditambahkan
-                isHistoryUpdate = true
+                Statis.isHistoryUpdate = true
                 finish()
             }
         })
@@ -89,7 +89,7 @@ class AddCctvHistoryActivity : AppCompatActivity() {
 
     private fun showStatusDialog() {
         lateinit var dialog: AlertDialog
-        val array = resources.getStringArray(R.array.cctv_history_status)
+        val array = resources.getStringArray(R.array.printer_history_status)
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Pilih Status")
         builder.setSingleChoiceItems(array, -1) { _, which ->

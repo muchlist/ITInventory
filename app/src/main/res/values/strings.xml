@@ -124,6 +124,18 @@
         <item>Hilang</item>
     </string-array>
 
+    <string-array name="printer_history_status">
+        <item>Refill_Tinta</item>,
+        <item>Diperbaiki</item>,
+        <item>Bermasalah</item>,
+        <item>Rusak</item>,
+        <item>Pindah_Tempat</item>,
+        <item>Dibersihkan</item>,
+        <item>Digudangkan</item>,
+        <item>Dimusnahkan</item>,
+        <item>Hilang</item>
+    </string-array>
+
     <string-array name="history_select">
         <item>Komputer</item>
         <item>Printer</item>
@@ -324,6 +336,8 @@
     <string name="edit_cctv">Edit Cctv</string>
     <string name="tambah_printer">Tambah Printer</string>
     <string name="nama_printer">Nama Printer</string>
+    <string name="ubah_printer">ubah_printer</string>
+    <string name="ubah_printer_">Ubah Printer</string>
 
 
 </resources>

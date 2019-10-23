@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.PrinterListData
 import com.meretas.itinventory.inv_printer.printer_add.AddPrinterActivity
+import com.meretas.itinventory.inv_printer.printer_detail.DetailPrinterActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
+import com.meretas.itinventory.utils.DATA_INTENT_PRINTER_LIST_TO_DETAIL
 import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_printer_list.*
 import kotlinx.coroutines.*
@@ -124,9 +126,9 @@ class PrinterListActivity : AppCompatActivity() {
         rv_printerlist.layoutManager = LinearLayoutManager(this)
         printerAdapter =
             PrinterListAdapter(this, printerData) {
-                //            startActivity<DetailPrinterActivity>(
-//                DATA_INTENT_CCTV_LIST_TO_DETAIL to it
-//            )
+                            startActivity<DetailPrinterActivity>(
+                DATA_INTENT_PRINTER_LIST_TO_DETAIL to it
+            )
             }
         rv_printerlist.adapter = printerAdapter
         rv_printerlist.setHasFixedSize(true)

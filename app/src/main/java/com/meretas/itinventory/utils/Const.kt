@@ -24,6 +24,11 @@ const val INTENT_DETAIL_ADD_HISTORY_CCTV_ID = "add_history_cctv_id"
 const val INTENT_DETAIL_ADD_HISTORY_CCTV_NAME = "add_history_cctv_name"
 const val DATA_INTENT_CCTV_DETAIL = "detail_one_cctv"
 
+//intent printer
+const val DATA_INTENT_PRINTER_LIST_TO_DETAIL = "list_printer_to_detail_printer"
+const val INTENT_DETAIL_ADD_HISTORY_PRINTER_ID = "add_history_printer_id"
+const val INTENT_DETAIL_ADD_HISTORY_PRINTER_NAME = "add_history_printer_name"
+
 //intent stock use detail
 const val SOURCE_INTENT_STOCK_ACTIVE = "stock_use_source_active" //Key
 const val SOURCE_INTENT_STOCK_USE = "stock_use_source" //Key
