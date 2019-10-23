@@ -19,26 +19,26 @@
                 android:layout_height="match_parent">
 
             <TextView
-                    android:id="@+id/edit_cctv_title"
+                    android:id="@+id/edit_printer_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="64dp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="@string/edit_cctv"
+                    android:text="@string/tambah_printer"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                    android:id="@+id/edit_cctv_title_name"
+                    android:id="@+id/edit_printer_title_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand_bold"
                     android:textSize="24sp"
-                    app:layout_constraintStart_toStartOf="@+id/edit_cctv_title"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_cctv_title"
-                    tools:text="@string/nama_cctv" />
+                    app:layout_constraintStart_toStartOf="@+id/edit_printer_title"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_printer_title"
+                    tools:text="@string/nama_printer" />
 
             <LinearLayout
                     android:id="@+id/linearLayout_ide"
@@ -51,7 +51,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_cctv_title_name">
+                    app:layout_constraintTop_toBottomOf="@+id/edit_printer_title_name">
 
                 <ImageView
                         android:layout_width="@dimen/spacing_middle"
@@ -92,14 +92,14 @@
                         android:orientation="vertical">
 
                     <EditText
-                            android:id="@+id/et_edit_cctv_name"
+                            android:id="@+id/et_edit_printer_name"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxlarge"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/quicksand"
                             android:gravity="center_vertical"
-                            android:hint="@string/nama_cctv"
+                            android:hint="@string/nama_printer"
                             android:inputType="text"
                             android:minHeight="@dimen/spacing_xmlarge"
                             android:paddingLeft="@dimen/spacing_large"
@@ -111,26 +111,7 @@
                             android:background="@color/grey_5"/>
 
                     <EditText
-                            android:id="@+id/et_edit_cctv_location"
-                            style="@style/EditText.Flat.Grey"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/spacing_xxlarge"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand"
-                            android:gravity="center_vertical"
-                            android:hint="@string/lokasi_"
-                            android:inputType="text"
-                            android:minHeight="@dimen/spacing_xmlarge"
-                            android:paddingLeft="@dimen/spacing_large"
-                            android:paddingRight="@dimen/spacing_large" />
-
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/grey_5"/>
-
-                    <EditText
-                            android:id="@+id/et_edit_cctv_ip"
+                            android:id="@+id/et_edit_printer_ip"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxlarge"
@@ -148,8 +129,28 @@
                             android:layout_height="1dp"
                             android:background="@color/grey_5"/>
 
+                    <TextView
+                            android:id="@+id/et_edit_printer_division"
+                            style="@style/EditText.Flat.Grey"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:background="@android:color/transparent"
+                            android:drawableEnd="@drawable/ic_arrow_drop_grey"
+                            android:focusable="false"
+                            android:fontFamily="@font/quicksand"
+                            android:gravity="center_vertical"
+                            android:hint="@string/divisi"
+                            android:minHeight="@dimen/spacing_xmlarge"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large" />
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/grey_5"/>
+
                     <EditText
-                            android:id="@+id/et_edit_cctv_merk"
+                            android:id="@+id/et_edit_printer_merk"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxlarge"
@@ -168,7 +169,7 @@
                             android:background="@color/grey_5"/>
 
                     <EditText
-                            android:id="@+id/et_edit_cctv_year"
+                            android:id="@+id/et_edit_printer_year"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxlarge"
@@ -187,7 +188,7 @@
                             android:background="@color/grey_5"/>
 
                     <TextView
-                            android:id="@+id/et_edit_cctv_status"
+                            android:id="@+id/et_edit_printer_status"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/spacing_xxlarge"
@@ -207,7 +208,7 @@
                             android:background="@color/grey_5" />
 
                     <EditText
-                            android:id="@+id/et_edit_cctv_note"
+                            android:id="@+id/et_edit_printer_note"
                             style="@style/EditText.Flat.Grey"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -230,7 +231,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <Button
-                    android:id="@+id/bt_edit_cctv_save"
+                    android:id="@+id/bt_edit_printer_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -244,7 +245,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <FrameLayout
-            android:id="@+id/pb_frame_edit_cctv"
+            android:id="@+id/pb_frame_edit_printer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/progress_frame_color"

@@ -8,9 +8,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
+import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.data.PrinterListData
+import com.meretas.itinventory.inv_printer.printer_edit.EditPrinterActivity
 import com.meretas.itinventory.inv_printer.printer_history.AddPrinterHistoryActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.*
@@ -67,9 +69,9 @@ class DetailPrinterActivity : AppCompatActivity() {
             }
 
             bt_detail_edit_printer.setOnClickListener {
-//                startActivity<EditPrinterActivity>(
-//                    DATA_INTENT_CCTV_DETAIL to viewModel.printerDetailData.value
-//                )
+                startActivity<EditPrinterActivity>(
+                    DATA_INTENT_PRINTER_DETAIL to viewModel.printerDetailData.value
+                )
             }
         }
 
@@ -91,7 +93,7 @@ class DetailPrinterActivity : AppCompatActivity() {
         rv_detail_printer_history.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         historyPrinterAdapter = HistoryGeneralAdapter(this, historyPrinterData) {
-//            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
+            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
         rv_detail_printer_history.adapter = historyPrinterAdapter
         rv_detail_printer_history.setHasFixedSize(true)

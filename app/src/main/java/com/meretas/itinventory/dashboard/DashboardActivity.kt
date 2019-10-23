@@ -168,7 +168,9 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
 
     private fun callGetHistoryPresenter(){
         when(App.prefs.historySelected){
+            //0 komputer 1 printer 2 server 3 cctv
             historyArrayDropdown[0] -> presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
+            historyArrayDropdown[1] -> presenter.getPrinterHistoryDashboard(App.prefs.authTokenSave)
             historyArrayDropdown[3] -> presenter.getCctvHistoryDashboard(App.prefs.authTokenSave)
         }
     }

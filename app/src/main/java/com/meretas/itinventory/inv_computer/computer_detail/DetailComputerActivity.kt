@@ -9,13 +9,13 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
-import com.meretas.itinventory.inv_computer.computer_add_history.AddHistoryComputerActivity
-import com.meretas.itinventory.inv_computer.computer_edit.EditComputerActivity
 import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.data.ComputerPostData
 import com.meretas.itinventory.data.HistoryListGeneralData
+import com.meretas.itinventory.inv_computer.computer_add_history.AddHistoryComputerActivity
+import com.meretas.itinventory.inv_computer.computer_edit.EditComputerActivity
 import com.meretas.itinventory.utils.*
 import kotlinx.android.synthetic.main.activity_detail_computer.*
 import org.jetbrains.anko.startActivity
@@ -114,14 +114,7 @@ class DetailComputerActivity : AppCompatActivity(), DetailComputerView {
         if (App.prefs.userBranchSave != intent.branch || App.prefs.isReadOnly) {
             bt_detail_add_history.disable()
             bt_detail_edit_computer.disable()
-        } else {
-            //Declare Animation
-            val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-            //SetAnimation
-            bt_detail_add_history.startAnimation(fadeIn)
-            bt_detail_edit_computer.startAnimation(fadeIn)
         }
-
     }
 
 

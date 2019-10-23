@@ -369,7 +369,21 @@ interface ApiService {
         @Field("note") note: String?
     ): Call<PrinterListData.Result>
 
-    //HISTORY CCTV
+    @FormUrlEncoded
+    @PUT("printers/{id}/")
+    fun putPrinter(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("printer_name") printerName: String,
+        @Field("ip_address") ipAddress: String?,
+        @Field("division") division: String,
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("status") status: String? = "Baik",
+        @Field("note") note: String?
+    ): Call<PrinterListData.Result>
+
+    //HISTORY PRINTER
     @FormUrlEncoded
     @POST("printers/{id}/history/")
     fun postHistoryPrinter(
