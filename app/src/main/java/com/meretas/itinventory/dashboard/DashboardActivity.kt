@@ -24,7 +24,7 @@ import com.meretas.itinventory.data.MenuData
 import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
 import com.meretas.itinventory.inv_printer.printer_list.PrinterListActivity
-import com.meretas.itinventory.inv_server.ServerListActivity
+import com.meretas.itinventory.inv_server.server_list.ServerListActivity
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.inv_stock.stock_list.StockListActivity
 import com.meretas.itinventory.services.Api

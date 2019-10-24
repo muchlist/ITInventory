@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ServerPostData(
     val token: String,
-    val printerName: String,
+    val serverName: String,
     val ipAddress: String?,
     val category: String,
     val location: String?,

@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_server
+package com.meretas.itinventory.inv_server.server_list
 
 import android.app.Dialog
 import android.graphics.Color
@@ -17,11 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.ServerListData
+import com.meretas.itinventory.inv_server.server_add.AddServerActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_server_list.*
 import kotlinx.coroutines.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class ServerListActivity : AppCompatActivity() {
@@ -92,7 +94,7 @@ class ServerListActivity : AppCompatActivity() {
         })
 
         bt_serverlist_tambah.setOnClickListener {
-            //startActivity<AddServerActivity>()
+            startActivity<AddServerActivity>()
         }
 
         hideKeyboard()

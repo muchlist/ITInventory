@@ -1,4 +1,4 @@
-package com.meretas.itinventory.inv_server
+package com.meretas.itinventory.inv_server.server_list
 
 import android.content.Context
 import android.view.LayoutInflater
