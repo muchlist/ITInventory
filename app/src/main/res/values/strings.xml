@@ -33,6 +33,33 @@
         <item>Lainnya</item>
     </string-array>
 
+    <string-array name="server_category_array">
+        <item>Semua</item>
+        <item>Server</item>
+        <item>Router</item>
+        <item>Man_Switch</item>
+        <item>Switch</item>
+        <item>Wireless_Router</item>
+        <item>Smart_UPS</item>
+        <item>UPS</item>
+        <item>PC</item>
+        <item>Stabilizer</item>
+        <item>Lainnya</item>
+    </string-array>
+
+    <string-array name="server_category_post">
+        <item>Server</item>
+        <item>Router</item>
+        <item>Man_Switch</item>
+        <item>Switch</item>
+        <item>Wireless_Router</item>
+        <item>Smart_UPS</item>
+        <item>UPS</item>
+        <item>PC</item>
+        <item>Stabilizer</item>
+        <item>Lainnya</item>
+    </string-array>
+
     <string-array name="computer_location_array">
         <item>---</item>
         <item>Bjm_Reg</item>
@@ -338,6 +365,9 @@
     <string name="nama_printer">Nama Printer</string>
     <string name="ubah_printer">ubah_printer</string>
     <string name="ubah_printer_">Ubah Printer</string>
+    <string name="inv_server">-- INV. Server</string>
+    <string name="tambah_server">Tambah Server</string>
+    <string name="filter_server">Filter Server</string>
 
 
 </resources>

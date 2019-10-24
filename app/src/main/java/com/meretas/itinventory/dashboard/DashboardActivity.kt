@@ -24,6 +24,7 @@ import com.meretas.itinventory.data.MenuData
 import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.inv_cctv.cctv_list.CctvListActivity
 import com.meretas.itinventory.inv_printer.printer_list.PrinterListActivity
+import com.meretas.itinventory.inv_server.ServerListActivity
 import com.meretas.itinventory.login.LoginActivity
 import com.meretas.itinventory.inv_stock.stock_list.StockListActivity
 import com.meretas.itinventory.services.Api
@@ -119,6 +120,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
                 0 -> startActivity<ComputerListActivity>(DATA_INTENT_DASHBOARD_COMPUTER_LIST to "")
                 1 -> startActivity<StockListActivity>()
                 2 -> startActivity<PrinterListActivity>()
+                3 -> startActivity<ServerListActivity>()
                 4 -> startActivity<CctvListActivity>()
                 else -> toast("Menu ${it.title} masih dalam tahap pengembangan")
             }

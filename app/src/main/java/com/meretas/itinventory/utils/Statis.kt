@@ -7,6 +7,7 @@ class Statis {
         var isStockUpdate = false
         var isCctvUpdate = false //false di CctvListActivity , true di AddCctvActivity
         var isPrinterUpdate = false //false di PrinterListActivity , true di AddPrinterActivity
+        var isServerUpdate = false //false di PrinterListActivity , true di AddPrinterActivity
 
         //apabila stok berubah (menambahkan, mengurangkan, mengedit)
         // maka ketiga fragment stock_detail fragment di reload di onresume
@@ -36,6 +37,12 @@ class Statis {
         var whatPrinterBranch = ""
         var whatPrinterStatus = "Baik"
         var whatPrinterDivision = "Umum"
+
+        //Server List Filter
+        //Cctv List Filter
+        var whatServerBranch = ""
+        var whatServerStatus = "Aktif"
+        var whatServerCategory = ""
 
     }
 }

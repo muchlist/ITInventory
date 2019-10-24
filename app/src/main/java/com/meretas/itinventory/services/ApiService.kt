@@ -405,6 +405,82 @@ interface ApiService {
         @Query("format") format: String = "json"
     ): Call<HistoryListPrinterData>
 
+    //SERVER
+    @GET("servers/")
+    fun getServerList(
+        @Header("Authorization") token: String,
+        @Query("branch") branch: String,
+        @Query("status") status: String,
+        @Query("category") category: String,
+        @Query("ordering") order: String = "branch,category,server_name",
+        @Query("format") format: String = "json"
+    ): Call<ServerListData>
+
+    @GET("servers/")
+    fun getServerListSearch(
+        @Header("Authorization") token: String,
+        @Query("search") search: String?,
+        @Query("ordering") order: String = "branch,category,server_name",
+        @Query("format") format: String = "json"
+    ): Call<ServerListData>
+
+    @GET("servers/{id}")
+    fun getServerRefresh(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
+    ): Call<ServerListData.Result>
+
+    @FormUrlEncoded
+    @POST("servers/")
+    fun postServer(
+        @Header("Authorization") token: String,
+        @Field("server_name") serverName: String,
+        @Field("ip_address") ipAddress: String?,
+        @Field("category") category: String,
+        @Field("location") location: String?,
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("status") status: String? = "Aktif",
+        @Field("note") note: String?
+    ): Call<ServerListData.Result>
+
+    @FormUrlEncoded
+    @PUT("servers/{id}/")
+    fun putServer(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("server_name") serverName: String,
+        @Field("ip_address") ipAddress: String?,
+        @Field("category") category: String,
+        @Field("location") location: String?,
+        @Field("year") year: String?,
+        @Field("merk_model") merkModel: String?,
+        @Field("status") status: String? = "Aktif",
+        @Field("note") note: String?
+    ): Call<ServerListData.Result>
+
+    //HISTORY SERVER
+    @FormUrlEncoded
+    @POST("servers/{id}/history/")
+    fun postHistoryServer(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("note") note: String,
+        @Field("status_history") status_history: String
+    ): Call<HistoryListServerData.Result>
+
+    @GET("server-historys/")
+    fun getHistoryServerDashboard(
+        @Header("Authorization") token: String
+    ): Call<HistoryListServerData>
+
+    @GET("servers/{id}/historys/")
+    fun getHistoryPerServer(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Query("format") format: String = "json"
+    ): Call<HistoryListServerData>
 
 }
 
