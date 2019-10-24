@@ -30,6 +30,12 @@ const val INTENT_DETAIL_ADD_HISTORY_PRINTER_ID = "add_history_printer_id"
 const val INTENT_DETAIL_ADD_HISTORY_PRINTER_NAME = "add_history_printer_name"
 const val DATA_INTENT_PRINTER_DETAIL = "detail_one_printer"
 
+//intent printer
+const val DATA_INTENT_SERVER_LIST_TO_DETAIL = "list_server_to_detail_server"
+const val INTENT_DETAIL_ADD_HISTORY_SERVER_ID = "add_history_server_id"
+const val INTENT_DETAIL_ADD_HISTORY_SERVER_NAME = "add_history_server_name"
+const val DATA_INTENT_SERVER_DETAIL = "detail_one_server"
+
 //intent stock use detail
 const val SOURCE_INTENT_STOCK_ACTIVE = "stock_use_source_active" //Key
 const val SOURCE_INTENT_STOCK_USE = "stock_use_source" //Key

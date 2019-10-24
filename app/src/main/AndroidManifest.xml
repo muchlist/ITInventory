@@ -12,7 +12,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".inv_server.server_add.AddServerActivity"></activity>
+        <activity android:name=".inv_server.server_detail.DetailServerActivity"></activity>
+        <activity android:name=".inv_server.server_add.AddServerActivity" />
         <activity android:name=".inv_server.server_list.ServerListActivity" />
         <activity android:name=".inv_printer.printer_edit.EditPrinterActivity" />
         <activity android:name=".inv_printer.printer_history.AddPrinterHistoryActivity" />

@@ -369,6 +369,8 @@
     <string name="tambah_server">Tambah Server</string>
     <string name="filter_server">Filter Server</string>
     <string name="nama_server">Nama Server</string>
+    <string name="kategori_dot">Kategori .........................</string>
+    <string name="ubah_server">Ubah Server</string>
 
 
 </resources>

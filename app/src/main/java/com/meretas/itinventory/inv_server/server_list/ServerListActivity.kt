@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
 import com.meretas.itinventory.data.ServerListData
 import com.meretas.itinventory.inv_server.server_add.AddServerActivity
+import com.meretas.itinventory.inv_server.server_detail.DetailServerActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
+import com.meretas.itinventory.utils.DATA_INTENT_SERVER_LIST_TO_DETAIL
 import com.meretas.itinventory.utils.Statis
 import kotlinx.android.synthetic.main.activity_server_list.*
 import kotlinx.coroutines.*
@@ -124,9 +126,9 @@ class ServerListActivity : AppCompatActivity() {
         rv_serverlist.layoutManager = LinearLayoutManager(this)
         serverAdapter =
             ServerListAdapter(this, serverData) {
-                //                startActivity<DetailServerActivity>(
-//                    DATA_INTENT_SERVER_LIST_TO_DETAIL to it
-//                )
+                                startActivity<DetailServerActivity>(
+                    DATA_INTENT_SERVER_LIST_TO_DETAIL to it
+                )
             }
         rv_serverlist.adapter = serverAdapter
         rv_serverlist.setHasFixedSize(true)
