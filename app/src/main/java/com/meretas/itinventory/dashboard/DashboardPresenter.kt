@@ -1,9 +1,6 @@
 package com.meretas.itinventory.dashboard
 
-import com.meretas.itinventory.data.CurrentUserData
-import com.meretas.itinventory.data.HistoryListCctvData
-import com.meretas.itinventory.data.HistoryListGeneralData
-import com.meretas.itinventory.data.HistoryListPrinterData
+import com.meretas.itinventory.data.*
 import com.meretas.itinventory.services.ApiService
 import com.meretas.itinventory.utils.App
 import retrofit2.Call
@@ -113,6 +110,62 @@ class DashboardPresenter(private var view: DashboarView?, private val apiService
                                             branch = i.branch,
                                             computer = i.printer + " (print)",
                                             computerId = i.printerId,
+                                            createdAt = i.createdAt,
+                                            updatedAt = i.updatedAt,
+                                            statusHistory = i.statusHistory,
+                                            note = i.note
+                                        )
+                                    )
+                                }
+                            }
+
+                            view?.hideProgressBarHistory()
+                            view?.showHistory(historyData)
+                        }
+                        response.code() == 401 -> {
+                            view?.hideProgressBarHistory()
+                            App.prefs.authTokenSave = ""
+                            view?.showToastAndReload(response.code().toString())
+
+                        }
+                        else -> {
+                            view?.hideProgressBarHistory()
+                            view?.showToastAndReload(response.code().toString())
+                        }
+                    }
+                }
+            })
+    }
+
+    fun getServerHistoryDashboard(token: String) {
+
+        view?.showProgressBarHistory()
+
+        apiService.getHistoryServerDashboard(token)
+            .enqueue(object : Callback<HistoryListServerData> {
+                override fun onFailure(call: Call<HistoryListServerData>, t: Throwable) {
+                    view?.hideProgressBarHistory()
+                    view?.showToastAndReload("Tidak dapat terhubung ke server")
+                }
+
+                override fun onResponse(
+                    call: Call<HistoryListServerData>,
+                    response: Response<HistoryListServerData>
+                ) {
+                    when {
+                        response.isSuccessful -> {
+                            val data = response.body()?.results
+                            val historyData: MutableList<HistoryListGeneralData.Result> =
+                                mutableListOf()
+                            data?.let {
+                                for (i in data) {
+                                    historyData.add(
+                                        HistoryListGeneralData.Result(
+                                            id = i.id,
+                                            author = i.author,
+                                            branch = i.branch,
+                                            computer = i.server + " (server)",
+                                            computerId = i.serverId,
                                             createdAt = i.createdAt,
                                             updatedAt = i.updatedAt,
                                             statusHistory = i.statusHistory,

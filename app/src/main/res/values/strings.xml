@@ -163,6 +163,19 @@
         <item>Hilang</item>
     </string-array>
 
+    <string-array name="server_history_status">
+        <item>Pengecekan</item>,
+        <item>Diperbaiki</item>,
+        <item>Disetting</item>,
+        <item>Bermasalah</item>,
+        <item>Rusak</item>,
+        <item>Pindah_Tempat</item>,
+        <item>Dibersihkan</item>,
+        <item>Digudangkan</item>,
+        <item>Dimusnahkan</item>,
+        <item>Hilang</item>
+    </string-array>
+
     <string-array name="history_select">
         <item>Komputer</item>
         <item>Printer</item>

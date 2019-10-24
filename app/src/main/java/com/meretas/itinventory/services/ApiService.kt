@@ -470,7 +470,7 @@ interface ApiService {
         @Field("status_history") status_history: String
     ): Call<HistoryListServerData.Result>
 
-    @GET("server-historys/")
+    @GET("servers-historys/")
     fun getHistoryServerDashboard(
         @Header("Authorization") token: String
     ): Call<HistoryListServerData>

@@ -8,17 +8,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.meretas.itinventory.R
+import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.data.ServerListData
+import com.meretas.itinventory.inv_server.server_history.AddServerHistoryActivity
 import com.meretas.itinventory.services.Api
-import com.meretas.itinventory.utils.App
-import com.meretas.itinventory.utils.DATA_INTENT_SERVER_LIST_TO_DETAIL
+import com.meretas.itinventory.utils.*
 import com.meretas.itinventory.utils.Statis.Companion.isHistoryUpdate
 import com.meretas.itinventory.utils.Statis.Companion.isServerUpdate
-import com.meretas.itinventory.utils.disable
-import com.meretas.itinventory.utils.enable
 import kotlinx.android.synthetic.main.activity_detail_server.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class DetailServerActivity : AppCompatActivity() {
@@ -61,10 +61,10 @@ class DetailServerActivity : AppCompatActivity() {
             bt_detail_edit_server.enable()
 
             bt_detail_server_add_history.setOnClickListener {
-//                startActivity<AddServerHistoryActivity>(
-//                    INTENT_DETAIL_ADD_HISTORY_SERVER_ID to intentData.id,
-//                    INTENT_DETAIL_ADD_HISTORY_SERVER_NAME to intentData.serverName
-//                )
+                startActivity<AddServerHistoryActivity>(
+                    INTENT_DETAIL_ADD_HISTORY_SERVER_ID to intentData.id,
+                    INTENT_DETAIL_ADD_HISTORY_SERVER_NAME to intentData.serverName
+                )
             }
 
             bt_detail_edit_server.setOnClickListener {
@@ -92,7 +92,7 @@ class DetailServerActivity : AppCompatActivity() {
         rv_detail_server_history.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         historyServerAdapter = HistoryGeneralAdapter(this, historyServerData) {
-//            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
+            startActivity<HistoryDetailActivity>(DATA_INTENT_DASHBOARD_DETAIL_HISTORY to it)
         }
         rv_detail_server_history.adapter = historyServerAdapter
         rv_detail_server_history.setHasFixedSize(true)

@@ -77,7 +77,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         //HISTORY TEXT AND LOAD
         historyArrayDropdown = resources.getStringArray(R.array.history_select)
         tv_dashboard_history_selection.text = App.prefs.historySelected
-        callGetHistoryPresenter()
+        callGetHistory()
 
         //SEARCHBAR LISTENER
         et_dashboard_searchbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -91,10 +91,11 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             }
         })
 
+        //RELOAD BUTTON
         bt_dashboard_reload.setOnClickListener {
             bt_dashboard_reload.visibility = View.INVISIBLE
             presenter.getCurrentUserInfo(App.prefs.authTokenSave)
-            presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
+            callGetHistory()
         }
 
         //INIT dialog
@@ -158,7 +159,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             try {
                 tv_dashboard_history_selection.text = history
                 App.prefs.historySelected = history
-                callGetHistoryPresenter()
+                callGetHistory()
             } catch (e: IllegalArgumentException) {
                 toast("error")
             }
@@ -168,11 +169,12 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         dialog.show()
     }
 
-    private fun callGetHistoryPresenter(){
+    private fun callGetHistory(){
         when(App.prefs.historySelected){
             //0 komputer 1 printer 2 server 3 cctv
             historyArrayDropdown[0] -> presenter.getComputerHistoryDashboard(App.prefs.authTokenSave)
             historyArrayDropdown[1] -> presenter.getPrinterHistoryDashboard(App.prefs.authTokenSave)
+            historyArrayDropdown[2] -> presenter.getServerHistoryDashboard(App.prefs.authTokenSave)
             historyArrayDropdown[3] -> presenter.getCctvHistoryDashboard(App.prefs.authTokenSave)
         }
     }
@@ -332,7 +334,7 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
     override fun onResume() {
         super.onResume()
         if (Statis.isHistoryUpdate) {
-            callGetHistoryPresenter()
+            callGetHistory()
             Statis.isHistoryUpdate = false
         }
     }

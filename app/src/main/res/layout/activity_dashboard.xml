@@ -72,16 +72,6 @@
 
             </androidx.appcompat.widget.SearchView>
 
-            <ImageButton
-                    android:layout_width="?attr/actionBarSize"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@android:color/transparent"
-                    android:clickable="true"
-                    android:contentDescription="@string/dot"
-                    android:focusable="true"
-                    android:tint="@color/grey_60"
-                    app:srcCompat="@drawable/ic_menu" />
-
         </LinearLayout>
 
 
