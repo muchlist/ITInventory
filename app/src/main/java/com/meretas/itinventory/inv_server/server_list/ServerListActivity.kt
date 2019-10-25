@@ -23,6 +23,7 @@ import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_SERVER_LIST_TO_DETAIL
 import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.disable
 import kotlinx.android.synthetic.main.activity_server_list.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.startActivity
@@ -95,9 +96,15 @@ class ServerListActivity : AppCompatActivity() {
             }
         })
 
-        bt_serverlist_tambah.setOnClickListener {
-            startActivity<AddServerActivity>()
+        //BUTTON ADD
+        if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
+            bt_serverlist_tambah.disable()
+        } else {
+            bt_serverlist_tambah.setOnClickListener {
+                startActivity<AddServerActivity>()
+            }
         }
+
 
         hideKeyboard()
 
@@ -126,7 +133,7 @@ class ServerListActivity : AppCompatActivity() {
         rv_serverlist.layoutManager = LinearLayoutManager(this)
         serverAdapter =
             ServerListAdapter(this, serverData) {
-                                startActivity<DetailServerActivity>(
+                startActivity<DetailServerActivity>(
                     DATA_INTENT_SERVER_LIST_TO_DETAIL to it
                 )
             }

@@ -14,13 +14,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.meretas.itinventory.R
+import com.meretas.itinventory.data.ComputerListData
 import com.meretas.itinventory.inv_computer.computer_add.AddComputerActivity
 import com.meretas.itinventory.inv_computer.computer_detail.DetailComputerActivity
-import com.meretas.itinventory.data.ComputerListData
-import com.meretas.itinventory.utils.App
-import com.meretas.itinventory.utils.DATA_INTENT_COMPUTER_LIST_DETAIL
-import com.meretas.itinventory.utils.DATA_INTENT_DASHBOARD_COMPUTER_LIST
-import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.*
 import com.meretas.itinventory.utils.Statis.Companion.whatComputerBranch
 import com.meretas.itinventory.utils.Statis.Companion.whatComputerDivision
 import com.meretas.itinventory.utils.Statis.Companion.whatComputerLocation
@@ -28,7 +25,6 @@ import com.meretas.itinventory.utils.Statis.Companion.whatComputerSeatManajemen
 import com.meretas.itinventory.utils.Statis.Companion.whatComputerStatus
 import kotlinx.android.synthetic.main.activity_computer_list.*
 import kotlinx.coroutines.*
-import org.jetbrains.anko.longToast
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -132,14 +128,14 @@ class ComputerListActivity : AppCompatActivity(), ComputerListView {
         }
 
         //tombol add computer
-        bt_computerlist_tambah.setOnClickListener {
-            //HIDE BUTTON IF MONITOR MODE
-            if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
-                longToast("Read Only User tidak dapat menambahkan komputer")
-            } else {
+        if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
+            bt_computerlist_tambah.disable()
+        } else {
+            bt_computerlist_tambah.setOnClickListener {
                 startActivity<AddComputerActivity>()
             }
         }
+
 
         //INIT dialog
         myDialog = Dialog(this)

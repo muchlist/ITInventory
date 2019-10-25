@@ -23,6 +23,7 @@ import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.App
 import com.meretas.itinventory.utils.DATA_INTENT_PRINTER_LIST_TO_DETAIL
 import com.meretas.itinventory.utils.Statis
+import com.meretas.itinventory.utils.disable
 import kotlinx.android.synthetic.main.activity_printer_list.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.startActivity
@@ -95,9 +96,15 @@ class PrinterListActivity : AppCompatActivity() {
             }
         })
 
-        bt_printerlist_tambah.setOnClickListener {
-            startActivity<AddPrinterActivity>()
+        //BUTTON ADD
+        if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
+            bt_printerlist_tambah.disable()
+        } else {
+            bt_printerlist_tambah.setOnClickListener {
+                startActivity<AddPrinterActivity>()
+            }
         }
+
 
         hideKeyboard()
 
@@ -126,9 +133,9 @@ class PrinterListActivity : AppCompatActivity() {
         rv_printerlist.layoutManager = LinearLayoutManager(this)
         printerAdapter =
             PrinterListAdapter(this, printerData) {
-                            startActivity<DetailPrinterActivity>(
-                DATA_INTENT_PRINTER_LIST_TO_DETAIL to it
-            )
+                startActivity<DetailPrinterActivity>(
+                    DATA_INTENT_PRINTER_LIST_TO_DETAIL to it
+                )
             }
         rv_printerlist.adapter = printerAdapter
         rv_printerlist.setHasFixedSize(true)

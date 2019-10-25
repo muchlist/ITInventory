@@ -25,6 +25,7 @@ import com.meretas.itinventory.utils.DATA_INTENT_CCTV_LIST_TO_DETAIL
 import com.meretas.itinventory.utils.Statis.Companion.isCctvUpdate
 import com.meretas.itinventory.utils.Statis.Companion.whatCctvBranch
 import com.meretas.itinventory.utils.Statis.Companion.whatCctvStatus
+import com.meretas.itinventory.utils.disable
 import kotlinx.android.synthetic.main.activity_cctv_list.*
 import kotlinx.coroutines.*
 import org.jetbrains.anko.startActivity
@@ -96,7 +97,13 @@ class CctvListActivity : AppCompatActivity() {
             }
         })
 
-        bt_cctvlist_tambah.setOnClickListener { startActivity<AddCctvActivity>() }
+        //BUTTON ADD
+        if (App.prefs.userBranchSave == "ReadOnly" || App.prefs.isReadOnly || App.prefs.userBranchSave.isEmpty()) {
+            bt_cctvlist_tambah.disable()
+        } else {
+            bt_cctvlist_tambah.setOnClickListener { startActivity<AddCctvActivity>() }
+        }
+
 
         hideKeyboard()
 
