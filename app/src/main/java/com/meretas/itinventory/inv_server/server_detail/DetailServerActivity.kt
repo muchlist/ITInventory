@@ -12,6 +12,7 @@ import com.meretas.itinventory.dashboard.HistoryDetailActivity
 import com.meretas.itinventory.dashboard.HistoryGeneralAdapter
 import com.meretas.itinventory.data.HistoryListGeneralData
 import com.meretas.itinventory.data.ServerListData
+import com.meretas.itinventory.inv_server.server_edit.EditServerActivity
 import com.meretas.itinventory.inv_server.server_history.AddServerHistoryActivity
 import com.meretas.itinventory.services.Api
 import com.meretas.itinventory.utils.*
@@ -68,9 +69,9 @@ class DetailServerActivity : AppCompatActivity() {
             }
 
             bt_detail_edit_server.setOnClickListener {
-//                startActivity<EditServerActivity>(
-//                    DATA_INTENT_SERVER_DETAIL to viewModel.serverDetailData.value
-//                )
+                startActivity<EditServerActivity>(
+                    DATA_INTENT_SERVER_DETAIL to viewModel.serverDetailData.value
+                )
             }
         }
 

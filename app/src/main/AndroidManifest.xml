@@ -12,13 +12,38 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".inv_server.server_history.AddServerHistoryActivity"></activity>
-        <activity android:name=".inv_server.server_detail.DetailServerActivity" />
-        <activity android:name=".inv_server.server_add.AddServerActivity" />
-        <activity android:name=".inv_server.server_list.ServerListActivity" />
-        <activity android:name=".inv_printer.printer_edit.EditPrinterActivity" />
-        <activity android:name=".inv_printer.printer_history.AddPrinterHistoryActivity" />
-        <activity android:name=".inv_printer.printer_detail.DetailPrinterActivity" />
+        <activity
+                android:name=".inv_server.server_edit.EditServerActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_server.server_history.AddServerHistoryActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_server.server_detail.DetailServerActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_server.server_add.AddServerActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_server.server_list.ServerListActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_printer.printer_edit.EditPrinterActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_printer.printer_history.AddPrinterHistoryActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+                android:name=".inv_printer.printer_detail.DetailPrinterActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
                 android:name=".inv_printer.printer_add.AddPrinterActivity"
                 android:screenOrientation="portrait"

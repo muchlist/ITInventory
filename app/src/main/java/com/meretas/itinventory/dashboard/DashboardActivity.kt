@@ -91,13 +91,6 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
             }
         })
 
-        //RELOAD BUTTON
-        bt_dashboard_reload.setOnClickListener {
-            bt_dashboard_reload.visibility = View.INVISIBLE
-            presenter.getCurrentUserInfo(App.prefs.authTokenSave)
-            callGetHistory()
-        }
-
         //INIT dialog
         myDialog = Dialog(this)
 
@@ -188,8 +181,6 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         //Declare Animation
         val topToBottom = AnimationUtils.loadAnimation(this, R.anim.fade_in_history)
         rv_history_dashboard.startAnimation(topToBottom)
-
-        reloadButtonAppear()
     }
 
     override fun getUserInfo(name: String, branch: String, isReadOnly: Boolean) {
@@ -212,13 +203,6 @@ class DashboardActivity : AppCompatActivity(), DashboarView {
         toast(notif)
         //jika is history update true , akan me reload lagi di onresume
         Statis.isHistoryUpdate = true
-        reloadButtonAppear()
-    }
-
-    private fun reloadButtonAppear() {
-        val bottomToTop = AnimationUtils.loadAnimation(this, R.anim.bottom_to_top)
-        bt_dashboard_reload.visibility = View.VISIBLE
-        bt_dashboard_reload.startAnimation(bottomToTop)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
